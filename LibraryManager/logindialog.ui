@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>944</width>
-    <height>570</height>
+    <width>459</width>
+    <height>308</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -32,8 +32,8 @@
   <widget class="QLabel" name="label">
    <property name="geometry">
     <rect>
-     <x>210</x>
-     <y>20</y>
+     <x>120</x>
+     <y>-20</y>
      <width>551</width>
      <height>131</height>
     </rect>
@@ -50,8 +50,8 @@
   <widget class="QLineEdit" name="lineEdit">
    <property name="geometry">
     <rect>
-     <x>320</x>
-     <y>180</y>
+     <x>200</x>
+     <y>110</y>
      <width>113</width>
      <height>25</height>
     </rect>
@@ -60,8 +60,8 @@
   <widget class="QLineEdit" name="lineEdit_2">
    <property name="geometry">
     <rect>
-     <x>320</x>
-     <y>270</y>
+     <x>200</x>
+     <y>150</y>
      <width>113</width>
      <height>25</height>
     </rect>
@@ -70,8 +70,8 @@
   <widget class="QLabel" name="label_2">
    <property name="geometry">
     <rect>
-     <x>240</x>
-     <y>180</y>
+     <x>120</x>
+     <y>110</y>
      <width>69</width>
      <height>20</height>
     </rect>
@@ -83,8 +83,8 @@
   <widget class="QLabel" name="label_3">
    <property name="geometry">
     <rect>
-     <x>240</x>
-     <y>270</y>
+     <x>120</x>
+     <y>150</y>
      <width>69</width>
      <height>20</height>
     </rect>
@@ -93,41 +93,41 @@
     <string>密码</string>
    </property>
   </widget>
-  <widget class="QRadioButton" name="radioButton">
-   <property name="geometry">
-    <rect>
-     <x>220</x>
-     <y>380</y>
-     <width>118</width>
-     <height>24</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>管理员登录</string>
-   </property>
-  </widget>
-  <widget class="QRadioButton" name="radioButton_2">
-   <property name="geometry">
-    <rect>
-     <x>370</x>
-     <y>380</y>
-     <width>118</width>
-     <height>24</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>读者登录</string>
-   </property>
-  </widget>
   <widget class="QDateTimeEdit" name="dateTimeEdit">
    <property name="geometry">
     <rect>
-     <x>120</x>
-     <y>490</y>
+     <x>40</x>
+     <y>220</y>
      <width>194</width>
      <height>25</height>
     </rect>
    </property>
+  </widget>
+  <widget class="QWidget" name="">
+   <property name="geometry">
+    <rect>
+     <x>260</x>
+     <y>220</y>
+     <width>125</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <layout class="QHBoxLayout" name="horizontalLayout">
+    <item>
+     <widget class="QRadioButton" name="radioButton_2">
+      <property name="text">
+       <string>读者登录</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QRadioButton" name="radioButton">
+      <property name="text">
+       <string>管理员登录</string>
+      </property>
+     </widget>
+    </item>
+   </layout>
   </widget>
  </widget>
  <resources/>
