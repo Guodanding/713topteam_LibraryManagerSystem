@@ -13,20 +13,23 @@ SOURCES += \
     dboperator.cpp \
     login.cpp \
     main.cpp \
-    mainwindow.cpp
+    mainwindow.cpp \
+    signup.cpp
 
 HEADERS += \
     bookinformationmanagermainwindow.h \
     login.h \
     dboperator.h \
-    mainwindow.h
+    mainwindow.h \
+    signup.h
 
 FORMS += \
     bookinformationmanagermainwindow.ui \
 
 FORMS += \
     login.ui \
-    mainwindow.ui
+    mainwindow.ui \
+    signup.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
