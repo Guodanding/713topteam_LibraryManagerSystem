@@ -17,7 +17,9 @@ void DBOperator::DBOpen()
         dbcon.setDatabaseName(dsn);
         bool ok = dbcon.open();//activate the physical connection to the database.
         if(!ok)
-            qDebug() << "错误, PersonDB 数据库文件打开失败！";
+            qDebug() << "错误, LibraryData 数据库文件打开失败！";
+        else
+            qDebug() << "打开数据库成功";
         openFlag = true;
     }
 }

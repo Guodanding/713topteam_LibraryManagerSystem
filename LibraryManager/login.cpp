@@ -17,6 +17,10 @@ Login::Login(QWidget *parent) :
     shadow->setColor(QColor("#CCCCCC"));
     shadow->setBlurRadius(60);
     ui->label_image->setGraphicsEffect(shadow);
+    //用户名密码登录
+    DBOperator database;
+    database.DBOpen();
+
 }
 
 Login::~Login()

@@ -56,7 +56,8 @@
    </property>
    <property name="styleSheet">
     <string notr="true">font: 87 20pt &quot;Arial Black&quot;;
-background-color: rgb(255, 255, 255);</string>
+background-color: rgb(255, 255, 255);
+color: rgb(170, 255, 255);</string>
    </property>
    <property name="text">
     <string>WELCOME</string>
