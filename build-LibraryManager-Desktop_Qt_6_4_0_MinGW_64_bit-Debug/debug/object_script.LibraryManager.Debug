@@ -1,3 +1,4 @@
+debug/bookinformationmanageradddatadialog.o
 debug/bookmanager.o
 debug/dboperator.o
 debug/login.o
@@ -5,6 +6,7 @@ debug/main.o
 debug/mainwindow.o
 debug/signup.o
 debug/qrc_images.o
+debug/moc_bookinformationmanageradddatadialog.o
 debug/moc_bookmanager.o
 debug/moc_login.o
 debug/moc_mainwindow.o

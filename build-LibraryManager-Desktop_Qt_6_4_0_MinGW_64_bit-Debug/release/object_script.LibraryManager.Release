@@ -1,3 +1,4 @@
+release/bookinformationmanageradddatadialog.o
 release/bookmanager.o
 release/dboperator.o
 release/login.o
@@ -5,6 +6,7 @@ release/main.o
 release/mainwindow.o
 release/signup.o
 release/qrc_images.o
+release/moc_bookinformationmanageradddatadialog.o
 release/moc_bookmanager.o
 release/moc_login.o
 release/moc_mainwindow.o

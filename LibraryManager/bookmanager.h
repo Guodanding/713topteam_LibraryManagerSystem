@@ -16,6 +16,9 @@ public:
     ~BookManager();
     void setWinStyle();
 
+private slots:
+    void on_AddpushButton_clicked();
+
 private:
     Ui::BookManager *ui;
 };
