@@ -9,7 +9,7 @@ CONFIG += c++17
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
-    bookinformationmanagermainwindow.cpp \
+    bookmanager.cpp \
     dboperator.cpp \
     login.cpp \
     main.cpp \
@@ -17,14 +17,14 @@ SOURCES += \
     signup.cpp
 
 HEADERS += \
-    bookinformationmanagermainwindow.h \
+    bookmanager.h \
     login.h \
     dboperator.h \
     mainwindow.h \
     signup.h
 
 FORMS += \
-    bookinformationmanagermainwindow.ui \
+    bookmanager.ui
 
 FORMS += \
     login.ui \

@@ -21,21 +21,22 @@ QT_BEGIN_NAMESPACE
 class Ui_BookInformationManagerMainWindow
 {
 public:
-    QMenuBar *menubar;
     QWidget *centralwidget;
+    QMenuBar *menubar;
     QStatusBar *statusbar;
 
     void setupUi(QMainWindow *BookInformationManagerMainWindow)
     {
         if (BookInformationManagerMainWindow->objectName().isEmpty())
             BookInformationManagerMainWindow->setObjectName("BookInformationManagerMainWindow");
-        BookInformationManagerMainWindow->resize(800, 600);
-        menubar = new QMenuBar(BookInformationManagerMainWindow);
-        menubar->setObjectName("menubar");
-        BookInformationManagerMainWindow->setMenuBar(menubar);
+        BookInformationManagerMainWindow->resize(1000, 800);
         centralwidget = new QWidget(BookInformationManagerMainWindow);
         centralwidget->setObjectName("centralwidget");
         BookInformationManagerMainWindow->setCentralWidget(centralwidget);
+        menubar = new QMenuBar(BookInformationManagerMainWindow);
+        menubar->setObjectName("menubar");
+        menubar->setGeometry(QRect(0, 0, 1000, 17));
+        BookInformationManagerMainWindow->setMenuBar(menubar);
         statusbar = new QStatusBar(BookInformationManagerMainWindow);
         statusbar->setObjectName("statusbar");
         BookInformationManagerMainWindow->setStatusBar(statusbar);
