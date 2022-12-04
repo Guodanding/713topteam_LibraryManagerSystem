@@ -1,5 +1,5 @@
 #include "mainwindow.h"
-#include "bookmanager.h"
+#include "bookinformationmanager.h"
 
 #include <QApplication>
 

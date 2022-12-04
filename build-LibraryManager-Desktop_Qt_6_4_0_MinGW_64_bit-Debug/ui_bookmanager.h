@@ -47,8 +47,6 @@ public:
     QWidget *widget1;
     QVBoxLayout *verticalLayout;
     QLabel *Title;
-    QPushButton *BookClassifypushButton;
-    QPushButton *BookInformationpushButton;
     QPushButton *ReturnpushButton;
 
     void setupUi(QWidget *BookManager)
@@ -159,7 +157,7 @@ public:
         widget1->setGeometry(QRect(0, 2, 211, 801));
         verticalLayout = new QVBoxLayout(widget1);
         verticalLayout->setObjectName("verticalLayout");
-        verticalLayout->setContentsMargins(0, 0, 0, 0);
+        verticalLayout->setContentsMargins(0, 0, 0, 10);
         Title = new QLabel(widget1);
         Title->setObjectName("Title");
         QFont font5;
@@ -174,22 +172,10 @@ public:
 
         verticalLayout->addWidget(Title);
 
-        BookClassifypushButton = new QPushButton(widget1);
-        BookClassifypushButton->setObjectName("BookClassifypushButton");
-        QFont font6;
-        font6.setPointSize(20);
-        BookClassifypushButton->setFont(font6);
-
-        verticalLayout->addWidget(BookClassifypushButton);
-
-        BookInformationpushButton = new QPushButton(widget1);
-        BookInformationpushButton->setObjectName("BookInformationpushButton");
-        BookInformationpushButton->setFont(font6);
-
-        verticalLayout->addWidget(BookInformationpushButton);
-
         ReturnpushButton = new QPushButton(widget1);
         ReturnpushButton->setObjectName("ReturnpushButton");
+        QFont font6;
+        font6.setPointSize(20);
         ReturnpushButton->setFont(font6);
 
         verticalLayout->addWidget(ReturnpushButton);
@@ -216,8 +202,6 @@ public:
         label_3->setText(QCoreApplication::translate("BookManager", "\345\233\276\344\271\246\344\275\234\350\200\205", nullptr));
         BookWriterlineEdit->setText(QString());
         Title->setText(QCoreApplication::translate("BookManager", "  \345\233\276\344\271\246\347\256\241\347\220\206\347\263\273\347\273\237", nullptr));
-        BookClassifypushButton->setText(QCoreApplication::translate("BookManager", "\345\233\276\344\271\246\345\210\206\347\261\273\347\256\241\347\220\206", nullptr));
-        BookInformationpushButton->setText(QCoreApplication::translate("BookManager", "\345\233\276\344\271\246\344\277\241\346\201\257\347\256\241\347\220\206", nullptr));
         ReturnpushButton->setText(QCoreApplication::translate("BookManager", "\350\277\224\345\233\236", nullptr));
     } // retranslateUi
 
