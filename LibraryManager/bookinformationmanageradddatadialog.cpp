@@ -6,6 +6,7 @@ BookInformationManagerAddDataDialog::BookInformationManagerAddDataDialog(QWidget
     ui(new Ui::BookInformationManagerAddDataDialog)
 {
     ui->setupUi(this);
+    setWindowTitle("添加");
     QStringList cbList;
     cbList << "马克思主义、列宁主义、毛泽东思想、邓小平理论" << "哲学、宗教" << "社会科学总论" << "政治、法律" << "军事";
     cbList << "经济" << "文化、科学、教育、体育" << "语言、文字" << "文学" << "艺术";

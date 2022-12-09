@@ -19,6 +19,8 @@ public:
 private slots:
     void on_AddpushButton_clicked();
 
+    void on_DeletepushButton_clicked();
+
 private:
     Ui::BookManager *ui;
 };
