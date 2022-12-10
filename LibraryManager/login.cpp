@@ -3,6 +3,7 @@
 #include "ui_login.h"
 #include"QGraphicsDropShadowEffect"//图片阴影
 #include "QMessageBox"//消息盒子
+#include "managermainwindow.h"//主窗口
 Login::Login(QWidget *parent) :
     QWidget(parent),
     ui(new Ui::Login)
@@ -48,9 +49,9 @@ void Login::on_Button_login_clicked()//登录操作判断
     {
         qDebug()<<"Login success";
         QMessageBox::information(this,"登录认证","登录成功");
-        //登录成功后跳转到其他页面,接口
-        QWidget *api = new QWidget;
-        api->show();
+        //登录成功后跳转到主窗口
+        ManagerMainWindow *Managermainwindow=new ManagerMainWindow();
+        Managermainwindow->show();
         this->close();
     }
 }
