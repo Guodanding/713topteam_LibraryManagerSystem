@@ -86,7 +86,7 @@
     <enum>Qt::Horizontal</enum>
    </property>
   </widget>
-  <widget class="QLineEdit" name="lineEdit">
+  <widget class="QLineEdit" name="BookNamelineEdit">
    <property name="geometry">
     <rect>
      <x>80</x>
@@ -96,7 +96,7 @@
     </rect>
    </property>
   </widget>
-  <widget class="QLineEdit" name="lineEdit_2">
+  <widget class="QLineEdit" name="WriterlineEdit">
    <property name="geometry">
     <rect>
      <x>270</x>
@@ -106,7 +106,7 @@
     </rect>
    </property>
   </widget>
-  <widget class="QLineEdit" name="lineEdit_3">
+  <widget class="QLineEdit" name="BookIDlineEdit">
    <property name="geometry">
     <rect>
      <x>270</x>
@@ -116,7 +116,7 @@
     </rect>
    </property>
   </widget>
-  <widget class="QLineEdit" name="lineEdit_4">
+  <widget class="QLineEdit" name="NumberlineEdit">
    <property name="geometry">
     <rect>
      <x>100</x>
@@ -126,7 +126,7 @@
     </rect>
    </property>
   </widget>
-  <widget class="QLineEdit" name="lineEdit_5">
+  <widget class="QLineEdit" name="PublisherlineEdit">
    <property name="geometry">
     <rect>
      <x>82</x>
@@ -226,7 +226,7 @@
     <string>图书数量</string>
    </property>
   </widget>
-  <widget class="QComboBox" name="depcbBox">
+  <widget class="QComboBox" name="BookTypedepcbBox">
    <property name="geometry">
     <rect>
      <x>220</x>
@@ -272,7 +272,7 @@
     <string>图书号</string>
    </property>
   </widget>
-  <widget class="QLineEdit" name="lineEdit_6">
+  <widget class="QLineEdit" name="BookNUMlineEdit">
    <property name="geometry">
     <rect>
      <x>80</x>

@@ -74,8 +74,8 @@
   <widget class="QPushButton" name="SurepushButton">
    <property name="geometry">
     <rect>
-     <x>350</x>
-     <y>300</y>
+     <x>910</x>
+     <y>650</y>
      <width>71</width>
      <height>31</height>
     </rect>
@@ -91,31 +91,11 @@
     <string>确认✔</string>
    </property>
   </widget>
-  <widget class="QPushButton" name="CanclepushButton">
-   <property name="geometry">
-    <rect>
-     <x>150</x>
-     <y>300</y>
-     <width>71</width>
-     <height>31</height>
-    </rect>
-   </property>
-   <property name="font">
-    <font>
-     <pointsize>10</pointsize>
-     <italic>true</italic>
-     <bold>true</bold>
-    </font>
-   </property>
-   <property name="text">
-    <string>删除❌</string>
-   </property>
-  </widget>
   <widget class="QPushButton" name="AddpushButton">
    <property name="geometry">
     <rect>
-     <x>40</x>
-     <y>220</y>
+     <x>20</x>
+     <y>90</y>
      <width>71</width>
      <height>31</height>
     </rect>
@@ -225,6 +205,16 @@
    </property>
    <property name="text">
     <string>×</string>
+   </property>
+  </widget>
+  <widget class="QTableView" name="BookInformationtableView">
+   <property name="geometry">
+    <rect>
+     <x>20</x>
+     <y>130</y>
+     <width>961</width>
+     <height>511</height>
+    </rect>
    </property>
   </widget>
  </widget>

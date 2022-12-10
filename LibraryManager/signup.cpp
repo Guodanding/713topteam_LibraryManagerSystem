@@ -36,11 +36,14 @@ void SignUP::on_pushButton_register_clicked()//确认注册
     //判断两次密码是否一致
     if(password == repassword)//两次密码一致
     {
-        QString sql_signup=QString("INSERT INTO admin(username,password) VALUES('%1','%2');")
-                .arg(username).arg(password);
         QSqlQuery query;
+        query.prepare("INSERT INTO admin (username, password) "
+                      "VALUES (:username, :password");
+        query.bindValue(":username", username);
+        query.bindValue(":password", password);
+
         //判断语句结果是否成功
-        if(query.exec(sql_signup))
+        if(query.exec())
         {
             qDebug()<<"insert into success";
             QMessageBox::information(this,"注册认证","插入成功！");

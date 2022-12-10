@@ -1,5 +1,4 @@
-#include "bookclassifymanager.h"
-#include "ui_bookclassifymanager.h"
+#include "bookinformationmanager.h"
 #include "managermainwindow.h"
 #include "ui_managermainwindow.h"
 
@@ -17,7 +16,7 @@ ManagerMainWindow::~ManagerMainWindow()
 
 void ManagerMainWindow::on_pushButton_clicked()
 {
-    BookClassifyManager *BookClassify = new BookClassifyManager();
-    ui->horizontalLayout->addWidget(BookClassify);
+    BookManager *BookInformation = new BookManager();
+    ui->horizontalLayout->addWidget(BookInformation);
 }
 
