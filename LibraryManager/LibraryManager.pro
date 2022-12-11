@@ -20,7 +20,9 @@ SOURCES += \
     main.cpp \
     mainwindow.cpp \
     managermainwindow.cpp \
-    signup.cpp
+    signup.cpp \
+    splashscreen.cpp \
+    userprofilemanager.cpp
 
 HEADERS += \
     bookclassifymanager.h \
@@ -33,18 +35,18 @@ HEADERS += \
     dboperator.h \
     mainwindow.h \
     managermainwindow.h \
-    signup.h
+    signup.h \
+    splashscreen.h \
+    userprofilemanager.h
 
 FORMS += \
     bookclassifymanager.ui \
     bookinformationmanager.ui \
     bookinformationmanageradddatadialog.ui \
+    userprofilemanager.ui\
     booksearch.ui \
     borrow_history.ui \
     borrow_info.ui \
-    managermainwindow.ui
-
-FORMS += \
     login.ui \
     mainwindow.ui \
     signup.ui
