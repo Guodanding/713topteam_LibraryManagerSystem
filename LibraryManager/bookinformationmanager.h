@@ -30,6 +30,10 @@ private slots:
 
     void on_SurepushButton_clicked();
 
+    void on_SearchpushButton_clicked();
+
+    void on_AllpushButton_clicked();
+
 private:
     Ui::BookManager *ui;
     DBOperator database; //数据库引入

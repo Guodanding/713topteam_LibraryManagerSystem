@@ -12,6 +12,7 @@ SOURCES += \
     bookclassifymanager.cpp \
     bookinformationmanager.cpp \
     bookinformationmanageradddatadialog.cpp \
+    bookinformationmanagermodifydialog.cpp \
     dboperator.cpp \
     login.cpp \
     main.cpp \
@@ -23,6 +24,7 @@ HEADERS += \
     bookclassifymanager.h \
     bookinformationmanager.h \
     bookinformationmanageradddatadialog.h \
+    bookinformationmanagermodifydialog.h \
     login.h \
     dboperator.h \
     mainwindow.h \
@@ -33,6 +35,7 @@ FORMS += \
     bookclassifymanager.ui \
     bookinformationmanager.ui \
     bookinformationmanageradddatadialog.ui \
+    bookinformationmanagermodifydialog.ui \
     managermainwindow.ui
 
 FORMS += \

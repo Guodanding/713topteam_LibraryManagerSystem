@@ -1,10 +1,13 @@
 #include "bookinformationmanager.h"
 #include "ui_bookinformationmanager.h"
 #include "bookinformationmanageradddatadialog.h"
+#include "bookinformationmanagermodifydialog.h"
 #include "QMessageBox"
 #include <QPushButton>
 #include <QStyle>
 #include <QSqlTableModel>
+#include <QString>
+#include <QSqlRecord>
 
 BookManager::BookManager(QWidget *parent) :
     QWidget(parent),
@@ -59,16 +62,16 @@ void BookManager::setWinStyle()
                 "background-color:#8B4513;"
                 "color:white;"
                 "}");
-    /*ui->CanclepushButton->setStyleSheet(
+    ui->AllpushButton->setStyleSheet(
                 "QPushButton{"
-                "background-color:#8470FF;"
+                "background-color:#87CEFA;"
                 "border-radius:3px;"//设置圆角半径
                 "color:white;"
                 "}"
                 "QPushButton:hover{"
-                "background-color:#FF8C00;"
+                "background-color:#1E90FF;"
                 "color:white;"
-                "}");*/
+                "}");
     ui->DeletepushButton->setStyleSheet(
                 "QPushButton{"
                 "background-color:#8470FF;"
@@ -147,11 +150,12 @@ void BookManager::databaseOperate()
 
 void BookManager::on_AddpushButton_clicked()
 {
+
     BookInformationManagerAddDataDialog BookInformationManagerAddDataDialog(this, this->model);
     BookInformationManagerAddDataDialog.exec();
 
+    model->setFilter("");
     model->select();//展示所有
-    ui->BookInformationtableView->setModel(model);//连接数据库
     for(int i = 0; i < model->rowCount(); i++)//设置按钮
     {
         QPushButton *ModifypushButton = new QPushButton("修改🔧");
@@ -197,9 +201,53 @@ void BookManager::on_AddpushButton_clicked()
 
 void BookManager::on_ModifypushButton_clicked()
 {
-    BookInformationManagerAddDataDialog BookInformationManagerAddDataDialog(this);
-    BookInformationManagerAddDataDialog.setWindowTitle("修改");
-    BookInformationManagerAddDataDialog.exec();
+    QSqlRecord *record = new QSqlRecord(model->record(ui->BookInformationtableView->currentIndex().row()));
+    int r = ui->BookInformationtableView->currentIndex().row();
+    int *row = &r;
+    BookInformationManagerModifyDialog BookInformationManagerModifyDataDialog(this, model, record, row);
+    BookInformationManagerModifyDataDialog.exec();
+
+    for(int i = 0; i < model->rowCount(); i++)//设置按钮
+    {
+        QPushButton *ModifypushButton = new QPushButton("修改🔧");
+        QPushButton *CanclepushButton = new QPushButton("删除❌");
+        ModifypushButton->setStyleSheet(
+                    "QPushButton{"
+                    "font-style:italic;" //斜体
+                    "font-weight: bold;" //粗体
+                    "font-size: 13px;" //字体大小
+                    "font-family: 'Microsoft YaHei UI';"//字体
+                    "background-color:#FFA500;"
+                    "border-radius:3px;"//设置圆角半径
+                    "color:white;"
+                    "border-width:71;"//按钮大小设置
+                    "}"
+                    "QPushButton:hover{"
+                    "background-color:#FF8C00;"
+                    "color:white;"
+                    "}");
+        CanclepushButton->setStyleSheet(
+                    "QPushButton{"
+                    "font-style:italic;" //斜体
+                    "font-weight: bold;" //粗体
+                    "font-size: 13px;" //字体大小
+                    "font-family: 'Microsoft YaHei UI';"//字体
+                    "background-color:#8470FF;"
+                    "border-radius:3px;"//设置圆角半径
+                    "color:white;"
+                    "border-width:71;"//按钮大小设置
+                    "}"
+                    "QPushButton:hover{"
+                    "background-color:#6A5ACD;"
+                    "color:white;"
+                    "}");
+        ui->BookInformationtableView->setIndexWidget(model->index(i, 8), ModifypushButton);
+        ui->BookInformationtableView->setIndexWidget(model->index(i, 9), CanclepushButton);
+
+        // 添加槽
+        connect(ModifypushButton, SIGNAL(clicked()), this, SLOT(on_ModifypushButton_clicked()));
+        connect(CanclepushButton, SIGNAL(clicked()), this, SLOT(on_CanclepushButton_clicked()));
+    }
 }
 
 void BookManager::on_CanclepushButton_clicked()
@@ -220,7 +268,6 @@ void BookManager::on_CanclepushButton_clicked()
         return;
 
     model->select();//展示所有
-    ui->BookInformationtableView->setModel(model);//连接数据库
     for(int i = 0; i < model->rowCount(); i++)//设置按钮
     {
         QPushButton *ModifypushButton = new QPushButton("修改🔧");
@@ -278,8 +325,154 @@ void BookManager::on_SurepushButton_clicked()
     else;
 }
 
+void BookManager::on_SearchpushButton_clicked()
+{
+   QString BookID = ui->BookIDlineEdit->text();
+   QString BookName = ui->BookNamelineEdit->text();
+   QString Writer = ui->WriterNamelineEdit->text();
+
+   if(BookID.isEmpty() && BookName.isEmpty() && Writer.isEmpty())
+   {
+       QMessageBox::StandardButton result = QMessageBox::warning(this, "错误", "请输入查询信息！");
+       if(result == QMessageBox::Ok)
+           return;
+   }
+   else
+   {
+       if(!BookID.isEmpty())
+            model->setFilter(QObject::tr("图书ID = '%1'").arg(BookID)); //根据ID进行筛选
+       if(!BookName.isEmpty())
+            model->setFilter(QObject::tr("图书名 = '%1'").arg(BookName)); //根据图书名进行筛选
+       if(!Writer.isEmpty())
+            model->setFilter(QObject::tr("作者 = '%1'").arg(Writer)); //根据姓名进行筛选
+
+       model->select();//展示所有
+       for(int i = 0; i < model->rowCount(); i++)//设置按钮
+       {
+           QPushButton *ModifypushButton = new QPushButton("修改🔧");
+           QPushButton *CanclepushButton = new QPushButton("删除❌");
+           ModifypushButton->setStyleSheet(
+                       "QPushButton{"
+                       "font-style:italic;" //斜体
+                       "font-weight: bold;" //粗体
+                       "font-size: 13px;" //字体大小
+                       "font-family: 'Microsoft YaHei UI';"//字体
+                       "background-color:#FFA500;"
+                       "border-radius:3px;"//设置圆角半径
+                       "color:white;"
+                       "border-width:71;"//按钮大小设置
+                       "}"
+                       "QPushButton:hover{"
+                       "background-color:#FF8C00;"
+                       "color:white;"
+                       "}");
+           CanclepushButton->setStyleSheet(
+                       "QPushButton{"
+                       "font-style:italic;" //斜体
+                       "font-weight: bold;" //粗体
+                       "font-size: 13px;" //字体大小
+                       "font-family: 'Microsoft YaHei UI';"//字体
+                       "background-color:#8470FF;"
+                       "border-radius:3px;"//设置圆角半径
+                       "color:white;"
+                       "border-width:71;"//按钮大小设置
+                       "}"
+                       "QPushButton:hover{"
+                       "background-color:#6A5ACD;"
+                       "color:white;"
+                       "}");
+           ui->BookInformationtableView->setIndexWidget(model->index(i, 8), ModifypushButton);
+           ui->BookInformationtableView->setIndexWidget(model->index(i, 9), CanclepushButton);
+
+           // 添加槽
+           connect(ModifypushButton, SIGNAL(clicked()), this, SLOT(on_ModifypushButton_clicked()));
+           connect(CanclepushButton, SIGNAL(clicked()), this, SLOT(on_CanclepushButton_clicked()));
+       }
+   }
+}
+
+void BookManager::on_AllpushButton_clicked()
+{
+    model->setFilter("");
+    model->select();//展示所有
+    for(int i = 0; i < model->rowCount(); i++)//设置按钮
+    {
+        QPushButton *ModifypushButton = new QPushButton("修改🔧");
+        QPushButton *CanclepushButton = new QPushButton("删除❌");
+        ModifypushButton->setStyleSheet(
+                    "QPushButton{"
+                    "font-style:italic;" //斜体
+                    "font-weight: bold;" //粗体
+                    "font-size: 13px;" //字体大小
+                    "font-family: 'Microsoft YaHei UI';"//字体
+                    "background-color:#FFA500;"
+                    "border-radius:3px;"//设置圆角半径
+                    "color:white;"
+                    "border-width:71;"//按钮大小设置
+                    "}"
+                    "QPushButton:hover{"
+                    "background-color:#FF8C00;"
+                    "color:white;"
+                    "}");
+        CanclepushButton->setStyleSheet(
+                    "QPushButton{"
+                    "font-style:italic;" //斜体
+                    "font-weight: bold;" //粗体
+                    "font-size: 13px;" //字体大小
+                    "font-family: 'Microsoft YaHei UI';"//字体
+                    "background-color:#8470FF;"
+                    "border-radius:3px;"//设置圆角半径
+                    "color:white;"
+                    "border-width:71;"//按钮大小设置
+                    "}"
+                    "QPushButton:hover{"
+                    "background-color:#6A5ACD;"
+                    "color:white;"
+                    "}");
+        ui->BookInformationtableView->setIndexWidget(model->index(i, 8), ModifypushButton);
+        ui->BookInformationtableView->setIndexWidget(model->index(i, 9), CanclepushButton);
+
+        // 添加槽
+        connect(ModifypushButton, SIGNAL(clicked()), this, SLOT(on_ModifypushButton_clicked()));
+        connect(CanclepushButton, SIGNAL(clicked()), this, SLOT(on_CanclepushButton_clicked()));
+    }
+}
+
+/*if(ui->BookNamelineEdit->text().isEmpty() || ui->WriterlineEdit->text().isEmpty() ||
+   ui->BookIDlineEdit->text().isEmpty() || ui->BookNUMlineEdit->text().isEmpty() ||
+   ui->BookTypedepcbBox->currentText().isEmpty() || ui->NumberlineEdit->text().isEmpty() ||
+   ui->PublisherlineEdit->text().isEmpty())
+{
+    QMessageBox::StandardButton result = QMessageBox::warning(this, "错误", "请输入完整信息！");
+    if(result == QMessageBox::Ok)
+        return;
+}
+
+QString BookName = ui->BookNamelineEdit->text();
+QString Writer = ui->WriterlineEdit->text();
+QString BookID = ui->BookIDlineEdit->text();
+QString BookNum = ui->BookNUMlineEdit->text();
+QString BookType = ui->BookTypedepcbBox->currentText();
+QString Number = ui->NumberlineEdit->text();
+QString Publisher = ui->PublisherlineEdit->text();
+
+model->insertRows(model->rowCount(), 1);
+model->setData(model->index(model->rowCount() - 1, 0), QVariant(model->rowCount()));
+model->setData(model->index(model->rowCount() - 1, 1), QVariant(BookID));
+model->setData(model->index(model->rowCount() - 1, 2), QVariant(BookNum));
+model->setData(model->index(model->rowCount() - 1, 3), QVariant(BookName));
+model->setData(model->index(model->rowCount() - 1, 4), QVariant(Writer));
+model->setData(model->index(model->rowCount() - 1, 5), QVariant(BookType));
+model->setData(model->index(model->rowCount() - 1, 6), QVariant(Publisher));
+model->setData(model->index(model->rowCount() - 1, 7), QVariant(Number));
+model->setData(model->index(model->rowCount() - 1, 8), QVariant(""));
+model->setData(model->index(model->rowCount() - 1, 9), QVariant(""));
+
+model->submitAll();*/
+
 void BookManager::on_DeletepushButton_clicked()
 {
     this->~BookManager();
 }
+
 

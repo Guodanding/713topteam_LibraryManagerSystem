@@ -1,16 +1,19 @@
-#include "bookinformationmanageradddatadialog.h"
-#include "ui_bookinformationmanageradddatadialog.h"
+#include "bookinformationmanagermodifydialog.h"
+#include "ui_bookinformationmanagermodifydialog.h"
 #include <QString>
 #include <QVariant>
+#include <QSqlRecord>
 #include "QMessageBox"
 
-BookInformationManagerAddDataDialog::BookInformationManagerAddDataDialog(QWidget *parent, QSqlTableModel *_model) :
+BookInformationManagerModifyDialog::BookInformationManagerModifyDialog(QWidget *parent, QSqlTableModel *_model, QSqlRecord *_record, int *_row) :
     QDialog(parent),
-    ui(new Ui::BookInformationManagerAddDataDialog),
-    model(_model)
+    ui(new Ui::BookInformationManagerModifyDialog),
+    model(_model),
+    record(_record),
+    row(_row)
 {
     ui->setupUi(this);
-    setWindowTitle("添加");
+    setWindowTitle("修改");
     QStringList cbList;
     cbList << "马克思主义、列宁主义、毛泽东思想、邓小平理论" << "哲学、宗教" << "社会科学总论" << "政治、法律" << "军事";
     cbList << "经济" << "文化、科学、教育、体育" << "语言、文字" << "文学" << "艺术";
@@ -18,14 +21,23 @@ BookInformationManagerAddDataDialog::BookInformationManagerAddDataDialog(QWidget
     cbList << "医药、卫生" << "农业科学" << "工业技术" << "交通运输" << "航空、航天";
     cbList << "环境科学、劳动保护科学（安全科学）" << "综合性图书";
     ui->BookTypedepcbBox->addItems(cbList);
+
+
+    ui->BookIDlineEdit->setText(record->value("图书ID").toString());
+    ui->BookNUMlineEdit->setText(record->value("图书号").toString());
+    ui->BookNamelineEdit->setText(record->value("图书名").toString());
+    ui->WriterlineEdit->setText(record->value("作者").toString());
+    ui->BookTypedepcbBox->setCurrentText(record->value("图书类型").toString());
+    ui->PublisherlineEdit->setText(record->value("出版社").toString());
+    ui->NumberlineEdit->setText(record->value("数量").toString());
 }
 
-BookInformationManagerAddDataDialog::~BookInformationManagerAddDataDialog()
+BookInformationManagerModifyDialog::~BookInformationManagerModifyDialog()
 {
     delete ui;
 }
 
-void BookInformationManagerAddDataDialog::on_buttonBox_accepted()
+void BookInformationManagerModifyDialog::on_buttonBox_accepted()
 {
     if(ui->BookNamelineEdit->text().isEmpty() || ui->WriterlineEdit->text().isEmpty() ||
        ui->BookIDlineEdit->text().isEmpty() || ui->BookNUMlineEdit->text().isEmpty() ||
@@ -45,21 +57,20 @@ void BookInformationManagerAddDataDialog::on_buttonBox_accepted()
     QString Number = ui->NumberlineEdit->text();
     QString Publisher = ui->PublisherlineEdit->text();
 
+    model->setData(model->index(*row, 1), QVariant(BookID));
+    model->setData(model->index(*row, 2), QVariant(BookNum));
+    model->setData(model->index(*row, 3), QVariant(BookName));
+    model->setData(model->index(*row, 4), QVariant(Writer));
+    model->setData(model->index(*row, 5), QVariant(BookType));
+    model->setData(model->index(*row, 6), QVariant(Publisher));
+    model->setData(model->index(*row, 7), QVariant(Number));
+    model->setData(model->index(*row, 8), QVariant(""));
+    model->setData(model->index(*row, 9), QVariant(""));
+
+    if (model->submitAll())
+        QMessageBox::about(this, "修改", "修改成功！");
+
     model->setFilter("");
     model->select();//展示所有
-
-    model->insertRows(model->rowCount(), 1);
-    model->setData(model->index(model->rowCount() - 1, 0), QVariant(model->rowCount()));
-    model->setData(model->index(model->rowCount() - 1, 1), QVariant(BookID));
-    model->setData(model->index(model->rowCount() - 1, 2), QVariant(BookNum));
-    model->setData(model->index(model->rowCount() - 1, 3), QVariant(BookName));
-    model->setData(model->index(model->rowCount() - 1, 4), QVariant(Writer));
-    model->setData(model->index(model->rowCount() - 1, 5), QVariant(BookType));
-    model->setData(model->index(model->rowCount() - 1, 6), QVariant(Publisher));
-    model->setData(model->index(model->rowCount() - 1, 7), QVariant(Number));
-    model->setData(model->index(model->rowCount() - 1, 8), QVariant(""));
-    model->setData(model->index(model->rowCount() - 1, 9), QVariant(""));
-
-    model->submitAll();
 }
 
