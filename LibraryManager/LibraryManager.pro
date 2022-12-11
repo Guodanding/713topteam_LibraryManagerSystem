@@ -12,6 +12,9 @@ SOURCES += \
     bookclassifymanager.cpp \
     bookinformationmanager.cpp \
     bookinformationmanageradddatadialog.cpp \
+    booksearch.cpp \
+    borrow_history.cpp \
+    borrow_info.cpp \
     dboperator.cpp \
     login.cpp \
     main.cpp \
@@ -25,6 +28,9 @@ HEADERS += \
     bookclassifymanager.h \
     bookinformationmanager.h \
     bookinformationmanageradddatadialog.h \
+    booksearch.h \
+    borrow_history.h \
+    borrow_info.h \
     login.h \
     dboperator.h \
     mainwindow.h \
@@ -37,10 +43,10 @@ FORMS += \
     bookclassifymanager.ui \
     bookinformationmanager.ui \
     bookinformationmanageradddatadialog.ui \
-    managermainwindow.ui \
-    userprofilemanager.ui
-
-FORMS += \
+    userprofilemanager.ui\
+    booksearch.ui \
+    borrow_history.ui \
+    borrow_info.ui \
     login.ui \
     mainwindow.ui \
     signup.ui
