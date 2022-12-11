@@ -3,5 +3,13 @@
         <file>images/exitButton.png</file>
         <file>images/loginBackground.png</file>
         <file>images/registerBackground.png</file>
+        <file>images/1.gif</file>
+        <file>images/2.gif</file>
+        <file>images/3.gif</file>
+        <file>images/4.gif</file>
+        <file>images/5.gif</file>
+        <file>images/6.gif</file>
+        <file>images/7.gif</file>
+        <file>images/8.gif</file>
     </qresource>
 </RCC>

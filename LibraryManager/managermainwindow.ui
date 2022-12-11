@@ -14,7 +14,7 @@
    <string>MainWindow</string>
   </property>
   <property name="styleSheet">
-   <string notr="true">background-color: rgb(85, 85, 127);</string>
+   <string notr="true"/>
   </property>
   <widget class="QWidget" name="centralwidget">
    <widget class="QStackedWidget" name="stackedWidget">
@@ -35,80 +35,44 @@
     <widget class="QWidget" name="page"/>
     <widget class="QWidget" name="page_2"/>
    </widget>
-   <widget class="QWidget" name="verticalLayoutWidget">
+   <widget class="QTreeWidget" name="treeWidget">
     <property name="geometry">
      <rect>
-      <x>10</x>
-      <y>100</y>
-      <width>131</width>
-      <height>331</height>
+      <x>20</x>
+      <y>80</y>
+      <width>121</width>
+      <height>391</height>
      </rect>
     </property>
-    <layout class="QVBoxLayout" name="verticalLayout">
-     <item>
-      <widget class="QPushButton" name="pushButton_3">
-       <property name="styleSheet">
-        <string notr="true">background-color: rgb(29, 123, 255);
-color: rgb(255, 255, 255);
-font: 25 9pt &quot;Bahnschrift Light&quot;;</string>
-       </property>
-       <property name="text">
-        <string>PushButton</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QPushButton" name="pushButton">
-       <property name="styleSheet">
-        <string notr="true">background-color: rgb(29, 123, 255);
-color: rgb(255, 255, 255);
-font: 25 9pt &quot;Bahnschrift Light&quot;;</string>
-       </property>
-       <property name="text">
-        <string>PushButton</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QPushButton" name="pushButton_2">
-       <property name="styleSheet">
-        <string notr="true">background-color: rgb(29, 123, 255);
-color: rgb(255, 255, 255);
-font: 25 9pt &quot;Bahnschrift Light&quot;;</string>
-       </property>
-       <property name="text">
-        <string>PushButton</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QPushButton" name="pushButton_1">
-       <property name="styleSheet">
-        <string notr="true">background-color: rgb(29, 123, 255);
-color: rgb(255, 255, 255);
-font: 25 9pt &quot;Bahnschrift Light&quot;;</string>
-       </property>
-       <property name="text">
-        <string>PushButton1</string>
-       </property>
-      </widget>
-     </item>
-    </layout>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(255, 255, 255);</string>
+    </property>
+    <column>
+     <property name="text">
+      <string notr="true">1</string>
+     </property>
+    </column>
    </widget>
-   <zorder>verticalLayoutWidget</zorder>
+   <widget class="QLabel" name="label_bacgroud">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>0</y>
+      <width>1200</width>
+      <height>800</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true"/>
+    </property>
+    <property name="text">
+     <string>TextLabel</string>
+    </property>
+   </widget>
+   <zorder>label_bacgroud</zorder>
    <zorder>stackedWidget</zorder>
+   <zorder>treeWidget</zorder>
   </widget>
-  <widget class="QMenuBar" name="menubar">
-   <property name="geometry">
-    <rect>
-     <x>0</x>
-     <y>0</y>
-     <width>1200</width>
-     <height>26</height>
-    </rect>
-   </property>
-  </widget>
-  <widget class="QStatusBar" name="statusbar"/>
  </widget>
  <resources/>
  <connections/>

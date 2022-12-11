@@ -170,14 +170,20 @@ font: 25 9pt &quot;Bahnschrift Light&quot;;</string>
     </item>
    </layout>
   </widget>
-  <widget class="QCalendarWidget" name="calendarWidget">
+  <widget class="QLabel" name="label_gif">
    <property name="geometry">
     <rect>
-     <x>50</x>
-     <y>290</y>
-     <width>296</width>
-     <height>229</height>
+     <x>660</x>
+     <y>30</y>
+     <width>111</width>
+     <height>111</height>
     </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true"/>
+   </property>
+   <property name="text">
+    <string>TextLabel</string>
    </property>
   </widget>
  </widget>

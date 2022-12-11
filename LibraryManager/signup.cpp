@@ -12,6 +12,7 @@ SignUP::SignUP(QWidget *parent) :
     QPixmap *pix =new QPixmap(":/images/registerBackground.png");
     QSize size=ui->label_image->size();
     ui->label_image->setPixmap(pix->scaled(size));
+
 }
 
 SignUP::~SignUP()

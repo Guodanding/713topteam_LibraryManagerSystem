@@ -4,6 +4,8 @@
 #include"QGraphicsDropShadowEffect"//图片阴影
 #include "QMessageBox"//消息盒子
 #include "managermainwindow.h"//主窗口
+#include "QMovie"
+#include"QTime"
 Login::Login(QWidget *parent) :
     QWidget(parent),
     ui(new Ui::Login)
@@ -21,6 +23,20 @@ Login::Login(QWidget *parent) :
     ui->label_image->setGraphicsEffect(shadow);
     //连接数据库
     database.DBOpen();
+    // 显示gif图片
+    ui->label_gif->setWindowFlag(Qt::FramelessWindowHint);// 设置无边框
+    ui->label_gif->setWindowOpacity(0.9);// 设置透明度
+    static QMovie movie(":/images/2.gif");
+    ui->label_gif->setMovie(&movie);
+    ui->label_gif->setScaledContents(true);
+    movie.start();
+    // 设置延迟时间
+    //QTime time = QTime::currentTime().addMSecs(2000);
+    //while (QTime::currentTime()<time) {
+    //    QCoreApplication::processEvents(QEventLoop::AllEvents,100);
+    //
+    // 停止
+    //movie.stop();
 
 
 }
