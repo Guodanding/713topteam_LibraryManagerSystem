@@ -12,6 +12,7 @@ SignUP::SignUP(QWidget *parent) :
     QPixmap *pix =new QPixmap(":/images/registerBackground.png");
     QSize size=ui->label_image->size();
     ui->label_image->setPixmap(pix->scaled(size));
+
 }
 
 SignUP::~SignUP()
@@ -41,7 +42,6 @@ void SignUP::on_pushButton_register_clicked()//确认注册
                       "VALUES (:username, :password");
         query.bindValue(":username", username);
         query.bindValue(":password", password);
-
         //判断语句结果是否成功
         if(query.exec())
         {
