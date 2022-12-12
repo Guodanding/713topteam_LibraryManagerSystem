@@ -1,6 +1,6 @@
 #ifndef SIGNUP_H
 #define SIGNUP_H
-
+#include "QSqlTableModel"
 #include <QWidget>
 namespace Ui {
 class SignUP;
@@ -21,6 +21,7 @@ private slots:
 
 private:
     Ui::SignUP *ui;
+    QSqlTableModel *model;//注册数据写入
 };
 
 #endif // SIGNUP_H

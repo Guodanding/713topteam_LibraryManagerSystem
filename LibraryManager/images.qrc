@@ -11,5 +11,7 @@
         <file>images/6.gif</file>
         <file>images/7.gif</file>
         <file>images/8.gif</file>
+        <file>images/radio_button_left.png</file>
+        <file>images/radio_button_right.png</file>
     </qresource>
 </RCC>

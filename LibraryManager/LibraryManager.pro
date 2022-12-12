@@ -46,9 +46,7 @@ FORMS += \
     bookinformationmanager.ui \
     bookinformationmanageradddatadialog.ui \
     bookinformationmanagermodifydialog.ui \
-    managermainwindow.ui
-
-FORMS += \
+    managermainwindow.ui\
     userprofilemanager.ui\
     booksearch.ui \
     borrow_history.ui \
