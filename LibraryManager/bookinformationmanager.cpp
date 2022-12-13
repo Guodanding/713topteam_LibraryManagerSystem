@@ -17,7 +17,7 @@ BookManager::BookManager(QWidget *parent) :
     setWindowTitle("图书信息管理模块");
     setWinStyle();
     //连接数据库
-    database.DBOpen();
+    //database.DBOpen();
     databaseOperate();
 }
 
@@ -44,12 +44,12 @@ void BookManager::setWinStyle()
                 "}");
     ui->SearchpushButton->setStyleSheet(
                 "QPushButton{"
-                "background-color:#ADFF2F;"
+                "background-color:#FFD700;"
                 "border-radius:3px;"//设置圆角半径
                 "color:white;"
                 "}"
                 "QPushButton:hover{"
-                "background-color:#FFD700;"
+                "background-color:#DAA520;"
                 "color:white;"
                 "}");
     ui->SurepushButton->setStyleSheet(
@@ -101,7 +101,7 @@ void BookManager::databaseOperate()
 
     ui->BookInformationtableView->setModel(model);//连接数据库
     ui->BookInformationtableView->setEditTriggers(QAbstractItemView::NoEditTriggers); //只读
-    int ColumnWidth[] = {40, 90, 90, 120, 90, 120, 160, 90, 70, 70};//设置列宽
+    int ColumnWidth[] = { 70, 70, 120, 90, 160, 120, 110, 60, 70, 70};//设置列宽
     for(int i = 0; i < model->columnCount(); i++)
         ui->BookInformationtableView->setColumnWidth(i, ColumnWidth[i]);
     for(int i = 0; i < model->rowCount(); i++)//设置按钮
@@ -206,6 +206,8 @@ void BookManager::on_ModifypushButton_clicked()
     int *row = &r;
     BookInformationManagerModifyDialog BookInformationManagerModifyDataDialog(this, model, record, row);
     BookInformationManagerModifyDataDialog.exec();
+
+    model->select();
 
     for(int i = 0; i < model->rowCount(); i++)//设置按钮
     {
@@ -472,7 +474,7 @@ model->submitAll();*/
 
 void BookManager::on_DeletepushButton_clicked()
 {
-    this->~BookManager();
+    ;
 }
 
 

@@ -30,7 +30,7 @@ void BookInformationManagerAddDataDialog::on_buttonBox_accepted()
     if(ui->BookNamelineEdit->text().isEmpty() || ui->WriterlineEdit->text().isEmpty() ||
        ui->BookIDlineEdit->text().isEmpty() || ui->BookNUMlineEdit->text().isEmpty() ||
        ui->BookTypedepcbBox->currentText().isEmpty() || ui->NumberlineEdit->text().isEmpty() ||
-       ui->PublisherlineEdit->text().isEmpty())
+       ui->PublisherlineEdit->text().isEmpty() || ui->PublishTimelineEdit->text().isEmpty())
     {
         QMessageBox::StandardButton result = QMessageBox::warning(this, "错误", "请输入完整信息！");
         if(result == QMessageBox::Ok)
@@ -44,22 +44,21 @@ void BookInformationManagerAddDataDialog::on_buttonBox_accepted()
     QString BookType = ui->BookTypedepcbBox->currentText();
     QString Number = ui->NumberlineEdit->text();
     QString Publisher = ui->PublisherlineEdit->text();
-
-    model->setFilter("");
-    model->select();//展示所有
+    QString PublishTime = ui->PublishTimelineEdit->text();
 
     model->insertRows(model->rowCount(), 1);
-    model->setData(model->index(model->rowCount() - 1, 0), QVariant(model->rowCount()));
-    model->setData(model->index(model->rowCount() - 1, 1), QVariant(BookID));
-    model->setData(model->index(model->rowCount() - 1, 2), QVariant(BookNum));
-    model->setData(model->index(model->rowCount() - 1, 3), QVariant(BookName));
-    model->setData(model->index(model->rowCount() - 1, 4), QVariant(Writer));
-    model->setData(model->index(model->rowCount() - 1, 5), QVariant(BookType));
-    model->setData(model->index(model->rowCount() - 1, 6), QVariant(Publisher));
+    model->setData(model->index(model->rowCount() - 1, 0), QVariant(BookID));
+    model->setData(model->index(model->rowCount() - 1, 1), QVariant(BookNum));
+    model->setData(model->index(model->rowCount() - 1, 2), QVariant(BookName));
+    model->setData(model->index(model->rowCount() - 1, 3), QVariant(Writer));
+    model->setData(model->index(model->rowCount() - 1, 4), QVariant(BookType));
+    model->setData(model->index(model->rowCount() - 1, 5), QVariant(Publisher));
+    model->setData(model->index(model->rowCount() - 1, 6), QVariant(PublishTime));
     model->setData(model->index(model->rowCount() - 1, 7), QVariant(Number));
     model->setData(model->index(model->rowCount() - 1, 8), QVariant(""));
     model->setData(model->index(model->rowCount() - 1, 9), QVariant(""));
 
     model->submitAll();
 }
+
 

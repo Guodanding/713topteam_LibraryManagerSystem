@@ -29,6 +29,7 @@ BookInformationManagerModifyDialog::BookInformationManagerModifyDialog(QWidget *
     ui->WriterlineEdit->setText(record->value("作者").toString());
     ui->BookTypedepcbBox->setCurrentText(record->value("图书类型").toString());
     ui->PublisherlineEdit->setText(record->value("出版社").toString());
+    ui->PublishTimelineEdit->setText(record->value("出版时间").toString());
     ui->NumberlineEdit->setText(record->value("数量").toString());
 }
 
@@ -42,7 +43,7 @@ void BookInformationManagerModifyDialog::on_buttonBox_accepted()
     if(ui->BookNamelineEdit->text().isEmpty() || ui->WriterlineEdit->text().isEmpty() ||
        ui->BookIDlineEdit->text().isEmpty() || ui->BookNUMlineEdit->text().isEmpty() ||
        ui->BookTypedepcbBox->currentText().isEmpty() || ui->NumberlineEdit->text().isEmpty() ||
-       ui->PublisherlineEdit->text().isEmpty())
+       ui->PublisherlineEdit->text().isEmpty() || ui->PublishTimelineEdit->text().isEmpty())
     {
         QMessageBox::StandardButton result = QMessageBox::warning(this, "错误", "请输入完整信息！");
         if(result == QMessageBox::Ok)
@@ -56,21 +57,19 @@ void BookInformationManagerModifyDialog::on_buttonBox_accepted()
     QString BookType = ui->BookTypedepcbBox->currentText();
     QString Number = ui->NumberlineEdit->text();
     QString Publisher = ui->PublisherlineEdit->text();
+    QString PublishTime = ui->PublishTimelineEdit->text();
 
-    model->setData(model->index(*row, 1), QVariant(BookID));
-    model->setData(model->index(*row, 2), QVariant(BookNum));
-    model->setData(model->index(*row, 3), QVariant(BookName));
-    model->setData(model->index(*row, 4), QVariant(Writer));
-    model->setData(model->index(*row, 5), QVariant(BookType));
-    model->setData(model->index(*row, 6), QVariant(Publisher));
-    model->setData(model->index(*row, 7), QVariant(Number));
-    model->setData(model->index(*row, 8), QVariant(""));
-    model->setData(model->index(*row, 9), QVariant(""));
+    model->setData(model->index(0, 0), QVariant(BookID));
+    model->setData(model->index(0, 1), QVariant(BookNum));
+    model->setData(model->index(0, 2), QVariant(BookName));
+    model->setData(model->index(0, 3), QVariant(Writer));
+    model->setData(model->index(0, 4), QVariant(BookType));
+    model->setData(model->index(0, 5), QVariant(Publisher));
+    model->setData(model->index(0, 6), QVariant(PublishTime));
+    model->setData(model->index(0, 7), QVariant(Number));
+    model->setData(model->index(0, 8), QVariant(""));
+    model->setData(model->index(0, 9), QVariant(""));
 
-    if (model->submitAll())
-        QMessageBox::about(this, "修改", "修改成功！");
-
-    model->setFilter("");
-    model->select();//展示所有
+    model->submitAll();
 }
 
