@@ -67,12 +67,22 @@ color: rgb(0, 170, 255);</string>
    <property name="geometry">
     <rect>
      <x>420</x>
-     <y>190</y>
+     <y>160</y>
      <width>311</width>
-     <height>281</height>
+     <height>381</height>
     </rect>
    </property>
    <layout class="QVBoxLayout" name="verticalLayout">
+    <item>
+     <widget class="QLabel" name="label_8">
+      <property name="text">
+       <string>昵称</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QLineEdit" name="lineEdit_name"/>
+    </item>
     <item>
      <widget class="QLabel" name="label_3">
       <property name="sizePolicy">
@@ -135,12 +145,32 @@ color: rgb(0, 170, 255);</string>
     <item>
      <widget class="QLineEdit" name="lineEdit_repassword">
       <property name="sizePolicy">
-       <sizepolicy hsizetype="Expanding" vsizetype="Ignored">
+       <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
         <horstretch>0</horstretch>
         <verstretch>0</verstretch>
        </sizepolicy>
       </property>
      </widget>
+    </item>
+    <item>
+     <widget class="QLabel" name="label_2">
+      <property name="text">
+       <string>手机号：</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QLineEdit" name="lineEdit_phone"/>
+    </item>
+    <item>
+     <widget class="QLabel" name="label_7">
+      <property name="text">
+       <string>邮箱：</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QLineEdit" name="lineEdit_email"/>
     </item>
     <item>
      <widget class="QPushButton" name="pushButton_register">
@@ -169,7 +199,7 @@ font: 25 9pt &quot;Bahnschrift Light&quot;;</string>
    <property name="geometry">
     <rect>
      <x>420</x>
-     <y>500</y>
+     <y>550</y>
      <width>309</width>
      <height>29</height>
     </rect>

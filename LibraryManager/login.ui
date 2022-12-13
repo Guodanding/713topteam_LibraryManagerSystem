@@ -42,7 +42,7 @@
     <string notr="true">font: 7pt &quot;Arial&quot;;</string>
    </property>
    <property name="text">
-    <string>大写锁定已打开</string>
+    <string/>
    </property>
   </widget>
   <widget class="QLabel" name="label_welcome">
@@ -75,6 +75,9 @@ color: rgb(170, 255, 255);</string>
    <layout class="QVBoxLayout" name="verticalLayout">
     <item>
      <widget class="QLineEdit" name="lineEdit_username">
+      <property name="enabled">
+       <bool>true</bool>
+      </property>
       <property name="styleSheet">
        <string notr="true">background-color: rgb(255, 255, 255);</string>
       </property>
@@ -85,6 +88,21 @@ color: rgb(170, 255, 255);</string>
     </item>
     <item>
      <widget class="QLineEdit" name="lineEdit_password">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="tabletTracking">
+       <bool>true</bool>
+      </property>
+      <property name="acceptDrops">
+       <bool>false</bool>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
       <property name="echoMode">
        <enum>QLineEdit::Password</enum>
       </property>
@@ -144,39 +162,13 @@ font: 25 9pt &quot;Bahnschrift Light&quot;;</string>
     </item>
    </layout>
   </widget>
-  <widget class="QWidget" name="horizontalLayoutWidget_2">
-   <property name="geometry">
-    <rect>
-     <x>470</x>
-     <y>330</y>
-     <width>198</width>
-     <height>41</height>
-    </rect>
-   </property>
-   <layout class="QHBoxLayout" name="horizontalLayout_2">
-    <item>
-     <widget class="QRadioButton" name="radioButton_user">
-      <property name="text">
-       <string>用户登录</string>
-      </property>
-     </widget>
-    </item>
-    <item>
-     <widget class="QRadioButton" name="radioButton_admin">
-      <property name="text">
-       <string>管理员登录</string>
-      </property>
-     </widget>
-    </item>
-   </layout>
-  </widget>
   <widget class="QLabel" name="label_gif">
    <property name="geometry">
     <rect>
-     <x>660</x>
-     <y>30</y>
-     <width>111</width>
-     <height>111</height>
+     <x>620</x>
+     <y>10</y>
+     <width>151</width>
+     <height>141</height>
     </rect>
    </property>
    <property name="styleSheet">
@@ -185,6 +177,92 @@ font: 25 9pt &quot;Bahnschrift Light&quot;;</string>
    <property name="text">
     <string>TextLabel</string>
    </property>
+  </widget>
+  <widget class="QWidget" name="horizontalLayoutWidget_2">
+   <property name="geometry">
+    <rect>
+     <x>420</x>
+     <y>310</y>
+     <width>281</width>
+     <height>80</height>
+    </rect>
+   </property>
+   <layout class="QHBoxLayout" name="horizontalLayout_2">
+    <item>
+     <widget class="QRadioButton" name="radioButton_user">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QRadioButton{
+	font: 10pt &quot;Microsoft YaHei UI&quot;;
+    spacing: 2px;
+    color: black;
+}
+QRadioButton::indicator {
+    width: 45px;
+    height: 30px;
+}
+QRadioButton::indicator:unchecked {
+    image: url(:/images/radio_button_left.png);
+}
+
+QRadioButton::indicator:unchecked:pressed {
+    image: url(:/images/radio_button_right.png);
+}
+QRadioButton::indicator:checked {
+     image: url(:/images/radio_button_right.png);
+}
+QRadioButton::indicator:checked:pressed {
+     image: url(:/images/radio_button_left.png);
+}</string>
+      </property>
+      <property name="text">
+       <string>用户登录</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QRadioButton" name="radioButton_admin">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QRadioButton{
+	font: 10pt &quot;Microsoft YaHei UI&quot;;
+    spacing: 2px;
+    color: black;
+}
+QRadioButton::indicator {
+    width: 45px;
+    height: 30px;
+}
+QRadioButton::indicator:unchecked {
+    image: url(:/images/radio_button_left.png);
+}
+
+QRadioButton::indicator:unchecked:pressed {
+    image: url(:/images/radio_button_right.png);
+}
+QRadioButton::indicator:checked {
+     image: url(:/images/radio_button_right.png);
+}
+QRadioButton::indicator:checked:pressed {
+     image: url(:/images/radio_button_left.png);
+}</string>
+      </property>
+      <property name="text">
+       <string>管理员登录</string>
+      </property>
+     </widget>
+    </item>
+   </layout>
   </widget>
  </widget>
  <resources/>
