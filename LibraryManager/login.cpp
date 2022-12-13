@@ -6,6 +6,7 @@
 #include "managermainwindow.h"//主窗口
 #include "QMovie"
 #include"QTime"
+#include <windows.h>
 Login::Login(QWidget *parent) :
     QWidget(parent),
     ui(new Ui::Login)
@@ -30,14 +31,6 @@ Login::Login(QWidget *parent) :
     ui->label_gif->setMovie(&movie);
     ui->label_gif->setScaledContents(true);
     movie.start();
-    // 设置延迟时间
-    //QTime time = QTime::currentTime().addMSecs(2000);
-    //while (QTime::currentTime()<time) {
-    //    QCoreApplication::processEvents(QEventLoop::AllEvents,100);
-    //
-    // 停止
-    //movie.stop();
-
 
 }
 
@@ -50,28 +43,79 @@ Login::~Login()
 
 void Login::on_Button_login_clicked()//登录操作判断
 {
-    QString username = ui->lineEdit_username->text();
-    QString password = ui->lineEdit_password->text();
-    QString sqlstr=QString("SELECT username,password FROM admin WHERE username='%1' AND password='%2';")
-                .arg(username).arg(password);
-    QSqlQuery query_if_login(sqlstr);
-    //判断执行结果
-    if(!query_if_login.next())
-    {
-        qDebug()<<"Login error";
-        QMessageBox::information(this,"登录认证","登录失败,账户或者密码错误");
+    if (isUserSelected) {//用户登录
+        QString username = ui->lineEdit_username->text();
+        QString password = ui->lineEdit_password->text();
+        QString sqlstr=QString("SELECT username,password FROM user WHERE username='%1' AND password='%2';")
+                    .arg(username).arg(password);
+        QSqlQuery query_if_login(sqlstr);
+        //判断执行结果
+        if(!query_if_login.next())
+        {
+            qDebug()<<"Login error";
+            QMessageBox::information(this,"登录认证","登录失败,账户或者密码错误");
+        }
+        else
+        {
+            qDebug()<<"Login success";
+            QMessageBox::information(this,"登录认证","登录成功");
+            //登录成功后跳转到主窗口
+            ManagerMainWindow *Managermainwindow=new ManagerMainWindow(0);
+            Managermainwindow->setUsername(username);
+            Managermainwindow->show();
+            this->close();
+        }
     }
-    else
-    {
-        qDebug()<<"Login success";
-        QMessageBox::information(this,"登录认证","登录成功");
-        //登录成功后跳转到主窗口
-        ManagerMainWindow *Managermainwindow=new ManagerMainWindow();
-        Managermainwindow->show();
-        this->close();
+    if (isAdminSelected) {//管理员登录
+        QString username = ui->lineEdit_username->text();
+        QString password = ui->lineEdit_password->text();
+        QString sqlstr=QString("SELECT username,password FROM admin WHERE username='%1' AND password='%2';")
+                    .arg(username).arg(password);
+        QSqlQuery query_if_login(sqlstr);
+        //判断执行结果
+        if(!query_if_login.next())
+        {
+            qDebug()<<"Login error";
+            QMessageBox::information(this,"登录认证","登录失败,账户或者密码错误");
+        }
+        else
+        {
+            qDebug()<<"Login success";
+            QMessageBox::information(this,"登录认证","登录成功");
+            //登录成功后跳转到主窗口
+            ManagerMainWindow *Managermainwindow=new ManagerMainWindow(1);
+            Managermainwindow->setAdminname(username);
+            Managermainwindow->show();
+            this->close();
+        }
     }
 }
 
+void Login::keyPressEvent(QKeyEvent *event)
+{
+    if(event->key() == Qt::Key_CapsLock) {
+        if(LOBYTE(GetKeyState(VK_CAPITAL))) {
+            ui->label_tip->setText("大写锁定已打开");
+        }
+        else {
+            ui->label_tip->setText("大写锁定未打开");
+        }
+    }
+    QWidget::keyPressEvent(event);
+}
+
+void Login::keyReleaseEvent( QKeyEvent * event)
+{
+    if(event->key() == Qt::Key_CapsLock) {
+        if(LOBYTE(GetKeyState(VK_CAPITAL))) {
+            ui->label_tip->setText("大写锁定已打开");
+        }
+        else {
+            ui->label_tip->setText("大写锁定未打开");
+        }
+    }
+    QWidget::keyReleaseEvent(event);
+}
 
 void Login::on_Button_signup_clicked()//进入注册界面
 {
@@ -79,4 +123,28 @@ void Login::on_Button_signup_clicked()//进入注册界面
     SignUP *signup=new SignUP();
     signup->show();
 }
+
+void Login::on_radioButton_user_clicked()
+{
+    isUserSelected=true;
+    isAdminSelected=false;
+}
+
+void Login::on_radioButton_admin_clicked()
+{
+    isAdminSelected=true;
+    isUserSelected=false;
+}
+
+void Login::on_lineEdit_username_returnPressed()
+{
+    ui->lineEdit_username->grabKeyboard();
+}
+
+
+void Login::on_lineEdit_password_returnPressed()
+{
+    ui->lineEdit_password->grabKeyboard();
+}
+
 
