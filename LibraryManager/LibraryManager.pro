@@ -8,22 +8,6 @@ CONFIG += c++17
 # In order to do so, uncomment the following line.
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
-SOURCES += \
-    bookclassifymanager.cpp \
-    bookinformationmanager.cpp \
-    bookinformationmanageradddatadialog.cpp \
-    bookinformationmanagermodifydialog.cpp \
-    booksearch.cpp \
-    borrow_history.cpp \
-    borrow_info.cpp \
-    dboperator.cpp \
-    login.cpp \
-    main.cpp \
-    mainwindow.cpp \
-    managermainwindow.cpp \
-    signup.cpp \
-    splashscreen.cpp \
-    userprofilemanager.cpp
 
 HEADERS += \
     bookclassifymanager.h \
@@ -39,7 +23,30 @@ HEADERS += \
     managermainwindow.h \
     signup.h \
     splashscreen.h \
-    userprofilemanager.h
+    userprofilemanager.h\
+    readermanager.h\
+    readerinformationmanageradddatadialog.h\
+    readerinformationmanagermodifydialog.h\
+
+SOURCES += \
+    bookclassifymanager.cpp \
+    bookinformationmanager.cpp \
+    bookinformationmanageradddatadialog.cpp \
+    bookinformationmanagermodifydialog.cpp \
+    booksearch.cpp \
+    borrow_history.cpp \
+    borrow_info.cpp \
+    dboperator.cpp \
+    login.cpp \
+    main.cpp \
+    mainwindow.cpp \
+    managermainwindow.cpp \
+    signup.cpp \
+    splashscreen.cpp \
+    userprofilemanager.cpp\
+    readermanager.cpp\
+    readerinformationmanageradddatadialog.cpp\
+    readerinformationmanagermodifydialog.cpp\
 
 FORMS += \
     bookclassifymanager.ui \
@@ -47,13 +54,16 @@ FORMS += \
     bookinformationmanageradddatadialog.ui \
     bookinformationmanagermodifydialog.ui \
     managermainwindow.ui\
+    readermanager.ui\
+    readerinformationmanageradddatadialog.ui\
+    readerinformationmanagermodifydialog.ui\
     userprofilemanager.ui\
     booksearch.ui \
     borrow_history.ui \
     borrow_info.ui \
     login.ui \
     mainwindow.ui \
-    signup.ui
+    signup.ui\
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

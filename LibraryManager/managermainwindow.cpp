@@ -43,7 +43,8 @@ ManagerMainWindow::ManagerMainWindow(bool userOrAdmin,QWidget *parent) :
     //topItem->setIcon(0,QIcon("D:\\favicon.ico"));设置图标
 
     //add subfuntion
-    QPushButton *button_book_1=new QPushButton("图书信息管理"); QPushButton *button_book_2=new QPushButton("图书分类管理");
+    QPushButton *button_book_1=new QPushButton("图书信息管理");
+    QPushButton *button_book_2=new QPushButton("图书分类管理");
     QPushButton *button_sys_1=new QPushButton("用户管理");
     QPushButton *button_sys_2=new QPushButton("角色管理");
     QPushButton *button_sys_3=new QPushButton("图书管理");
