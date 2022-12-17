@@ -29,6 +29,8 @@ private:
     DBOperator DBO;
     QSqlTableModel *tm;
     QString Username = "Lee";
+    bool searchflag;
+    QString bookName;
 };
 
 #endif // BOOKSEARCH_H
