@@ -60,13 +60,13 @@ void Login::on_Button_login_clicked()//登录操作判断
             qDebug()<<"Login success";
             QMessageBox::information(this,"登录认证","登录成功");
             //登录成功后跳转到主窗口
-            ManagerMainWindow *Managermainwindow=new ManagerMainWindow(0);
+            ManagerMainWindow *Managermainwindow=new ManagerMainWindow(0,this);
             Managermainwindow->setUsername(username);
             Managermainwindow->show();
             this->close();
         }
     }
-    if (isAdminSelected) {//管理员登录
+    else if (isAdminSelected) {//管理员登录
         QString username = ui->lineEdit_username->text();
         QString password = ui->lineEdit_password->text();
         QString sqlstr=QString("SELECT username,password FROM admin WHERE username='%1' AND password='%2';")
@@ -83,11 +83,14 @@ void Login::on_Button_login_clicked()//登录操作判断
             qDebug()<<"Login success";
             QMessageBox::information(this,"登录认证","登录成功");
             //登录成功后跳转到主窗口
-            ManagerMainWindow *Managermainwindow=new ManagerMainWindow(1);
+            ManagerMainWindow *Managermainwindow=new ManagerMainWindow(1,this);
             Managermainwindow->setAdminname(username);
             Managermainwindow->show();
             this->close();
         }
+    }
+    else{
+        QMessageBox::information(this,"登录认证","请选择您是管理员或用户");
     }
 }
 

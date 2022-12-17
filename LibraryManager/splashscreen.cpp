@@ -20,7 +20,7 @@ void SplashScreen::setRange(int min,int max)
 void SplashScreen::updateNum(int n)
 {
     qDebug()<<n;
-    sleep(100);// 延迟时间
+    sleep(20);// 延迟时间
     progressBar->setValue(n);
 }
 
