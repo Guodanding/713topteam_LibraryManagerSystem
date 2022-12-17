@@ -37,17 +37,21 @@ void borrow_info::on_ReturnBtn_clicked()
     if(answer == QMessageBox::Yes)
     {
         QSqlRecord record = tm->record(row);
-        QString Booknumber = record.value("Booknumber").toString();
+        QString Booknumber = record.value("Booknum").toString();
         QString BookTitle = record.value("BookTitle").toString();
         tm->removeRow(row);
         tm->submitAll();
 
-        tm->setTable("BookInfo");
+        tm->setTable("bookinformation");
         tm->setEditStrategy(QSqlTableModel::OnManualSubmit);
-        tm->setFilter(QObject::tr("Number = '%1'").arg(Booknumber));
+        tm->setFilter(QObject::tr("图书名 = '%1'").arg(BookTitle));
         tm->select();
         record = tm->record(0);
-        record.setValue("State","在库");
+        QString Booknum = record.value("数量").toString();
+        int booknum = Booknum.toInt();
+        booknum++;
+        Booknum = QString::number(booknum,10);
+        record.setValue("数量",Booknum);
         tm->setRecord(0,record);
         tm->submitAll();
 
@@ -69,6 +73,14 @@ void borrow_info::on_ReturnBtn_clicked()
         QString log = "用户"+Username+"在"+Returndate+"归还"+Booknumber+BookTitle;
         tm->setData(tm->index(row,1),log);
         tm->submitAll();
+
+        tm->setTable("booksearch");
+        tm->setEditStrategy(QSqlTableModel::OnManualSubmit);
+        tm->setFilter(QObject::tr("索书号 like '%%1%'").arg(Booknumber));
+        tm->select();
+        tm->setData(tm->index(0,8),"在库");
+        tm->submitAll();
+
 
         tm->setTable("BorrowInfo");
         tm->setFilter(QObject::tr("Username = '%1'").arg(Username));
