@@ -13,10 +13,10 @@ int main(int argc, char *argv[])
     //启动动画
     QPixmap pixmap(":/images/loginBackground.png");
     SplashScreen splash(pixmap);
-    splash.setRange(0,10);//设置进度条内容长度
+    splash.setRange(0,100);//设置进度条内容长度
     splash.show();
     int i=0;
-    while(i<=10){
+    while(i<=100){
         splash.updateNum(i);
         i++;
     }

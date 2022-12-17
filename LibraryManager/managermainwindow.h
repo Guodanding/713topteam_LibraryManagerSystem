@@ -2,22 +2,6 @@
 #define MANAGERMAINWINDOW_H
 
 #include <QMainWindow>
-
-struct admin
-{
-    QString username;
-    QString password;
-
-};
-struct user
-{
-    int ID;
-    QString username;
-    QString password;
-    QString name;
-    QString phone;
-    QString email;
-};
 namespace Ui {
 class ManagerMainWindow;
 }
@@ -27,28 +11,33 @@ class ManagerMainWindow : public QMainWindow
     Q_OBJECT
 
 public:
-    explicit ManagerMainWindow(bool userOrAdmin,QWidget *parent = nullptr);
+    explicit ManagerMainWindow(bool isUserOrAdmin,QWidget *parent = nullptr);
     ~ManagerMainWindow();
     void setUsername(QString username);
     void setAdminname(QString adminname);
+    void removeWidget(int index);
 private slots:
-    void on_button_book_1_clicked();
-    void on_button_book_2_clicked();
-    void on_button_sys_1_clicked();
-    void on_button_sys_2_clicked();
-    void on_button_sys_3_clicked();
-    void on_button_sys_4_clicked();
-    void on_button_user_1_clicked();
-    void on_button_user_2_clicked();
+    //admin
+    void on_button_admin_book_1_clicked();
+    void on_button_admin_book_2_clicked();
+    void on_button_admin_user_1_clicked();
+    void on_button_admin_user_2_clicked();
+    void on_button_admin_sys_1_clicked();
+    void on_button_admin_sys_2_clicked();
+    //user
+    void on_button_user_book_1_clicked();
+    void on_button_user_book_2_clicked();
+    void on_button_user_book_3_clicked();
+    void on_button_user_set_1_clicked();
+    void on_button_user_set_2_clicked();
+
 private:
     Ui::ManagerMainWindow *ui;
-    int page_BookInfoMana;
-    int page_BookClassMana;
-    int page_UserProfileMana;
-    struct admin adminInfo;
-    struct user userInfo;
     bool isUser;
     bool isAdmin;
+    int index;
+    QString username;
+    QString adminname;
 };
 
 #endif // MANAGERMAINWINDOW_H
