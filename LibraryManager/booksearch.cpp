@@ -145,3 +145,9 @@ void BookSearch::on_ExitBtn_clicked()
     BookSearch::close();
 }
 
+void BookSearch::setusername(QString username)
+{
+    Username = username;
+}
+
+

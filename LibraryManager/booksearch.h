@@ -16,6 +16,7 @@ class BookSearch : public QWidget
 public:
     explicit BookSearch(QWidget *parent = nullptr);
     ~BookSearch();
+    void setusername(QString username);
 
 private slots:
     void on_SearchBtn_clicked();
