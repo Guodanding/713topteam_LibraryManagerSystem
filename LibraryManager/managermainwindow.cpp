@@ -11,6 +11,7 @@
 #include "QMovie"
 #include "QLabel"
 #include "QPushButton"
+#include "QMessageBox"
 ManagerMainWindow::ManagerMainWindow(bool isUserOrAdmin,QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::ManagerMainWindow)
@@ -173,11 +174,15 @@ void ManagerMainWindow::on_button_user_set_1_clicked()
 }
 void ManagerMainWindow::on_button_user_set_2_clicked()
 {
-    this->close();
-    //打开登录窗口
-    Login *login=new Login(this);
-    login->setWindowFlag(Qt::Window);
-    login->show();
+    QMessageBox::StandardButton answer = QMessageBox::question(this,"登出","你确定要退出登录吗？");
+    if(answer == QMessageBox::Yes)
+    {
+        this->close();
+        //打开登录窗口
+        Login *login=new Login(this);
+        login->setWindowFlag(Qt::Window);
+        login->show();
+    }
 }
 //管理员模块
 void ManagerMainWindow::on_button_admin_book_1_clicked()
