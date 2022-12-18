@@ -148,6 +148,7 @@ void ManagerMainWindow::on_button_user_book_1_clicked()
 {
     removeWidget(index);
     BookSearch *booksearch = new BookSearch();
+    booksearch->setusername(username);
     index=ui->stackedWidget->addWidget(booksearch);
     ui->stackedWidget->setCurrentIndex(index);
 }
@@ -155,6 +156,7 @@ void ManagerMainWindow::on_button_user_book_2_clicked()
 {
     removeWidget(index);
     borrow_info *borrowinfo = new borrow_info();
+    borrowinfo->setusername(username);
     index=ui->stackedWidget->addWidget(borrowinfo);
     ui->stackedWidget->setCurrentIndex(index);
 }
@@ -162,6 +164,7 @@ void ManagerMainWindow::on_button_user_book_3_clicked()
 {
     removeWidget(index);
     borrow_history *borrowhistory = new borrow_history();
+    borrowhistory->setusername(username);
     index=ui->stackedWidget->addWidget(borrowhistory);
     ui->stackedWidget->setCurrentIndex(index);
 }
