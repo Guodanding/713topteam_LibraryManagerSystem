@@ -32,3 +32,8 @@ void borrow_history::on_ExitBtn_clicked()
     borrow_history::close();
 }
 
+void borrow_history::setusername(QString username)
+{
+    Username = username;
+}
+
