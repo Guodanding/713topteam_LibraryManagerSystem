@@ -16,6 +16,7 @@ class borrow_history : public QWidget
 public:
     explicit borrow_history(QWidget *parent = nullptr);
     ~borrow_history();
+    void setusername(QString username);
 
 private slots:
     void on_ExitBtn_clicked();
