@@ -18,6 +18,9 @@
   <property name="windowTitle">
    <string>Form</string>
   </property>
+  <property name="styleSheet">
+   <string notr="true">backgrounf-color:rgb(240, 240, 240);</string>
+  </property>
   <widget class="Line" name="line">
    <property name="geometry">
     <rect>

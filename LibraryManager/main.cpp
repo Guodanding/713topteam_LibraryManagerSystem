@@ -3,6 +3,8 @@
 #include "bookinformationmanager.h"
 #include "bookclassifymanager.h"
 #include <QApplication>
+#include "booksearch.h"
+#include "bookinformationmanager.h"
 
 int main(int argc, char *argv[])
 {
@@ -24,9 +26,11 @@ int main(int argc, char *argv[])
     MainWindow w;
     w.show();
     splash.finish(&splash);
-    //BookManager bookmanager;
-    //bookmanager.show();
-    //BookClassifyManager bookclassify;
-    //bookclassify.show();
+    /*BookSearch booksearch;
+    booksearch.show();
+    BookClassifyManager bookclassify;
+    bookclassify.show();
+    BookManager bookmanager;
+    bookmanager.show();*/
     return a.exec();
 }
