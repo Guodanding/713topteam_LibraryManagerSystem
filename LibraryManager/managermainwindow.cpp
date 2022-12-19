@@ -80,28 +80,24 @@ ManagerMainWindow::ManagerMainWindow(bool isUserOrAdmin,QWidget *parent) :
         QTreeWidgetItem *subItem_admin_book_1=new QTreeWidgetItem(topItem_admin_1);
         QTreeWidgetItem *subItem_admin_book_2=new QTreeWidgetItem(topItem_admin_1);
         QTreeWidgetItem *subItem_admin_user_1=new QTreeWidgetItem(topItem_admin_2);
-        QTreeWidgetItem *subItem_admin_user_2=new QTreeWidgetItem(topItem_admin_2);
         QTreeWidgetItem *subItem_admin_sys_1=new QTreeWidgetItem(topItem_admin_3);
         QTreeWidgetItem *subItem_admin_sys_2=new QTreeWidgetItem(topItem_admin_3);
         //subfuntion
         QPushButton *button_admin_book_1=new QPushButton("图书信息管理");
         QPushButton *button_admin_book_2=new QPushButton("图书分类管理");
         QPushButton *button_admin_user_1=new QPushButton("用户管理");
-        QPushButton *button_admin_user_2=new QPushButton("角色管理");
         QPushButton *button_admin_sys_1=new QPushButton("图书借阅信息");
         QPushButton *button_admin_sys_2=new QPushButton("图书归还信息");
         //connect btn and subitem
         ui->treeWidget->setItemWidget(subItem_admin_book_1,0,button_admin_book_1);
         ui->treeWidget->setItemWidget(subItem_admin_book_2,0,button_admin_book_2);
         ui->treeWidget->setItemWidget(subItem_admin_user_1,0,button_admin_user_1);
-        ui->treeWidget->setItemWidget(subItem_admin_user_2,0,button_admin_user_2);
         ui->treeWidget->setItemWidget(subItem_admin_sys_1,0,button_admin_sys_1);
         ui->treeWidget->setItemWidget(subItem_admin_sys_2,0,button_admin_sys_2);
         //connect signal
         connect(button_admin_book_1,SIGNAL(clicked()),this,SLOT(on_button_admin_book_1_clicked()));
         connect(button_admin_book_2,SIGNAL(clicked()),this,SLOT(on_button_admin_book_2_clicked()));
         connect(button_admin_user_1,SIGNAL(clicked()),this,SLOT(on_button_admin_user_1_clicked()));
-        connect(button_admin_user_2,SIGNAL(clicked()),this,SLOT(on_button_admin_user_2_clicked()));
         connect(button_admin_sys_1,SIGNAL(clicked()),this,SLOT(on_button_admin_sys_1_clicked()));
         connect(button_admin_sys_2,SIGNAL(clicked()),this,SLOT(on_button_admin_sys_2_clicked()));
         //展开子树
@@ -129,10 +125,12 @@ ManagerMainWindow::ManagerMainWindow(bool isUserOrAdmin,QWidget *parent) :
 void ManagerMainWindow::setUsername(QString username)//用户标志
 {
     this->username=username;
+    qDebug()<<"username"<<this->username;
 }
 void ManagerMainWindow::setAdminname(QString adminname)//管理员标志
 {
     this->adminname=adminname;
+    qDebug()<<"adminname"<<this->adminname;
 }
 void ManagerMainWindow::removeWidget(int index)
 {
@@ -207,13 +205,6 @@ void ManagerMainWindow::on_button_admin_user_1_clicked()
     removeWidget(index);
     readerManager *readermanager=new readerManager();
     index=ui->stackedWidget->addWidget(readermanager);
-    ui->stackedWidget->setCurrentIndex(index);
-}
-void ManagerMainWindow::on_button_admin_user_2_clicked()
-{
-    removeWidget(index);
-    BookClassifyManager *BookClassMana = new BookClassifyManager();
-    index=ui->stackedWidget->addWidget(BookClassMana);
     ui->stackedWidget->setCurrentIndex(index);
 }
 void ManagerMainWindow::on_button_admin_sys_1_clicked()
