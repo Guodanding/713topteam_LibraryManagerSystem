@@ -48,6 +48,16 @@ void readerManager::setWinStyle()
                 "background-color:#1E90FF;"
                 "color:white;"
                 "}");
+    ui->searchpushButton->setStyleSheet(
+                "QPushButton{"
+                "background-color:#FFD700;"
+                "border-radius:3px;"//设置圆角半径
+                "color:white;"
+                "}"
+                "QPushButton:hover{"
+                "background-color:#DAA520;"
+                "color:white;"
+                "}");
     ui->readerSearchLineEdit->setPlaceholderText("搜索用户名");
     ui->phoneSearchLineEdit->setPlaceholderText("搜索手机号");
     ui->emailSearchLineEdit->setPlaceholderText("搜索电子邮箱");

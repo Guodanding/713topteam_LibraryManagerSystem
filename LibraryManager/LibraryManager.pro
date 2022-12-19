@@ -17,6 +17,7 @@ HEADERS += \
     booksearch.h \
     borrow_history.h \
     borrow_info.h \
+    borrowbookinformation.h \
     login.h \
     dboperator.h \
     mainwindow.h \
@@ -27,6 +28,8 @@ HEADERS += \
     readermanager.h\
     readerinformationmanageradddatadialog.h\
     readerinformationmanagermodifydialog.h\
+    returnbook.h\
+
 
 SOURCES += \
     bookclassifymanager.cpp \
@@ -36,6 +39,7 @@ SOURCES += \
     booksearch.cpp \
     borrow_history.cpp \
     borrow_info.cpp \
+    borrowbookinformation.cpp \
     dboperator.cpp \
     login.cpp \
     main.cpp \
@@ -47,12 +51,14 @@ SOURCES += \
     readermanager.cpp\
     readerinformationmanageradddatadialog.cpp\
     readerinformationmanagermodifydialog.cpp\
+    returnbook.cpp\
 
 FORMS += \
     bookclassifymanager.ui \
     bookinformationmanager.ui \
     bookinformationmanageradddatadialog.ui \
     bookinformationmanagermodifydialog.ui \
+    borrowbookinformation.ui \
     managermainwindow.ui\
     readermanager.ui\
     readerinformationmanageradddatadialog.ui\
@@ -64,6 +70,8 @@ FORMS += \
     login.ui \
     mainwindow.ui \
     signup.ui\
+    returnbook.ui\
+
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
