@@ -16,6 +16,7 @@ readerManager::readerManager(QWidget *parent)
     ui->setupUi(this);
     setWindowTitle("读者信息管理模块");
     setWinStyle();
+    databaseOperate();
 }
 
 readerManager::~readerManager()
@@ -37,40 +38,31 @@ void readerManager::setWinStyle()
                 "background-color:#00FF7F;"
                 "color:white;"
                 "}");
-    ui->modifypushButton->setStyleSheet(
+    ui->AllpushButton->setStyleSheet(
                 "QPushButton{"
-                "background-color:#7B68EE;"
+                "background-color:#87CEFA;"
                 "border-radius:3px;"//设置圆角半径
                 "color:white;"
                 "}"
                 "QPushButton:hover{"
-                "background-color:#7B68EE;"
-                "color:white;"
-                "}");
-    ui->deletepushButton->setStyleSheet(
-                "QPushButton{"
-                "background-color:#FF3030;"
-                "border-radius:3px;"//设置圆角半径
-                "color:white;"
-                "}"
-                "QPushButton:hover{"
-                "background-color:#FF3030;"
+                "background-color:#1E90FF;"
                 "color:white;"
                 "}");
     ui->readerSearchLineEdit->setPlaceholderText("搜索用户名");
+    ui->phoneSearchLineEdit->setPlaceholderText("搜索手机号");
+    ui->emailSearchLineEdit->setPlaceholderText("搜索电子邮箱");
 }
 
 void readerManager::databaseOperate()
 {
 
     model = new QSqlTableModel();
-    model->setTable("readerinformation");//选择表
-    //model->setSort(4,Qt::AscendingOrder); //图书类型属性，即第5列，升序排列
+    model->setTable("user");//选择表
     model->select();//展示所有
 
     ui->readerInformationtableView->setModel(model);//连接数据库
     ui->readerInformationtableView->setEditTriggers(QAbstractItemView::NoEditTriggers); //只读
-    int ColumnWidth[] = {50, 50, 50, 50, 50, 50, 50, 50};//设置列宽
+    int ColumnWidth[] = {50, 100, 100, 160, 200, 200, 50, 50};//设置列宽
     for(int i = 0; i < model->columnCount(); i++)
         ui->readerInformationtableView->setColumnWidth(i, ColumnWidth[i]);
     for(int i = 0; i < model->rowCount(); i++)//设置按钮
@@ -107,8 +99,8 @@ void readerManager::databaseOperate()
                     "background-color:#6A5ACD;"
                     "color:white;"
                     "}");
-        ui->readerInformationtableView->setIndexWidget(model->index(i, 8), modifypushButton);
-        ui->readerInformationtableView->setIndexWidget(model->index(i, 9), deletepushButton);
+        ui->readerInformationtableView->setIndexWidget(model->index(i, 6), modifypushButton);
+        ui->readerInformationtableView->setIndexWidget(model->index(i, 7), deletepushButton);
 
         // 添加槽
         connect(modifypushButton, SIGNAL(clicked()), this, SLOT(on_modifypushButton_clicked()));
@@ -117,7 +109,7 @@ void readerManager::databaseOperate()
 
 }
 
-void readerManager::on_addpushButton_clicked()
+void readerManager::on_AddpushButton_clicked()
 {
     readerInformationManagerAdddatadialog readerinformationManagerAdddatadialog(this,this->model);
     readerinformationManagerAdddatadialog.exec();
@@ -126,9 +118,9 @@ void readerManager::on_addpushButton_clicked()
     model->select();//展示所有
     for(int i = 0; i < model->rowCount(); i++)//设置按钮
     {
-        QPushButton *ModifypushButton = new QPushButton("修改🔧");
-        QPushButton *CancelpushButton = new QPushButton("删除❌");
-        ModifypushButton->setStyleSheet(
+        QPushButton *modifypushButton = new QPushButton("修改🔧");
+        QPushButton *deletepushButton = new QPushButton("删除❌");
+        modifypushButton->setStyleSheet(
                     "QPushButton{"
                     "font-style:italic;" //斜体
                     "font-weight: bold;" //粗体
@@ -143,7 +135,7 @@ void readerManager::on_addpushButton_clicked()
                     "background-color:#7B68EE;"
                     "color:white;"
                     "}");
-        CancelpushButton->setStyleSheet(
+        deletepushButton->setStyleSheet(
                     "QPushButton{"
                     "font-style:italic;" //斜体
                     "font-weight: bold;" //粗体
@@ -158,12 +150,12 @@ void readerManager::on_addpushButton_clicked()
                     "background-color:#6A5ACD;"
                     "color:white;"
                     "}");
-        ui->readerInformationtableView->setIndexWidget(model->index(i, 8), ModifypushButton);
-        ui->readerInformationtableView->setIndexWidget(model->index(i, 9), CancelpushButton);
+        ui->readerInformationtableView->setIndexWidget(model->index(i, 6), modifypushButton);
+        ui->readerInformationtableView->setIndexWidget(model->index(i, 7), deletepushButton);
 
         // 添加槽
-        connect(ModifypushButton, SIGNAL(clicked()), this, SLOT(on_ModifypushButton_clicked()));
-        connect(CancelpushButton, SIGNAL(clicked()), this, SLOT(on_CancelpushButton_clicked()));
+        connect(modifypushButton, SIGNAL(clicked()), this, SLOT(on_modifypushButton_clicked()));
+        connect(deletepushButton, SIGNAL(clicked()), this, SLOT(on_deletepushButton_clicked()));
     }
 }
 
@@ -219,8 +211,8 @@ void readerManager::on_deletepushButton_clicked()
                     "background-color:#FF3030;"
                     "color:white;"
                     "}");
-        ui->readerInformationtableView->setIndexWidget(model->index(i, 8), modifypushButton);
-        ui->readerInformationtableView->setIndexWidget(model->index(i, 9), deletepushButton);
+        ui->readerInformationtableView->setIndexWidget(model->index(i, 6), modifypushButton);
+        ui->readerInformationtableView->setIndexWidget(model->index(i, 7), deletepushButton);
 
         // 添加槽
         connect(modifypushButton, SIGNAL(clicked()), this, SLOT(on_modifypushButton_clicked()));
@@ -239,9 +231,9 @@ void readerManager::on_modifypushButton_clicked()
 
     for(int i = 0; i < model->rowCount(); i++)//设置按钮
     {
-        QPushButton *ModifypushButton = new QPushButton("修改🔧");
+        QPushButton *modifypushButton = new QPushButton("修改🔧");
         QPushButton *deletepushButton = new QPushButton("删除❌");
-        ModifypushButton->setStyleSheet(
+        modifypushButton->setStyleSheet(
                     "QPushButton{"
                     "font-style:italic;" //斜体
                     "font-weight: bold;" //粗体
@@ -271,11 +263,11 @@ void readerManager::on_modifypushButton_clicked()
                     "background-color:#6A5ACD;"
                     "color:white;"
                     "}");
-        ui->readerInformationtableView->setIndexWidget(model->index(i, 8), ModifypushButton);
-        ui->readerInformationtableView->setIndexWidget(model->index(i, 9), deletepushButton);
+        ui->readerInformationtableView->setIndexWidget(model->index(i, 6), modifypushButton);
+        ui->readerInformationtableView->setIndexWidget(model->index(i, 7), deletepushButton);
 
         // 添加槽
-        connect(ModifypushButton, SIGNAL(clicked()), this, SLOT(on_ModifypushButton_clicked()));
+        connect(modifypushButton, SIGNAL(clicked()), this, SLOT(on_modifypushButton_clicked()));
         connect(deletepushButton, SIGNAL(clicked()), this, SLOT(on_deletepushButton_clicked()));
     }
 }
@@ -283,8 +275,9 @@ void readerManager::on_modifypushButton_clicked()
 void readerManager::on_searchpushButton_clicked()
 {
    QString username = ui->readerSearchLineEdit->text();
-
-   if(username.isEmpty())
+   QString phone    = ui->phoneSearchLineEdit->text();
+   QString email    = ui->emailSearchLineEdit->text();
+   if(username.isEmpty()&&phone.isEmpty()&&email.isEmpty())
    {
        QMessageBox::StandardButton result = QMessageBox::warning(this, "错误", "请输入查询信息！");
        if(result == QMessageBox::Ok)
@@ -292,13 +285,12 @@ void readerManager::on_searchpushButton_clicked()
    }
    else
    {
-//       if(!BookID.isEmpty())
-//            model->setFilter(QObject::tr("图书ID = '%1'").arg(BookID)); //根据ID进行筛选
-//       if(!BookName.isEmpty())
-//            model->setFilter(QObject::tr("图书名 = '%1'").arg(BookName)); //根据图书名进行筛选
-//       if(!Writer.isEmpty())
-//            model->setFilter(QObject::tr("作者 = '%1'").arg(Writer)); //根据姓名进行筛选
-
+       if(!username.isEmpty())
+            model->setFilter(QObject::tr("user = '%1'").arg(username)); //根据姓名进行筛选
+       if(!phone.isEmpty())
+            model->setFilter(QObject::tr("phone = '%1'").arg(phone)); //根据图书名进行筛选
+       if(!email.isEmpty())
+            model->setFilter(QObject::tr("email = '%1'").arg(email)); //根据姓名进行筛选
        model->select();//展示所有
        for(int i = 0; i < model->rowCount(); i++)//设置按钮
        {
@@ -334,11 +326,11 @@ void readerManager::on_searchpushButton_clicked()
                        "background-color:#FF3030;"
                        "color:white;"
                        "}");
-           ui->readerInformationtableView->setIndexWidget(model->index(i, 8), modifypushButton);
-           ui->readerInformationtableView->setIndexWidget(model->index(i, 9), deletepushButton);
+           ui->readerInformationtableView->setIndexWidget(model->index(i, 6), modifypushButton);
+           ui->readerInformationtableView->setIndexWidget(model->index(i, 7), deletepushButton);
 
            // 添加槽
-           connect(modifypushButton, SIGNAL(clicked()), this, SLOT(on_ModifypushButton_clicked()));
+           connect(modifypushButton, SIGNAL(clicked()), this, SLOT(on_modifypushButton_clicked()));
            connect(deletepushButton, SIGNAL(clicked()), this, SLOT(on_deletepushButton_clicked()));
        }
    }
@@ -353,6 +345,53 @@ void readerManager::on_SurepushButton_clicked()
             QMessageBox::about(this, "确认", "确认成功！");
         else
             QMessageBox::critical(this, "确认", "确认失败！请重试。");
+    }
+}
+
+void readerManager::on_AllpushButton_clicked()
+{
+    model->setFilter("");
+    model->select();//展示所有
+    for(int i = 0; i < model->rowCount(); i++)//设置按钮
+    {
+        QPushButton *modifypushButton = new QPushButton("修改🔧");
+        QPushButton *deletepushButton = new QPushButton("删除❌");
+        modifypushButton->setStyleSheet(
+                    "QPushButton{"
+                    "font-style:italic;" //斜体
+                    "font-weight: bold;" //粗体
+                    "font-size: 13px;" //字体大小
+                    "font-family: 'Microsoft YaHei UI';"//字体
+                    "background-color:#FFA500;"
+                    "border-radius:3px;"//设置圆角半径
+                    "color:white;"
+                    "border-width:71;"//按钮大小设置
+                    "}"
+                    "QPushButton:hover{"
+                    "background-color:#FF8C00;"
+                    "color:white;"
+                    "}");
+        deletepushButton->setStyleSheet(
+                    "QPushButton{"
+                    "font-style:italic;" //斜体
+                    "font-weight: bold;" //粗体
+                    "font-size: 13px;" //字体大小
+                    "font-family: 'Microsoft YaHei UI';"//字体
+                    "background-color:#8470FF;"
+                    "border-radius:3px;"//设置圆角半径
+                    "color:white;"
+                    "border-width:71;"//按钮大小设置
+                    "}"
+                    "QPushButton:hover{"
+                    "background-color:#6A5ACD;"
+                    "color:white;"
+                    "}");
+        ui->readerInformationtableView->setIndexWidget(model->index(i, 6), modifypushButton);
+        ui->readerInformationtableView->setIndexWidget(model->index(i, 7), deletepushButton);
+
+        // 添加槽
+        connect(modifypushButton, SIGNAL(clicked()), this, SLOT(on_modifypushButton_clicked()));
+        connect(deletepushButton, SIGNAL(clicked()), this, SLOT(on_deletepushButton_clicked()));
     }
 }
 

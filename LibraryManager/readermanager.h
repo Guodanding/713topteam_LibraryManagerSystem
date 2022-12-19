@@ -3,6 +3,7 @@
 
 #include <QWidget>
 #include <QSqlTableModel>
+#include "dboperator.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui
@@ -22,9 +23,10 @@ public:
 private:
     Ui::readerManager *ui;
     QSqlTableModel *model;
+    DBOperator database; //数据库引入
 
 private slots:
-    void on_addpushButton_clicked();
+    void on_AddpushButton_clicked();
 
     void on_deletepushButton_clicked();
 
@@ -34,5 +36,6 @@ private slots:
 
     void on_searchpushButton_clicked();
 
+    void on_AllpushButton_clicked();
 };
 #endif // READERMANAGER_H
