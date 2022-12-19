@@ -11,6 +11,7 @@
 #include "QMovie"
 #include "QLabel"
 #include "QPushButton"
+#include "QMessageBox"
 ManagerMainWindow::ManagerMainWindow(bool isUserOrAdmin,QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::ManagerMainWindow)
@@ -147,6 +148,7 @@ void ManagerMainWindow::on_button_user_book_1_clicked()
 {
     removeWidget(index);
     BookSearch *booksearch = new BookSearch();
+    booksearch->setusername(username);
     index=ui->stackedWidget->addWidget(booksearch);
     ui->stackedWidget->setCurrentIndex(index);
 }
@@ -154,6 +156,7 @@ void ManagerMainWindow::on_button_user_book_2_clicked()
 {
     removeWidget(index);
     borrow_info *borrowinfo = new borrow_info();
+    borrowinfo->setusername(username);
     index=ui->stackedWidget->addWidget(borrowinfo);
     ui->stackedWidget->setCurrentIndex(index);
 }
@@ -161,6 +164,7 @@ void ManagerMainWindow::on_button_user_book_3_clicked()
 {
     removeWidget(index);
     borrow_history *borrowhistory = new borrow_history();
+    borrowhistory->setusername(username);
     index=ui->stackedWidget->addWidget(borrowhistory);
     ui->stackedWidget->setCurrentIndex(index);
 }
@@ -173,11 +177,15 @@ void ManagerMainWindow::on_button_user_set_1_clicked()
 }
 void ManagerMainWindow::on_button_user_set_2_clicked()
 {
-    this->close();
-    //打开登录窗口
-    Login *login=new Login(this);
-    login->setWindowFlag(Qt::Window);
-    login->show();
+    QMessageBox::StandardButton answer = QMessageBox::question(this,"登出","你确定要退出登录吗？");
+    if(answer == QMessageBox::Yes)
+    {
+        this->close();
+        //打开登录窗口
+        Login *login=new Login(this);
+        login->setWindowFlag(Qt::Window);
+        login->show();
+    }
 }
 //管理员模块
 void ManagerMainWindow::on_button_admin_book_1_clicked()

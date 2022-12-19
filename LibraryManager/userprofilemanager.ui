@@ -29,8 +29,8 @@
   <widget class="QPushButton" name="pushButton">
    <property name="geometry">
     <rect>
-     <x>590</x>
-     <y>410</y>
+     <x>570</x>
+     <y>350</y>
      <width>93</width>
      <height>29</height>
     </rect>
@@ -55,10 +55,10 @@
   <widget class="QWidget" name="verticalLayoutWidget">
    <property name="geometry">
     <rect>
-     <x>130</x>
-     <y>90</y>
+     <x>180</x>
+     <y>80</y>
      <width>160</width>
-     <height>301</height>
+     <height>321</height>
     </rect>
    </property>
    <layout class="QVBoxLayout" name="verticalLayout">

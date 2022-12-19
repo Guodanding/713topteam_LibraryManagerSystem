@@ -108,3 +108,8 @@ void borrow_info::on_ExitBtn_clicked()
     borrow_info::close();
 }
 
+void borrow_info::setusername(QString username)
+{
+    Username = username;
+}
+

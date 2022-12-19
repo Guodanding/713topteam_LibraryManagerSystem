@@ -16,6 +16,7 @@ class borrow_info : public QWidget
 public:
     explicit borrow_info(QWidget *parent = nullptr);
     ~borrow_info();
+    void setusername(QString username);
 
 private slots:
     void on_ReturnBtn_clicked();
