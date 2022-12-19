@@ -27,7 +27,7 @@ private:
     Ui::borrow_info *ui;
     DBOperator DBO;
     QSqlTableModel *tm;
-    QString Username = "Lee";
+    QString Username ;
 };
 
 #endif // BORROW_INFO_H

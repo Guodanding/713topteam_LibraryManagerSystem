@@ -10,18 +10,7 @@ borrow_info::borrow_info(QWidget *parent) :
 {
     ui->setupUi(this);
     DBO.DBOpen();
-    tm = new QSqlTableModel(this);
-    tm->setTable("BorrowInfo");
-    tm->setFilter(QObject::tr("Username = '%1'").arg(Username));
-    tm->select();
-    tm->setHeaderData(0, Qt::Horizontal, "用户名");
-    tm->setHeaderData(1, Qt::Horizontal, "书本编号");
-    tm->setHeaderData(2, Qt::Horizontal, "书名");
-    tm->setHeaderData(3, Qt::Horizontal, "借书时间");
-    tm->setHeaderData(4, Qt::Horizontal, "到期时间");
-    ui->tableView->setModel(tm);
-    ui->tableView->verticalHeader()->setVisible(false);
-    ui->tableView->setEditTriggers(QAbstractItemView::NoEditTriggers);
+
 }
 
 borrow_info::~borrow_info()
@@ -32,6 +21,12 @@ borrow_info::~borrow_info()
 void borrow_info::on_ReturnBtn_clicked()
 {
     int row = ui->tableView->currentIndex().row();
+    if(tm->rowCount() == 0)
+    {
+        QMessageBox::warning(this,"提示","当前无可归还书籍！");
+    }
+    else
+    {
 
     QMessageBox::StandardButton answer = QMessageBox::question(this,"还书确认","你确定要还书吗？");
     if(answer == QMessageBox::Yes)
@@ -99,6 +94,7 @@ void borrow_info::on_ReturnBtn_clicked()
             tm->clear();
         }
     }
+    }
 
 }
 
@@ -111,5 +107,21 @@ void borrow_info::on_ExitBtn_clicked()
 void borrow_info::setusername(QString username)
 {
     Username = username;
+    tm = new QSqlTableModel(this);
+    tm->setTable("BorrowInfo");
+    tm->setFilter(QObject::tr("Username = '%1'").arg(Username));
+    tm->select();
+    tm->setHeaderData(0, Qt::Horizontal, "用户名");
+    tm->setHeaderData(1, Qt::Horizontal, "书本编号");
+    tm->setHeaderData(2, Qt::Horizontal, "书名");
+    tm->setHeaderData(3, Qt::Horizontal, "借书时间");
+    tm->setHeaderData(4, Qt::Horizontal, "到期时间");
+    ui->tableView->setModel(tm);
+    ui->tableView->verticalHeader()->setVisible(false);
+    ui->tableView->setEditTriggers(QAbstractItemView::NoEditTriggers);
+    if(tm->rowCount() == 0)
+    {
+        tm->clear();
+    }
 }
 
