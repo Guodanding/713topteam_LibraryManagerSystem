@@ -21,7 +21,6 @@ private slots:
     void on_button_admin_book_1_clicked();
     void on_button_admin_book_2_clicked();
     void on_button_admin_user_1_clicked();
-    void on_button_admin_user_2_clicked();
     void on_button_admin_sys_1_clicked();
     void on_button_admin_sys_2_clicked();
     //user
