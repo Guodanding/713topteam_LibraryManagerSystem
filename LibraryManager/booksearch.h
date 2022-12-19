@@ -29,7 +29,7 @@ private:
     Ui::BookSearch *ui;
     DBOperator DBO;
     QSqlTableModel *tm;
-    QString Username = "Lee";
+    QString Username ;
     bool searchflag;
     QString bookName;
 };
