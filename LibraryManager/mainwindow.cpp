@@ -12,7 +12,7 @@ MainWindow::MainWindow(QWidget *parent)
     Login *login=new Login(this);
     login->setWindowFlag(Qt::Window);
     login->show();
-    //
+
 
 }
 

@@ -24,8 +24,7 @@ public:
 private:
     Ui::readerInformationManagerAdddatadialog *ui;
     QSqlTableModel* model;
-    QSqlRecord *record;
-    int *row;
+
 };
 
 #endif // READERINFORMATIONMANAGERADDDATADIALOG_H

@@ -41,3 +41,4 @@ QSqlQuery DBOperator::DBGetData(QString sqlstr)
 
 //DBQ=C:/Users/Administrator/Desktop/QTpractice/713topteam_LibraryManagerSystem/LibraryManager/database/LibraryData.accdb");李鹏图数据库地址
 //DBQ=C:/Qtexample/713topteam_LibraryManagerSystem/LibraryManager/database/LibraryData.accdb");郭铠槟数据库地址
+//DBQ=C:/Users/lenovo\Desktop/LibraryManagerSystem/713topteam_LibraryManagerSystem/LibraryManager/database/LibraryData.accdb");

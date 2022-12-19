@@ -43,7 +43,7 @@
     <property name="geometry">
      <rect>
       <x>20</x>
-      <y>80</y>
+      <y>110</y>
       <width>121</width>
       <height>391</height>
      </rect>
@@ -73,9 +73,23 @@
      <string>TextLabel</string>
     </property>
    </widget>
+   <widget class="QLabel" name="label">
+    <property name="geometry">
+     <rect>
+      <x>30</x>
+      <y>30</y>
+      <width>111</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>图书管理系统</string>
+    </property>
+   </widget>
    <zorder>label_bacgroud</zorder>
    <zorder>stackedWidget</zorder>
    <zorder>treeWidget</zorder>
+   <zorder>label</zorder>
   </widget>
  </widget>
  <resources/>
