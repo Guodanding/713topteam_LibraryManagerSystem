@@ -10,7 +10,31 @@ borrow_info::borrow_info(QWidget *parent) :
 {
     ui->setupUi(this);
     DBO.DBOpen();
-
+    ui->Title->setStyleSheet(
+                "QLabel{"
+                "background-color:#DDDDDD;"
+                "}");
+    ui->ExitBtn->setStyleSheet(
+                "QPushButton{"
+                "background-color:#FF0000;"
+                "border-radius:3px;"//设置圆角半径
+                "color:white;"
+                "}"
+                "QPushButton:hover{"
+                "background-color:#8B4513;"
+                "color:white;"
+                "}");
+    ui->ReturnBtn->setStyleSheet(
+                "QPushButton{"
+                "background-color:#8470FF;"
+                "border-radius:3px;"//设置圆角半径
+                "color:white;"
+                "border-width:71;"//按钮大小设置
+                "}"
+                "QPushButton:hover{"
+                "background-color:#6A5ACD;"
+                "color:white;"
+                "}");
 }
 
 borrow_info::~borrow_info()

@@ -6,8 +6,22 @@ borrow_history::borrow_history(QWidget *parent) :
     ui(new Ui::borrow_history)
 {
     ui->setupUi(this);
+    setWindowTitle("图书借阅历史查询");
     DBO.DBOpen();
-
+    ui->Title->setStyleSheet(
+                "QLabel{"
+                "background-color:#DDDDDD;"
+                "}");
+    ui->ExitBtn->setStyleSheet(
+                "QPushButton{"
+                "background-color:#FF0000;"
+                "border-radius:3px;"//设置圆角半径
+                "color:white;"
+                "}"
+                "QPushButton:hover{"
+                "background-color:#8B4513;"
+                "color:white;"
+                "}");
 }
 
 borrow_history::~borrow_history()
@@ -36,5 +50,8 @@ void borrow_history::setusername(QString username)
     ui->tableView->setModel(tm);
     ui->tableView->verticalHeader()->setVisible(false);
     ui->tableView->setEditTriggers(QAbstractItemView::NoEditTriggers);
+    int ColumnWidth[] = {155, 155, 162, 155, 165, 165};//设置列宽
+    for(int i = 0; i < tm->columnCount(); i++)
+        ui->tableView->setColumnWidth(i, ColumnWidth[i]);
 }
 

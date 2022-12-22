@@ -4,6 +4,8 @@
 #include "bookclassifymanager.h"//引入图书分类管理子窗口
 #include "userprofilemanager.h"//引入用户主页
 #include "readermanager.h"//引入用户管理子窗口
+#include "returnbook.h"//引入图书归还信息子窗口
+#include "borrowbookinformation.h"//引入借阅图书信息子窗口
 #include "login.h"//引入登录窗口
 #include "booksearch.h"//引入图书搜索
 #include "borrow_history.h"//引入用户模块借阅历史查询
@@ -210,14 +212,14 @@ void ManagerMainWindow::on_button_admin_user_1_clicked()
 void ManagerMainWindow::on_button_admin_sys_1_clicked()
 {
     removeWidget(index);
-    BookManager *BookInfoMana = new BookManager();
-    index=ui->stackedWidget->addWidget(BookInfoMana);
+    borrowBookInformation *borrowbookinformation = new borrowBookInformation();
+    index=ui->stackedWidget->addWidget(borrowbookinformation);
     ui->stackedWidget->setCurrentIndex(index);
 }
 void ManagerMainWindow::on_button_admin_sys_2_clicked()
 {
     removeWidget(index);
-    BookClassifyManager *BookClassMana = new BookClassifyManager();
-    index=ui->stackedWidget->addWidget(BookClassMana);
+    returnBook *returnbook = new returnBook();
+    index=ui->stackedWidget->addWidget(returnbook);
     ui->stackedWidget->setCurrentIndex(index);
 }

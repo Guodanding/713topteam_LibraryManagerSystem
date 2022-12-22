@@ -2,6 +2,8 @@
 #include "splashscreen.h"//启动动画
 #include <QApplication>
 #include "booksearch.h"
+#include "bookclassifymanager.h"
+#include "borrow_history.h"
 #include "bookinformationmanager.h"
 
 int main(int argc, char *argv[])
@@ -21,10 +23,12 @@ int main(int argc, char *argv[])
     MainWindow w;
     splash.finish(&splash);
     /*BookSearch booksearch;
-    booksearch.show();
-    BookClassifyManager bookclassify;
+    booksearch.show();*/
+    /*BookClassifyManager bookclassify;
     bookclassify.show();
     BookManager bookmanager;
-    bookmanager.show();*/
+    bookmanager.show();
+    borrow_history borrowhistory;
+    borrowhistory.show();*/
     return a.exec();
 }
