@@ -309,19 +309,32 @@ void BookClassifyManager::on_ModifypushButton_clicked()
 void BookClassifyManager::on_CanclepushButton_clicked()
 {
 
-    QMessageBox::StandardButton result = QMessageBox::question(this, "删除", "是否删除？");
-    if(result == QMessageBox::Yes)
-    {
-        int row = ui->BookInformationtableView->currentIndex().row();
-        model->removeRow(row);
+    QSqlTableModel *tm = new QSqlTableModel();
+    tm->setTable("BorrowInfo");//选择表
 
-        if(model->submitAll())
-            QMessageBox::about(this, "删除", "删除成功！");
+    int row = ui->BookInformationtableView->currentIndex().row();
+    QString BookName = model->record(row).value("图书名").toString();
+
+    tm->setFilter(QObject::tr("BookTitle = '%1'").arg(BookName));
+    tm->select();
+
+    if(tm->rowCount() == 0)
+    {
+        QMessageBox::StandardButton result = QMessageBox::question(this, "删除", "是否删除？");
+        if(result == QMessageBox::Yes)
+        {
+            model->removeRow(row);
+
+            if(model->submitAll())
+                QMessageBox::about(this, "删除", "删除成功！");
+            else
+                QMessageBox::critical(this, "删除", "删除失败！请重试。");
+        }
         else
-            QMessageBox::critical(this, "删除", "删除失败！请重试。");
+            return;
     }
     else
-        return;
+        QMessageBox::warning(this, "警告", "已有读者借阅此书，无法删除！");
 
     model->select();//展示所有
     for(int i = 0; i < model->rowCount(); i++)//设置按钮
