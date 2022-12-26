@@ -10,6 +10,7 @@
 #include "booksearch.h"//引入图书搜索
 #include "borrow_history.h"//引入用户模块借阅历史查询
 #include "borrow_info.h"//引入用户模块图书借阅信息
+#include "returnbook.h"//引入管理员图书归还历史
 #include "QMovie"
 #include "QLabel"
 #include "QPushButton"
