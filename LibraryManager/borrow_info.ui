@@ -6,60 +6,99 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>777</width>
-    <height>452</height>
+    <width>1000</width>
+    <height>700</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Form</string>
   </property>
-  <widget class="QLabel" name="label">
-   <property name="geometry">
-    <rect>
-     <x>50</x>
-     <y>40</y>
-     <width>111</width>
-     <height>20</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>借阅信息如下：</string>
-   </property>
-  </widget>
   <widget class="QTableView" name="tableView">
    <property name="geometry">
     <rect>
-     <x>80</x>
-     <y>90</y>
-     <width>541</width>
-     <height>241</height>
+     <x>20</x>
+     <y>100</y>
+     <width>961</width>
+     <height>541</height>
     </rect>
    </property>
   </widget>
   <widget class="QPushButton" name="ReturnBtn">
    <property name="geometry">
     <rect>
-     <x>300</x>
-     <y>380</y>
-     <width>93</width>
-     <height>29</height>
+     <x>820</x>
+     <y>650</y>
+     <width>71</width>
+     <height>31</height>
     </rect>
    </property>
+   <property name="font">
+    <font>
+     <pointsize>10</pointsize>
+     <italic>true</italic>
+     <bold>true</bold>
+    </font>
+   </property>
    <property name="text">
-    <string>还书</string>
+    <string>还书📚</string>
    </property>
   </widget>
   <widget class="QPushButton" name="ExitBtn">
    <property name="geometry">
     <rect>
-     <x>650</x>
-     <y>20</y>
-     <width>91</width>
-     <height>29</height>
+     <x>910</x>
+     <y>650</y>
+     <width>71</width>
+     <height>31</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>10</pointsize>
+     <italic>true</italic>
+     <bold>true</bold>
+    </font>
    </property>
    <property name="text">
     <string>退出</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="Title">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>1001</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>13</pointsize>
+     <italic>false</italic>
+     <bold>true</bold>
+    </font>
+   </property>
+   <property name="text">
+    <string>  图书借阅信息</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_2">
+   <property name="geometry">
+    <rect>
+     <x>20</x>
+     <y>60</y>
+     <width>161</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>13</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string>查询信息如下：</string>
    </property>
   </widget>
  </widget>

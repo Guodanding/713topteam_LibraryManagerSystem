@@ -13,6 +13,7 @@ BookSearch::BookSearch(QWidget *parent) :
     DBO.DBOpen();
     tm = new QSqlTableModel(this);
     tm->setEditStrategy(QSqlTableModel::OnManualSubmit);
+
     ui->ExitBtn->setStyleSheet( "QPushButton{"
                                 "background-color:#8470FF;"
                                 "border-radius:3px;"//设置圆角半径
@@ -22,6 +23,34 @@ BookSearch::BookSearch(QWidget *parent) :
                                 "background-color:#FF8C00;"
                                 "color:white;"
                                 "}");
+    ui->SearchBtn->setStyleSheet(
+                "QPushButton{"
+                "background-color:#FFD700;"
+                "border-radius:3px;"//设置圆角半径
+                "color:white;"
+                "}"
+                "QPushButton:hover{"
+                "background-color:#DAA520;"
+                "color:white;"
+                "}");
+    ui->BorrowBtn->setStyleSheet(
+                "QPushButton{"
+                "background-color:#8470FF;"
+                "border-radius:3px;"//设置圆角半径
+                "color:white;"
+                "border-width:71;"//按钮大小设置
+                "}"
+                "QPushButton:hover{"
+                "background-color:#6A5ACD;"
+                "color:white;"
+                "}");
+    ui->Title->setStyleSheet(
+                "QLabel{"
+                "background-color:#DDDDDD;"
+                "}");
+
+    ui->lineEdit_bookname->setPlaceholderText("请输入图书名");
+    ui->lineEdit_author->setPlaceholderText("请输入作者名");
 
 }
 
@@ -36,6 +65,7 @@ void BookSearch::on_SearchBtn_clicked()
     QString author = ui->lineEdit_author->text().trimmed();
     tm->setTable("booksearch");
     //tm->setFilter(QObject::tr("图书名 like '%%1%'").arg(bookName));
+
     if(bookName == "")
     {
         tm->setFilter(QObject::tr("作者 like '%%1%'").arg(author));
@@ -56,6 +86,11 @@ void BookSearch::on_SearchBtn_clicked()
     ui->tableView->verticalHeader()->setVisible(false);
     ui->tableView->setEditTriggers(QAbstractItemView::NoEditTriggers);
     searchflag = true;
+    ui->tableView->setAlternatingRowColors(true); // 表格数据行隔行变色
+    ui->tableView->setSelectionMode(QAbstractItemView::SingleSelection); // 单个数据格
+    int ColumnWidth[] = { 70, 90, 70, 120, 120, 140, 160, 120, 65};//设置列宽
+    for(int i = 0; i < tm->columnCount(); i++)
+        ui->tableView->setColumnWidth(i, ColumnWidth[i]);
     }
     else
     {

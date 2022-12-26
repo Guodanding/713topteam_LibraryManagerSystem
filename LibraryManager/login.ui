@@ -14,15 +14,15 @@
    <string>Form</string>
   </property>
   <property name="styleSheet">
-   <string notr="true">background-color: rgb(255, 255, 255);</string>
+   <string notr="true">background-color: rgb(246, 255, 254);</string>
   </property>
   <widget class="QLabel" name="label_image">
    <property name="geometry">
     <rect>
-     <x>10</x>
-     <y>10</y>
-     <width>361</width>
-     <height>571</height>
+     <x>9</x>
+     <y>9</y>
+     <width>391</width>
+     <height>581</height>
     </rect>
    </property>
    <property name="text">
@@ -48,15 +48,15 @@
   <widget class="QLabel" name="label_welcome">
    <property name="geometry">
     <rect>
-     <x>420</x>
-     <y>100</y>
-     <width>211</width>
+     <x>440</x>
+     <y>80</y>
+     <width>181</width>
      <height>41</height>
     </rect>
    </property>
    <property name="styleSheet">
-    <string notr="true">font: 87 20pt &quot;Arial Black&quot;;
-background-color: rgb(255, 255, 255);
+    <string notr="true">font: 87 23pt &quot;Arial Black&quot;;
+background-color: rgb(246, 255, 254);
 color: rgb(170, 255, 255);</string>
    </property>
    <property name="text">
@@ -66,7 +66,7 @@ color: rgb(170, 255, 255);</string>
   <widget class="QWidget" name="verticalLayoutWidget">
    <property name="geometry">
     <rect>
-     <x>420</x>
+     <x>450</x>
      <y>180</y>
      <width>281</width>
      <height>131</height>
@@ -78,11 +78,16 @@ color: rgb(170, 255, 255);</string>
       <property name="enabled">
        <bool>true</bool>
       </property>
+      <property name="font">
+       <font>
+        <pointsize>11</pointsize>
+       </font>
+      </property>
       <property name="styleSheet">
-       <string notr="true">background-color: rgb(255, 255, 255);</string>
+       <string notr="true"/>
       </property>
       <property name="placeholderText">
-       <string>please input your ID</string>
+       <string>请输入您的用户名</string>
       </property>
      </widget>
     </item>
@@ -93,6 +98,11 @@ color: rgb(170, 255, 255);</string>
         <horstretch>0</horstretch>
         <verstretch>0</verstretch>
        </sizepolicy>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>11</pointsize>
+       </font>
       </property>
       <property name="tabletTracking">
        <bool>true</bool>
@@ -107,7 +117,7 @@ color: rgb(170, 255, 255);</string>
        <enum>QLineEdit::Password</enum>
       </property>
       <property name="placeholderText">
-       <string>please input your password</string>
+       <string>请输入您的密码</string>
       </property>
      </widget>
     </item>
@@ -116,7 +126,7 @@ color: rgb(170, 255, 255);</string>
   <widget class="QWidget" name="horizontalLayoutWidget">
    <property name="geometry">
     <rect>
-     <x>420</x>
+     <x>449</x>
      <y>390</y>
      <width>281</width>
      <height>111</height>
@@ -125,13 +135,27 @@ color: rgb(170, 255, 255);</string>
    <layout class="QHBoxLayout" name="horizontalLayout">
     <item>
      <widget class="QPushButton" name="Button_login">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="font">
+       <font>
+        <family>Bahnschrift Light</family>
+        <pointsize>10</pointsize>
+        <italic>false</italic>
+        <bold>false</bold>
+       </font>
+      </property>
       <property name="styleSheet">
        <string notr="true">background-color: rgb(29, 123, 255);
 color: rgb(255, 255, 255);
-font: 25 9pt &quot;Bahnschrift Light&quot;;</string>
+font: 25 10pt &quot;Bahnschrift Light&quot;;</string>
       </property>
       <property name="text">
-       <string>sign in</string>
+       <string>登录</string>
       </property>
      </widget>
     </item>
@@ -142,7 +166,7 @@ font: 25 9pt &quot;Bahnschrift Light&quot;;</string>
       </property>
       <property name="sizeHint" stdset="0">
        <size>
-        <width>208</width>
+        <width>40</width>
         <height>20</height>
        </size>
       </property>
@@ -150,13 +174,21 @@ font: 25 9pt &quot;Bahnschrift Light&quot;;</string>
     </item>
     <item>
      <widget class="QPushButton" name="Button_signup">
+      <property name="font">
+       <font>
+        <family>Bahnschrift Light</family>
+        <pointsize>10</pointsize>
+        <italic>false</italic>
+        <bold>false</bold>
+       </font>
+      </property>
       <property name="styleSheet">
        <string notr="true">background-color: rgb(29, 123, 255);
 color: rgb(255, 255, 255);
-font: 25 9pt &quot;Bahnschrift Light&quot;;</string>
+font: 25 10pt &quot;Bahnschrift Light&quot;;</string>
       </property>
       <property name="text">
-       <string>sign up</string>
+       <string>注册</string>
       </property>
      </widget>
     </item>
@@ -165,10 +197,10 @@ font: 25 9pt &quot;Bahnschrift Light&quot;;</string>
   <widget class="QLabel" name="label_gif">
    <property name="geometry">
     <rect>
-     <x>620</x>
+     <x>630</x>
      <y>10</y>
-     <width>151</width>
-     <height>141</height>
+     <width>161</width>
+     <height>161</height>
     </rect>
    </property>
    <property name="styleSheet">
@@ -181,7 +213,7 @@ font: 25 9pt &quot;Bahnschrift Light&quot;;</string>
   <widget class="QWidget" name="horizontalLayoutWidget_2">
    <property name="geometry">
     <rect>
-     <x>420</x>
+     <x>450</x>
      <y>310</y>
      <width>281</width>
      <height>80</height>
@@ -197,28 +229,7 @@ font: 25 9pt &quot;Bahnschrift Light&quot;;</string>
        </sizepolicy>
       </property>
       <property name="styleSheet">
-       <string notr="true">QRadioButton{
-	font: 10pt &quot;Microsoft YaHei UI&quot;;
-    spacing: 2px;
-    color: black;
-}
-QRadioButton::indicator {
-    width: 45px;
-    height: 30px;
-}
-QRadioButton::indicator:unchecked {
-    image: url(:/images/radio_button_left.png);
-}
-
-QRadioButton::indicator:unchecked:pressed {
-    image: url(:/images/radio_button_right.png);
-}
-QRadioButton::indicator:checked {
-     image: url(:/images/radio_button_right.png);
-}
-QRadioButton::indicator:checked:pressed {
-     image: url(:/images/radio_button_left.png);
-}</string>
+       <string notr="true"/>
       </property>
       <property name="text">
        <string>用户登录</string>
@@ -234,28 +245,7 @@ QRadioButton::indicator:checked:pressed {
        </sizepolicy>
       </property>
       <property name="styleSheet">
-       <string notr="true">QRadioButton{
-	font: 10pt &quot;Microsoft YaHei UI&quot;;
-    spacing: 2px;
-    color: black;
-}
-QRadioButton::indicator {
-    width: 45px;
-    height: 30px;
-}
-QRadioButton::indicator:unchecked {
-    image: url(:/images/radio_button_left.png);
-}
-
-QRadioButton::indicator:unchecked:pressed {
-    image: url(:/images/radio_button_right.png);
-}
-QRadioButton::indicator:checked {
-     image: url(:/images/radio_button_right.png);
-}
-QRadioButton::indicator:checked:pressed {
-     image: url(:/images/radio_button_left.png);
-}</string>
+       <string notr="true"/>
       </property>
       <property name="text">
        <string>管理员登录</string>
@@ -264,6 +254,13 @@ QRadioButton::indicator:checked:pressed {
     </item>
    </layout>
   </widget>
+  <zorder>label_image</zorder>
+  <zorder>label_tip</zorder>
+  <zorder>verticalLayoutWidget</zorder>
+  <zorder>horizontalLayoutWidget</zorder>
+  <zorder>label_gif</zorder>
+  <zorder>horizontalLayoutWidget_2</zorder>
+  <zorder>label_welcome</zorder>
  </widget>
  <resources/>
  <connections/>

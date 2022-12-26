@@ -13,7 +13,7 @@ Login::Login(QWidget *parent) :
 {
     ui->setupUi(this);
     //设置图片背景
-    QPixmap *pix =new QPixmap(":/images/loginBackground.png");
+    QPixmap *pix =new QPixmap(":/images/loginBackground.jpg");
     QSize size=ui->label_image->size();
     ui->label_image->setPixmap(pix->scaled(size));
     //设置图片阴影效果
@@ -27,11 +27,55 @@ Login::Login(QWidget *parent) :
     // 显示gif图片
     ui->label_gif->setWindowFlag(Qt::FramelessWindowHint);// 设置无边框
     ui->label_gif->setWindowOpacity(0.9);// 设置透明度
-    static QMovie movie(":/images/2.gif");
+    static QMovie movie(":/images/login.gif");
     ui->label_gif->setMovie(&movie);
     ui->label_gif->setScaledContents(true);
     movie.start();
-
+    //style
+    ui->radioButton_user->setStyleSheet(
+                "QRadioButton{"
+                    "font: 10pt 'Microsoft YaHei UI';"
+                    "spacing: 2px;"
+                    "color: black;"
+                "}"
+                "QRadioButton::indicator {"
+                    "width: 45px;"
+                    "height: 30px;"
+                "}"
+                "QRadioButton::indicator:unchecked {"
+                    "image: url(:/images/radio_button_left.png);"
+                "}"
+                "QRadioButton::indicator:unchecked:pressed {"
+                    "image: url(:/images/radio_button_right.png);"
+                "}"
+                "QRadioButton::indicator:checked {"
+                     "image: url(:/images/radio_button_right.png);"
+                "}"
+                "QRadioButton::indicator:checked:pressed {"
+                     "image: url(:/images/radio_button_left.png);"
+                "}");
+    ui->radioButton_admin->setStyleSheet(
+                "QRadioButton{"
+                    "font: 10pt 'Microsoft YaHei UI';"
+                    "spacing: 2px;"
+                    "color: black;"
+                "}"
+                "QRadioButton::indicator {"
+                    "width: 45px;"
+                    "height: 30px;"
+                "}"
+                "QRadioButton::indicator:unchecked {"
+                    "image: url(:/images/radio_button_left.png);"
+                "}"
+                "QRadioButton::indicator:unchecked:pressed {"
+                    "image: url(:/images/radio_button_right.png);"
+                "}"
+                "QRadioButton::indicator:checked {"
+                     "image: url(:/images/radio_button_right.png);"
+                "}"
+                "QRadioButton::indicator:checked:pressed {"
+                     "image: url(:/images/radio_button_left.png);"
+                "}");
 }
 
 Login::~Login()
@@ -149,5 +193,6 @@ void Login::on_lineEdit_password_returnPressed()
 {
     ui->lineEdit_password->grabKeyboard();
 }
+
 
 
