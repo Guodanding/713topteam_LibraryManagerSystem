@@ -25,6 +25,14 @@ private slots:
 
     void on_ExitBtn_clicked();
 
+    void on_radioButton_publiser_clicked();
+
+    void on_radioButton_booktype_clicked();
+
+    void on_radioButton_author_clicked();
+
+    void on_radioButton_booktitle_clicked();
+
 private:
     Ui::BookSearch *ui;
     DBOperator DBO;
@@ -32,6 +40,10 @@ private:
     QString Username ;
     bool searchflag;
     QString bookName;
+    bool authorSelected = false;
+    bool typeSelected = false;
+    bool publisherSelected = false;
+    bool titleSelected = false;
 };
 
 #endif // BOOKSEARCH_H

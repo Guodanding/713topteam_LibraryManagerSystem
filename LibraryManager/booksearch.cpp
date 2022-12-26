@@ -3,6 +3,7 @@
 #include <qsqlrecord.h>
 #include <qmessagebox.h>
 #include <QDate>
+#include <QSqlQuery>
 
 BookSearch::BookSearch(QWidget *parent) :
     QWidget(parent),
@@ -49,9 +50,7 @@ BookSearch::BookSearch(QWidget *parent) :
                 "background-color:#DDDDDD;"
                 "}");
 
-    ui->lineEdit_bookname->setPlaceholderText("请输入图书名");
-    ui->lineEdit_author->setPlaceholderText("请输入作者名");
-
+    ui->lineEdit_bookname->setPlaceholderText("请输入查找信息");
 }
 
 BookSearch::~BookSearch()
@@ -62,22 +61,26 @@ BookSearch::~BookSearch()
 void BookSearch::on_SearchBtn_clicked()
 {
     bookName = ui->lineEdit_bookname->text().trimmed();
-    QString author = ui->lineEdit_author->text().trimmed();
+    QString search_info = ui->lineEdit_bookname->text().trimmed();
     tm->setTable("booksearch");
-    //tm->setFilter(QObject::tr("图书名 like '%%1%'").arg(bookName));
 
-    if(bookName == "")
+    if(authorSelected)
     {
-        tm->setFilter(QObject::tr("作者 like '%%1%'").arg(author));
+        tm->setFilter(QObject::tr("作者 like '%%1%'").arg(search_info));
     }
-    else if(author == "")
+    if(publisherSelected)
     {
-        tm->setFilter(QObject::tr("图书名 like '%%1%'").arg(bookName));
+        tm->setFilter(QObject::tr("出版社 like '%%1%'").arg(search_info));
     }
-    else
+    if(titleSelected)
     {
-        tm->setFilter(QObject::tr("(图书名 like '%1%') OR (作者 like '%2%')").arg(bookName).arg(author));
+        tm->setFilter(QObject::tr("图书名 like '%%1%'").arg(search_info));
     }
+    if(typeSelected)
+    {
+        tm->setFilter(QObject::tr("图书类型 like '%%1%'").arg(search_info));
+    }
+
     tm->select();
     int row = tm->rowCount();
     if(row > 0)
@@ -165,13 +168,52 @@ void BookSearch::on_BorrowBtn_clicked()
    tm->setData(tm->index(0,7),Booknum);
    tm->submitAll();
 
-   tm->clear();
+
+   bookName = ui->lineEdit_bookname->text().trimmed();
+   QString search_info = ui->lineEdit_bookname->text().trimmed();
+   tm->setTable("booksearch");
+
+   if(authorSelected)
+   {
+       tm->setFilter(QObject::tr("作者 like '%%1%'").arg(search_info));
    }
+   if(publisherSelected)
+   {
+       tm->setFilter(QObject::tr("出版社 like '%%1%'").arg(search_info));
+   }
+   if(titleSelected)
+   {
+       tm->setFilter(QObject::tr("图书名 like '%%1%'").arg(search_info));
+   }
+   if(typeSelected)
+   {
+       tm->setFilter(QObject::tr("图书类型 like '%%1%'").arg(search_info));
+   }
+
+
+   tm->select();
+   int row = tm->rowCount();
+   if(row > 0)
+   {
+   ui->tableView->setModel(tm);
+   ui->tableView->verticalHeader()->setVisible(false);
+   ui->tableView->setEditTriggers(QAbstractItemView::NoEditTriggers);
+   searchflag = true;
+   ui->tableView->setAlternatingRowColors(true); // 表格数据行隔行变色
+   ui->tableView->setSelectionMode(QAbstractItemView::SingleSelection); // 单个数据格
+   int ColumnWidth[] = { 70, 90, 70, 120, 120, 140, 160, 120, 65};//设置列宽
+   for(int i = 0; i < tm->columnCount(); i++)
+       ui->tableView->setColumnWidth(i, ColumnWidth[i]);
+   }
+
+
    else
    {
        QMessageBox::warning(this,"警告","该书已被借阅！");
    }
-    }
+   }
+   }
+
 }
 
 
@@ -183,6 +225,49 @@ void BookSearch::on_ExitBtn_clicked()
 void BookSearch::setusername(QString username)
 {
     Username = username;
+    QString sqlstr = QString("SELECT score FROM user WHERE username = '%1';").arg(Username);
+    QSqlQuery query(sqlstr);
+    query.next();
+    QString score = query.value(0).toString();
+    qDebug()<<score;
+    ui->label_score->setText(score);
 }
 
+
+
+void BookSearch::on_radioButton_publiser_clicked()
+{
+    publisherSelected = true;
+    typeSelected = false;
+    authorSelected = false;
+    titleSelected = false;
+}
+
+
+
+void BookSearch::on_radioButton_booktype_clicked()
+{
+    publisherSelected = false;
+    typeSelected = true;
+    authorSelected = false;
+    titleSelected = false;
+}
+
+
+void BookSearch::on_radioButton_author_clicked()
+{
+    publisherSelected = false;
+    typeSelected = false;
+    authorSelected = true;
+    titleSelected = false;
+}
+
+
+void BookSearch::on_radioButton_booktitle_clicked()
+{
+    publisherSelected = false;
+    typeSelected = false;
+    authorSelected = false;
+    titleSelected = true;
+}
 
