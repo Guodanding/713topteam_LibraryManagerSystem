@@ -101,6 +101,19 @@
     <string>查询信息如下：</string>
    </property>
   </widget>
+  <widget class="QPushButton" name="RenewBtn">
+   <property name="geometry">
+    <rect>
+     <x>700</x>
+     <y>650</y>
+     <width>93</width>
+     <height>29</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>续借</string>
+   </property>
+  </widget>
  </widget>
  <resources/>
  <connections/>

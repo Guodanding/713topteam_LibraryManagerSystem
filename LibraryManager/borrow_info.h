@@ -23,6 +23,8 @@ private slots:
 
     void on_ExitBtn_clicked();
 
+    void on_RenewBtn_clicked();
+
 private:
     Ui::borrow_info *ui;
     DBOperator DBO;

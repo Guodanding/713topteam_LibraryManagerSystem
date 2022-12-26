@@ -149,3 +149,61 @@ void borrow_info::setusername(QString username)
     }
 }
 
+
+
+void borrow_info::on_RenewBtn_clicked()
+{
+    int row = ui->tableView->currentIndex().row();
+    if(tm->rowCount() == 0)
+    {
+        QMessageBox::warning(this,"提示","当前无可续借书籍！");
+    }
+    else
+    {
+
+        QMessageBox::information(this,"续借确认","续借成功！");
+
+        QSqlRecord record = tm->record(row);
+        QString Booknumber = record.value("Booknum").toString();
+        QString BookTitle = record.value("BookTitle").toString();
+        QString Exturndate = record.value("Expiredate").toString();
+        QDate date = QDate::fromString(Exturndate,"yyyy-MM-dd");
+        date = date.addMonths(1);
+        qDebug()<<date;
+        Exturndate = date.toString("yyyy-MM-dd");
+        qDebug()<<Exturndate;
+        record.setValue("Expiredate",Exturndate);
+        tm->setRecord(row,record);
+        tm->submitAll();
+
+
+        tm->setTable("Log");
+        tm->setEditStrategy(QSqlTableModel::OnManualSubmit);
+        int Rowcount = tm->rowCount();
+        tm->insertRow(Rowcount);
+        date = QDate::currentDate();
+        QString Nowdate = date.toString();
+        QString log = "用户"+Username+"在"+Nowdate+"续借"+Booknumber+BookTitle;
+        tm->setData(tm->index(row,1),log);
+        tm->submitAll();
+
+        tm->setTable("BorrowInfo");
+        tm->setFilter(QObject::tr("Username = '%1'").arg(Username));
+        tm->select();
+        tm->setHeaderData(0, Qt::Horizontal, "用户名");
+        tm->setHeaderData(1, Qt::Horizontal, "书本编号");
+        tm->setHeaderData(2, Qt::Horizontal, "书名");
+        tm->setHeaderData(3, Qt::Horizontal, "借书时间");
+        tm->setHeaderData(4, Qt::Horizontal, "到期时间");
+        ui->tableView->setModel(tm);
+        ui->tableView->verticalHeader()->setVisible(false);
+        ui->tableView->setEditTriggers(QAbstractItemView::NoEditTriggers);
+
+        if(tm->rowCount() == 0)
+        {
+            tm->clear();
+        }
+    }
+
+}
+
