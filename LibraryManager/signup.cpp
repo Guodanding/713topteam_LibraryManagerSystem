@@ -68,6 +68,7 @@ void SignUP::on_pushButton_register_clicked()//确认注册
                     model->setData(model->index(curRow,3),password);
                     model->setData(model->index(curRow,4),phone);
                     model->setData(model->index(curRow,5),email);
+                    model->setData(model->index(curRow,6),100);
                     //判断语句结果是否成功
                     if(model->submitAll())
                     {
