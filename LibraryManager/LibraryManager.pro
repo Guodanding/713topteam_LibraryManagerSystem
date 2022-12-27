@@ -24,6 +24,7 @@ HEADERS += \
     managermainwindow.h \
     signup.h \
     splashscreen.h \
+    userhelp.h \
     userprofilemanager.h\
     readermanager.h\
     readerinformationmanageradddatadialog.h\
@@ -47,6 +48,7 @@ SOURCES += \
     managermainwindow.cpp \
     signup.cpp \
     splashscreen.cpp \
+    userhelp.cpp \
     userprofilemanager.cpp\
     readermanager.cpp\
     readerinformationmanageradddatadialog.cpp\
@@ -63,6 +65,7 @@ FORMS += \
     readermanager.ui\
     readerinformationmanageradddatadialog.ui\
     readerinformationmanagermodifydialog.ui\
+    userhelp.ui \
     userprofilemanager.ui\
     booksearch.ui \
     borrow_history.ui \

@@ -18,15 +18,10 @@ public:
     void keyReleaseEvent( QKeyEvent *k );
 private slots:
     void on_Button_login_clicked();
-
     void on_Button_signup_clicked();
-
     void on_radioButton_user_clicked();
-
     void on_radioButton_admin_clicked();
-
     void on_lineEdit_username_returnPressed();
-
     void on_lineEdit_password_returnPressed();
 
 
