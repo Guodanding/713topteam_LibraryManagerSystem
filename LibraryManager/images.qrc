@@ -1,17 +1,17 @@
 <RCC>
     <qresource prefix="/">
-        <file>images/exitButton.png</file>
-        <file>images/loginBackground.png</file>
-        <file>images/registerBackground.png</file>
-        <file>images/1.gif</file>
-        <file>images/2.gif</file>
         <file>images/3.gif</file>
-        <file>images/4.gif</file>
         <file>images/5.gif</file>
-        <file>images/6.gif</file>
         <file>images/7.gif</file>
         <file>images/8.gif</file>
         <file>images/radio_button_left.png</file>
         <file>images/radio_button_right.png</file>
+        <file>images/loginBackground.jpg</file>
+        <file>images/login.gif</file>
+        <file>images/start.png</file>
+        <file>images/registerBackground.jpg</file>
+        <file>images/wrong.ico</file>
+        <file>images/right.ico</file>
+        <file>images/logout.png</file>
     </qresource>
 </RCC>

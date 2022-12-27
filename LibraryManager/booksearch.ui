@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1191</width>
-    <height>826</height>
+    <width>1000</width>
+    <height>700</height>
    </rect>
   </property>
   <property name="font">
@@ -168,15 +168,20 @@
   <widget class="QWidget" name="horizontalLayoutWidget">
    <property name="geometry">
     <rect>
-     <x>130</x>
-     <y>80</y>
+     <x>70</x>
+     <y>120</y>
      <width>651</width>
-     <height>80</height>
+     <height>31</height>
     </rect>
    </property>
    <layout class="QHBoxLayout" name="horizontalLayout">
     <item>
      <widget class="QRadioButton" name="radioButton_booktype">
+      <property name="font">
+       <font>
+        <pointsize>13</pointsize>
+       </font>
+      </property>
       <property name="text">
        <string>按图书类型搜索</string>
       </property>
@@ -184,6 +189,11 @@
     </item>
     <item>
      <widget class="QRadioButton" name="radioButton_publiser">
+      <property name="font">
+       <font>
+        <pointsize>13</pointsize>
+       </font>
+      </property>
       <property name="text">
        <string>按出版社搜索</string>
       </property>
@@ -191,6 +201,11 @@
     </item>
     <item>
      <widget class="QRadioButton" name="radioButton_author">
+      <property name="font">
+       <font>
+        <pointsize>13</pointsize>
+       </font>
+      </property>
       <property name="text">
        <string>按作者搜索</string>
       </property>
@@ -198,6 +213,11 @@
     </item>
     <item>
      <widget class="QRadioButton" name="radioButton_booktitle">
+      <property name="font">
+       <font>
+        <pointsize>13</pointsize>
+       </font>
+      </property>
       <property name="text">
        <string>按书名搜索</string>
       </property>
@@ -213,6 +233,11 @@
      <width>69</width>
      <height>20</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>13</pointsize>
+    </font>
    </property>
    <property name="text">
     <string>信誉分：</string>

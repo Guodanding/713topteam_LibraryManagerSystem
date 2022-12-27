@@ -1,17 +1,14 @@
 #include "mainwindow.h"
 #include "splashscreen.h"//启动动画
 #include <QApplication>
-#include "booksearch.h"
-#include "bookclassifymanager.h"
-#include "borrow_history.h"
-#include "bookinformationmanager.h"
-
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
     //启动动画
-    QPixmap pixmap(":/images/loginBackground.png");
-    SplashScreen splash(pixmap);
+    QPixmap pixmap(":/images/start.png");
+    QPixmap pixmap1;
+    pixmap1 = pixmap.scaled(600, 350);
+    SplashScreen splash(pixmap1);
     splash.setRange(0,100);//设置进度条内容长度
     splash.show();
     int i=0;
@@ -22,13 +19,5 @@ int main(int argc, char *argv[])
     //splash.processEvents();
     MainWindow w;
     splash.finish(&splash);
-    /*BookSearch booksearch;
-    booksearch.show();*/
-    /*BookClassifyManager bookclassify;
-    bookclassify.show();
-    BookManager bookmanager;
-    bookmanager.show();
-    borrow_history borrowhistory;
-    borrowhistory.show();*/
     return a.exec();
 }
