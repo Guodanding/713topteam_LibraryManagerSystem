@@ -3,6 +3,8 @@
 
 #include <QSqlTableModel>
 #include <QDialog>
+#include <QAbstractButton>
+#include <QPushButton>
 
 
 
@@ -15,7 +17,7 @@ class readerInformationManagerAdddatadialog : public QDialog
     Q_OBJECT
 
 private slots:
-    void on_buttonBox_accepted();
+    void on_buttonBox_clicked(QAbstractButton *button);
 
 public:
     explicit readerInformationManagerAdddatadialog(QWidget *parent = nullptr, QSqlTableModel *_model = nullptr);

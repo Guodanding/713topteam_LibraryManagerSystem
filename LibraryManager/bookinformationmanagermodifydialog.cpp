@@ -59,16 +59,16 @@ void BookInformationManagerModifyDialog::on_buttonBox_accepted()
     QString Publisher = ui->PublisherlineEdit->text();
     QString PublishTime = ui->PublishTimelineEdit->text();
 
-    model->setData(model->index(0, 0), QVariant(BookID));
-    model->setData(model->index(0, 1), QVariant(BookNum));
-    model->setData(model->index(0, 2), QVariant(BookName));
-    model->setData(model->index(0, 3), QVariant(Writer));
-    model->setData(model->index(0, 4), QVariant(BookType));
-    model->setData(model->index(0, 5), QVariant(Publisher));
-    model->setData(model->index(0, 6), QVariant(PublishTime));
-    model->setData(model->index(0, 7), QVariant(Number));
-    model->setData(model->index(0, 8), QVariant(""));
-    model->setData(model->index(0, 9), QVariant(""));
+    model->setData(model->index(*row, 0), QVariant(BookID));
+    model->setData(model->index(*row, 1), QVariant(BookNum));
+    model->setData(model->index(*row, 2), QVariant(BookName));
+    model->setData(model->index(*row, 3), QVariant(Writer));
+    model->setData(model->index(*row, 4), QVariant(BookType));
+    model->setData(model->index(*row, 5), QVariant(Publisher));
+    model->setData(model->index(*row, 6), QVariant(PublishTime));
+    model->setData(model->index(*row, 7), QVariant(Number));
+    model->setData(model->index(*row, 8), QVariant(""));
+    model->setData(model->index(*row, 9), QVariant(""));
 
     model->submitAll();
 }

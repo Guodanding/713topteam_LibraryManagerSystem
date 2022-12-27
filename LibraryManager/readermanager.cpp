@@ -30,12 +30,12 @@ void readerManager::setWinStyle()
     ui->readerInformationtableView->setSelectionMode(QAbstractItemView::SingleSelection); // 单个数据格
     ui->AddpushButton->setStyleSheet(
                 "QPushButton{"
-                "background-color:#00FF7F;"
+                "background-color:#FFA500;"
                 "border-radius:3px;"//设置圆角半径
                 "color:white;"
                 "}"
                 "QPushButton:hover{"
-                "background-color:#00FF7F;"
+                "background-color:#FF8C00;"
                 "color:white;"
                 "}");
     ui->AllpushButton->setStyleSheet(
@@ -58,6 +58,10 @@ void readerManager::setWinStyle()
                 "background-color:#DAA520;"
                 "color:white;"
                 "}");
+    ui->Title->setStyleSheet(
+                "QLabel{"
+                "background-color:#DDDDDD;"
+                "}");
     ui->readerSearchLineEdit->setPlaceholderText("搜索用户名");
     ui->phoneSearchLineEdit->setPlaceholderText("搜索手机号");
     ui->emailSearchLineEdit->setPlaceholderText("搜索电子邮箱");
@@ -72,7 +76,7 @@ void readerManager::databaseOperate()
 
     ui->readerInformationtableView->setModel(model);//连接数据库
     ui->readerInformationtableView->setEditTriggers(QAbstractItemView::NoEditTriggers); //只读
-    int ColumnWidth[] = {50, 100, 100, 160, 200, 200, 50, 50};//设置列宽
+    int ColumnWidth[] = {50, 100, 100, 150, 160, 170, 70, 70, 70};//设置列宽
     for(int i = 0; i < model->columnCount(); i++)
         ui->readerInformationtableView->setColumnWidth(i, ColumnWidth[i]);
     for(int i = 0; i < model->rowCount(); i++)//设置按钮
@@ -109,8 +113,8 @@ void readerManager::databaseOperate()
                     "background-color:#6A5ACD;"
                     "color:white;"
                     "}");
-        ui->readerInformationtableView->setIndexWidget(model->index(i, 6), modifypushButton);
-        ui->readerInformationtableView->setIndexWidget(model->index(i, 7), deletepushButton);
+        ui->readerInformationtableView->setIndexWidget(model->index(i, 7), modifypushButton);
+        ui->readerInformationtableView->setIndexWidget(model->index(i, 8), deletepushButton);
 
         // 添加槽
         connect(modifypushButton, SIGNAL(clicked()), this, SLOT(on_modifypushButton_clicked()));
@@ -160,8 +164,8 @@ void readerManager::on_AddpushButton_clicked()
                     "background-color:#6A5ACD;"
                     "color:white;"
                     "}");
-        ui->readerInformationtableView->setIndexWidget(model->index(i, 6), modifypushButton);
-        ui->readerInformationtableView->setIndexWidget(model->index(i, 7), deletepushButton);
+        ui->readerInformationtableView->setIndexWidget(model->index(i, 7), modifypushButton);
+        ui->readerInformationtableView->setIndexWidget(model->index(i, 8), deletepushButton);
 
         // 添加槽
         connect(modifypushButton, SIGNAL(clicked()), this, SLOT(on_modifypushButton_clicked()));
@@ -221,8 +225,8 @@ void readerManager::on_deletepushButton_clicked()
                     "background-color:#FF3030;"
                     "color:white;"
                     "}");
-        ui->readerInformationtableView->setIndexWidget(model->index(i, 6), modifypushButton);
-        ui->readerInformationtableView->setIndexWidget(model->index(i, 7), deletepushButton);
+        ui->readerInformationtableView->setIndexWidget(model->index(i, 7), modifypushButton);
+        ui->readerInformationtableView->setIndexWidget(model->index(i, 8), deletepushButton);
 
         // 添加槽
         connect(modifypushButton, SIGNAL(clicked()), this, SLOT(on_modifypushButton_clicked()));
@@ -238,6 +242,8 @@ void readerManager::on_modifypushButton_clicked()
     int *row = &r;
     readerInformationManagerModifydialog readerInformationManagerModifyDialog(this, model, record, row);
     readerInformationManagerModifyDialog.exec();
+
+    model->select();
 
     for(int i = 0; i < model->rowCount(); i++)//设置按钮
     {
@@ -273,8 +279,8 @@ void readerManager::on_modifypushButton_clicked()
                     "background-color:#6A5ACD;"
                     "color:white;"
                     "}");
-        ui->readerInformationtableView->setIndexWidget(model->index(i, 6), modifypushButton);
-        ui->readerInformationtableView->setIndexWidget(model->index(i, 7), deletepushButton);
+        ui->readerInformationtableView->setIndexWidget(model->index(i, 7), modifypushButton);
+        ui->readerInformationtableView->setIndexWidget(model->index(i, 8), deletepushButton);
 
         // 添加槽
         connect(modifypushButton, SIGNAL(clicked()), this, SLOT(on_modifypushButton_clicked()));
@@ -336,8 +342,8 @@ void readerManager::on_searchpushButton_clicked()
                        "background-color:#FF3030;"
                        "color:white;"
                        "}");
-           ui->readerInformationtableView->setIndexWidget(model->index(i, 6), modifypushButton);
-           ui->readerInformationtableView->setIndexWidget(model->index(i, 7), deletepushButton);
+           ui->readerInformationtableView->setIndexWidget(model->index(i, 7), modifypushButton);
+           ui->readerInformationtableView->setIndexWidget(model->index(i, 8), deletepushButton);
 
            // 添加槽
            connect(modifypushButton, SIGNAL(clicked()), this, SLOT(on_modifypushButton_clicked()));
@@ -396,8 +402,8 @@ void readerManager::on_AllpushButton_clicked()
                     "background-color:#6A5ACD;"
                     "color:white;"
                     "}");
-        ui->readerInformationtableView->setIndexWidget(model->index(i, 6), modifypushButton);
-        ui->readerInformationtableView->setIndexWidget(model->index(i, 7), deletepushButton);
+        ui->readerInformationtableView->setIndexWidget(model->index(i, 7), modifypushButton);
+        ui->readerInformationtableView->setIndexWidget(model->index(i, 8), deletepushButton);
 
         // 添加槽
         connect(modifypushButton, SIGNAL(clicked()), this, SLOT(on_modifypushButton_clicked()));

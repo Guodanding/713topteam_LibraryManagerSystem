@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1100</width>
+    <width>1000</width>
     <height>700</height>
    </rect>
   </property>
@@ -16,9 +16,9 @@
   <widget class="Line" name="line">
    <property name="geometry">
     <rect>
-     <x>41</x>
-     <y>161</y>
-     <width>911</width>
+     <x>20</x>
+     <y>72</y>
+     <width>961</width>
      <height>16</height>
     </rect>
    </property>
@@ -26,56 +26,51 @@
     <enum>Qt::Horizontal</enum>
    </property>
   </widget>
-  <widget class="QLabel" name="userManager">
+  <widget class="QPushButton" name="AddpushButton">
    <property name="geometry">
     <rect>
-     <x>50</x>
-     <y>0</y>
-     <width>141</width>
-     <height>61</height>
+     <x>20</x>
+     <y>90</y>
+     <width>71</width>
+     <height>31</height>
     </rect>
    </property>
    <property name="font">
     <font>
-     <pointsize>14</pointsize>
+     <pointsize>10</pointsize>
+     <italic>true</italic>
      <bold>true</bold>
     </font>
    </property>
    <property name="text">
-    <string>读者信息管理</string>
-   </property>
-  </widget>
-  <widget class="QPushButton" name="AddpushButton">
-   <property name="geometry">
-    <rect>
-     <x>40</x>
-     <y>60</y>
-     <width>93</width>
-     <height>29</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>➕添加</string>
+    <string>添加➕</string>
    </property>
   </widget>
   <widget class="QTableView" name="readerInformationtableView">
    <property name="geometry">
     <rect>
-     <x>40</x>
-     <y>190</y>
-     <width>931</width>
-     <height>471</height>
+     <x>20</x>
+     <y>130</y>
+     <width>961</width>
+     <height>541</height>
     </rect>
    </property>
   </widget>
   <widget class="QPushButton" name="searchpushButton">
    <property name="geometry">
     <rect>
-     <x>681</x>
-     <y>111</y>
-     <width>93</width>
-     <height>29</height>
+     <x>770</x>
+     <y>40</y>
+     <width>71</width>
+     <height>31</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>10</pointsize>
+     <italic>true</italic>
+     <bold>true</bold>
+    </font>
    </property>
    <property name="text">
     <string>查询🔍</string>
@@ -84,11 +79,18 @@
   <widget class="QPushButton" name="AllpushButton">
    <property name="geometry">
     <rect>
-     <x>860</x>
-     <y>110</y>
-     <width>93</width>
-     <height>29</height>
+     <x>850</x>
+     <y>40</y>
+     <width>71</width>
+     <height>31</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>10</pointsize>
+     <italic>true</italic>
+     <bold>true</bold>
+    </font>
    </property>
    <property name="text">
     <string>全部</string>
@@ -97,15 +99,20 @@
   <widget class="QWidget" name="horizontalLayoutWidget">
    <property name="geometry">
     <rect>
-     <x>40</x>
-     <y>110</y>
-     <width>631</width>
-     <height>41</height>
+     <x>20</x>
+     <y>50</y>
+     <width>701</width>
+     <height>24</height>
     </rect>
    </property>
    <layout class="QHBoxLayout" name="horizontalLayout">
     <item>
      <widget class="QLabel" name="label_3">
+      <property name="font">
+       <font>
+        <pointsize>13</pointsize>
+       </font>
+      </property>
       <property name="text">
        <string>用戶名</string>
       </property>
@@ -113,13 +120,36 @@
     </item>
     <item>
      <widget class="QLineEdit" name="readerSearchLineEdit">
+      <property name="font">
+       <font>
+        <pointsize>10</pointsize>
+       </font>
+      </property>
       <property name="text">
        <string/>
       </property>
      </widget>
     </item>
     <item>
+     <spacer name="horizontalSpacer_3">
+      <property name="orientation">
+       <enum>Qt::Horizontal</enum>
+      </property>
+      <property name="sizeHint" stdset="0">
+       <size>
+        <width>40</width>
+        <height>20</height>
+       </size>
+      </property>
+     </spacer>
+    </item>
+    <item>
      <widget class="QLabel" name="label_2">
+      <property name="font">
+       <font>
+        <pointsize>13</pointsize>
+       </font>
+      </property>
       <property name="text">
        <string>手机号</string>
       </property>
@@ -127,13 +157,36 @@
     </item>
     <item>
      <widget class="QLineEdit" name="phoneSearchLineEdit">
+      <property name="font">
+       <font>
+        <pointsize>10</pointsize>
+       </font>
+      </property>
       <property name="text">
        <string/>
       </property>
      </widget>
     </item>
     <item>
+     <spacer name="horizontalSpacer_5">
+      <property name="orientation">
+       <enum>Qt::Horizontal</enum>
+      </property>
+      <property name="sizeHint" stdset="0">
+       <size>
+        <width>40</width>
+        <height>20</height>
+       </size>
+      </property>
+     </spacer>
+    </item>
+    <item>
      <widget class="QLabel" name="label">
+      <property name="font">
+       <font>
+        <pointsize>13</pointsize>
+       </font>
+      </property>
       <property name="accessibleDescription">
        <string/>
       </property>
@@ -144,12 +197,37 @@
     </item>
     <item>
      <widget class="QLineEdit" name="emailSearchLineEdit">
+      <property name="font">
+       <font>
+        <pointsize>10</pointsize>
+       </font>
+      </property>
       <property name="text">
        <string/>
       </property>
      </widget>
     </item>
    </layout>
+  </widget>
+  <widget class="QLabel" name="Title">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>1001</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>13</pointsize>
+     <italic>false</italic>
+     <bold>true</bold>
+    </font>
+   </property>
+   <property name="text">
+    <string>  读者信息管理</string>
+   </property>
   </widget>
  </widget>
  <resources/>

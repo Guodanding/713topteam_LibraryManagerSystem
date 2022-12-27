@@ -4,6 +4,9 @@
 #include <QDialog>
 #include <QSqlTableModel>
 #include <QSqlRecord>
+#include <QAbstractButton>
+#include <QPushButton>
+
 
 namespace Ui {
 class readerInformationManagerModifydialog;
@@ -18,7 +21,9 @@ public:
     ~readerInformationManagerModifydialog();
 
 private slots:
-    void on_buttonBox_accepted();
+    //void on_buttonBox_accepted();
+
+    void on_buttonBox_clicked(QAbstractButton *button);
 
 private:
     Ui::readerInformationManagerModifydialog *ui;

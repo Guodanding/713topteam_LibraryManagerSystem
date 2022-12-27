@@ -25,40 +25,43 @@ readerInformationManagerAdddatadialog::~readerInformationManagerAdddatadialog()
     delete ui;
 }
 
-void readerInformationManagerAdddatadialog::on_buttonBox_accepted()
+void readerInformationManagerAdddatadialog::on_buttonBox_clicked(QAbstractButton *button)
 {
-    if(ui->usernameLineEdit->text().isEmpty() || ui->nameLineEdit->text().isEmpty() ||
-       ui->passwordLineEdit->text().isEmpty() || ui->emailLineEdit->text().isEmpty() ||
-       ui->phoneLineEdit->text().isEmpty())
+    if(ui->buttonBox->button(QDialogButtonBox::Ok)  == button)
     {
-        QMessageBox::StandardButton result = QMessageBox::warning(this, "错误", "请输入完整信息！");
-        if(result == QMessageBox::Ok)
-            return;
+        if(ui->usernameLineEdit->text().isEmpty() || ui->nameLineEdit->text().isEmpty() ||
+           ui->passwordLineEdit->text().isEmpty() || ui->emailLineEdit->text().isEmpty() ||
+           ui->phoneLineEdit->text().isEmpty() || ui->scoreLineEdit->text().isEmpty())
+        {
+            QMessageBox::StandardButton result = QMessageBox::warning(this, "错误", "请输入完整信息！");
+            if(result == QMessageBox::Ok)
+                return;
+        }
+
+        QString username = ui->usernameLineEdit->text();
+        QString name = ui->nameLineEdit->text();
+        QString password = ui->passwordLineEdit->text();
+        QString email = ui->emailLineEdit->text();
+        QString phone = ui->phoneLineEdit->text();
+        QString score = ui->scoreLineEdit->text();
+
+        model->setFilter("");
+        model->select();//展示所有
+
+        model->insertRows(model->rowCount(), 1);
+        model->setData(model->index(model->rowCount() - 1, 0), QVariant(model->rowCount() - 1));
+        model->setData(model->index(model->rowCount() - 1, 1), QVariant(username));
+        model->setData(model->index(model->rowCount() - 1, 2), QVariant(name));
+        model->setData(model->index(model->rowCount() - 1, 3), QVariant(password));
+        model->setData(model->index(model->rowCount() - 1, 4), QVariant(phone));
+        model->setData(model->index(model->rowCount() - 1, 5), QVariant(email));
+        model->setData(model->index(model->rowCount() - 1, 6), QVariant(score));
+        model->setData(model->index(model->rowCount() - 1, 7), QVariant(""));
+        model->setData(model->index(model->rowCount() - 1, 8), QVariant(""));
+
+        model->submitAll();
     }
 
-    QString username = ui->usernameLineEdit->text();
-    QString name = ui->nameLineEdit->text();
-    QString password = ui->passwordLineEdit->text();
-    QString email = ui->emailLineEdit->text();
-    QString phone=ui->phoneLineEdit->text();
-
-    model->setFilter("");
-    model->select();//展示所有
-
-    model->insertRows(model->rowCount(), 1);
-    model->setData(model->index(model->rowCount() - 1, 0), QVariant(model->rowCount()));
-    model->setData(model->index(model->rowCount() - 1, 1), QVariant(username));
-    model->setData(model->index(model->rowCount() - 1, 2), QVariant(name));
-    model->setData(model->index(model->rowCount() - 1, 3), QVariant(password));
-    model->setData(model->index(model->rowCount() - 1, 4), QVariant(phone));
-    model->setData(model->index(model->rowCount() - 1, 5), QVariant(email));
-    model->setData(model->index(model->rowCount() - 1, 6), QVariant(""));
-    model->setData(model->index(model->rowCount() - 1, 7), QVariant(""));
-
-    model->submitAll();
-    if (model->submitAll())
-    {
-        QMessageBox::about(this, "添加", "添加成功！");
-        this->close();
-    }
+    close();
 }
+

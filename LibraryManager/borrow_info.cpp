@@ -35,6 +35,16 @@ borrow_info::borrow_info(QWidget *parent) :
                 "background-color:#6A5ACD;"
                 "color:white;"
                 "}");
+    ui->RenewBtn->setStyleSheet(
+                "QPushButton{"
+                "background-color:#FFA500;"
+                "border-radius:3px;"//设置圆角半径
+                "color:white;"
+                "}"
+                "QPushButton:hover{"
+                "background-color:#FF8C00;"
+                "color:white;"
+                "}");
 }
 
 borrow_info::~borrow_info()
@@ -142,6 +152,9 @@ void borrow_info::setusername(QString username)
     tm->setHeaderData(4, Qt::Horizontal, "到期时间");
     ui->tableView->setModel(tm);
     ui->tableView->verticalHeader()->setVisible(false);
+    int ColumnWidth[] = { 190, 190, 195, 190, 190 };//设置列宽
+    for(int i = 0; i < tm->columnCount(); i++)
+        ui->tableView->setColumnWidth(i, ColumnWidth[i]);
     ui->tableView->setEditTriggers(QAbstractItemView::NoEditTriggers);
     if(tm->rowCount() == 0)
     {
