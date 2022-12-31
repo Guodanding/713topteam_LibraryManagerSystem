@@ -29,7 +29,8 @@ private slots:
 
     void on_AllpushButton_clicked();
 
-    void on_deletepushButton_clicked();
+    //void on_deletepushButton_clicked();
+    void on_ReturnBtn_clicked();
 };
 
 #endif // BORROWBOOKINFORMATION_H

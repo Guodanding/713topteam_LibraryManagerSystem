@@ -146,7 +146,7 @@ void readerManager::on_AddpushButton_clicked()
                     "border-width:71;"//按钮大小设置
                     "}"
                     "QPushButton:hover{"
-                    "background-color:#7B68EE;"
+                    "background-color:#FF8C00;"
                     "color:white;"
                     "}");
         deletepushButton->setStyleSheet(
@@ -207,7 +207,7 @@ void readerManager::on_deletepushButton_clicked()
                     "border-width:71;"//按钮大小设置
                     "}"
                     "QPushButton:hover{"
-                    "background-color:#7B68EE;"
+                    "background-color:#FF8C00;"
                     "color:white;"
                     "}");
         deletepushButton->setStyleSheet(
@@ -222,7 +222,7 @@ void readerManager::on_deletepushButton_clicked()
                     "border-width:71;"//按钮大小设置
                     "}"
                     "QPushButton:hover{"
-                    "background-color:#FF3030;"
+                    "background-color:#6A5ACD;"
                     "color:white;"
                     "}");
         ui->readerInformationtableView->setIndexWidget(model->index(i, 7), modifypushButton);
@@ -302,7 +302,7 @@ void readerManager::on_searchpushButton_clicked()
    else
    {
        if(!username.isEmpty())
-            model->setFilter(QObject::tr("user = '%1'").arg(username)); //根据姓名进行筛选
+            model->setFilter(QObject::tr("username = '%1'").arg(username)); //根据姓名进行筛选
        if(!phone.isEmpty())
             model->setFilter(QObject::tr("phone = '%1'").arg(phone)); //根据图书名进行筛选
        if(!email.isEmpty())
@@ -324,7 +324,7 @@ void readerManager::on_searchpushButton_clicked()
                        "border-width:71;"//按钮大小设置
                        "}"
                        "QPushButton:hover{"
-                       "background-color:#7B68EE;"
+                       "background-color:#FF8C00;"
                        "color:white;"
                        "}");
            deletepushButton->setStyleSheet(
@@ -339,7 +339,7 @@ void readerManager::on_searchpushButton_clicked()
                        "border-width:71;"//按钮大小设置
                        "}"
                        "QPushButton:hover{"
-                       "background-color:#FF3030;"
+                       "background-color:#6A5ACD;"
                        "color:white;"
                        "}");
            ui->readerInformationtableView->setIndexWidget(model->index(i, 7), modifypushButton);

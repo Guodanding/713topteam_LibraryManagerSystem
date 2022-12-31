@@ -13,115 +13,35 @@
   <property name="windowTitle">
    <string>Form</string>
   </property>
-  <widget class="QLabel" name="label">
+  <widget class="QTableView" name="returnedBookInformationtableView">
    <property name="geometry">
     <rect>
-     <x>30</x>
-     <y>10</y>
-     <width>151</width>
-     <height>41</height>
+     <x>20</x>
+     <y>50</y>
+     <width>961</width>
+     <height>611</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QLabel" name="Title">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>1001</width>
+     <height>31</height>
     </rect>
    </property>
    <property name="font">
     <font>
-     <pointsize>14</pointsize>
-     <bold>false</bold>
+     <pointsize>13</pointsize>
+     <italic>false</italic>
+     <bold>true</bold>
     </font>
    </property>
    <property name="text">
-    <string>归还图书信息</string>
+    <string>  读者信息管理日志</string>
    </property>
-  </widget>
-  <widget class="Line" name="line">
-   <property name="geometry">
-    <rect>
-     <x>40</x>
-     <y>120</y>
-     <width>861</width>
-     <height>16</height>
-    </rect>
-   </property>
-   <property name="orientation">
-    <enum>Qt::Horizontal</enum>
-   </property>
-  </widget>
-  <widget class="QPushButton" name="AllpushButton">
-   <property name="geometry">
-    <rect>
-     <x>810</x>
-     <y>90</y>
-     <width>93</width>
-     <height>29</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>全部</string>
-   </property>
-  </widget>
-  <widget class="QPushButton" name="searchpushButton">
-   <property name="geometry">
-    <rect>
-     <x>680</x>
-     <y>90</y>
-     <width>93</width>
-     <height>29</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>查询🔍</string>
-   </property>
-  </widget>
-  <widget class="QTableView" name="returnedBookInformationtableView">
-   <property name="geometry">
-    <rect>
-     <x>50</x>
-     <y>140</y>
-     <width>851</width>
-     <height>421</height>
-    </rect>
-   </property>
-  </widget>
-  <widget class="QWidget" name="horizontalLayoutWidget">
-   <property name="geometry">
-    <rect>
-     <x>50</x>
-     <y>79</y>
-     <width>611</width>
-     <height>41</height>
-    </rect>
-   </property>
-   <layout class="QHBoxLayout" name="horizontalLayout">
-    <item>
-     <widget class="QLabel" name="label_2">
-      <property name="text">
-       <string>书名</string>
-      </property>
-     </widget>
-    </item>
-    <item>
-     <widget class="QLineEdit" name="bookNameSearchLineEdit"/>
-    </item>
-    <item>
-     <widget class="QLabel" name="label_3">
-      <property name="text">
-       <string>出版社</string>
-      </property>
-     </widget>
-    </item>
-    <item>
-     <widget class="QLineEdit" name="pressSearchLineEdit"/>
-    </item>
-    <item>
-     <widget class="QLabel" name="label_4">
-      <property name="text">
-       <string>作者</string>
-      </property>
-     </widget>
-    </item>
-    <item>
-     <widget class="QLineEdit" name="writerSearchLineEdit"/>
-    </item>
-   </layout>
   </widget>
  </widget>
  <resources/>
