@@ -29,7 +29,7 @@ private slots:
     void on_button_user_book_3_clicked();
     void on_button_user_set_1_clicked();
     void on_button_user_set_2_clicked();
-    void on_button_user_set_3_clicked();
+    void on_button_logout_clicked();
 
 private:
     Ui::ManagerMainWindow *ui;

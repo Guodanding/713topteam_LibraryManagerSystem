@@ -47,7 +47,6 @@ ManagerMainWindow::ManagerMainWindow(bool isUserOrAdmin,QWidget *parent) :
         QPushButton *button_user_book_3=new QPushButton("借阅历史查询");
         QPushButton *button_user_set_1=new QPushButton("个人主页");
         QPushButton *button_user_set_2=new QPushButton("使用帮助");
-        QPushButton *button_user_set_3=new QPushButton("退出登录");
         //connect btn and subitem
         ui->treeWidget->setItemWidget(subItem_user_book_1,0,button_user_book_1);
         ui->treeWidget->setItemWidget(subItem_user_book_2,0,button_user_book_2);
@@ -60,7 +59,6 @@ ManagerMainWindow::ManagerMainWindow(bool isUserOrAdmin,QWidget *parent) :
         connect(button_user_book_3,SIGNAL(clicked()),this,SLOT(on_button_user_book_3_clicked()));
         connect(button_user_set_1,SIGNAL(clicked()),this,SLOT(on_button_user_set_1_clicked()));
         connect(button_user_set_2,SIGNAL(clicked()),this,SLOT(on_button_user_set_2_clicked()));
-        connect(button_user_set_3,SIGNAL(clicked()),this,SLOT(on_button_user_set_3_clicked()));
         //展开子树
         topItem_user_1->setExpanded(true);
         topItem_user_2->setExpanded(true);
@@ -106,6 +104,7 @@ ManagerMainWindow::ManagerMainWindow(bool isUserOrAdmin,QWidget *parent) :
         connect(button_admin_user_1,SIGNAL(clicked()),this,SLOT(on_button_admin_user_1_clicked()));
         connect(button_admin_sys_1,SIGNAL(clicked()),this,SLOT(on_button_admin_sys_1_clicked()));
         connect(button_admin_sys_2,SIGNAL(clicked()),this,SLOT(on_button_admin_sys_2_clicked()));
+
         //展开子树
         topItem_admin_1->setExpanded(true);
         topItem_admin_2->setExpanded(true);
@@ -189,16 +188,16 @@ void ManagerMainWindow::on_button_user_set_2_clicked()
     index=ui->stackedWidget->addWidget(userhelp);
     ui->stackedWidget->setCurrentIndex(index);
 }
-void ManagerMainWindow::on_button_user_set_3_clicked()
+void ManagerMainWindow::on_button_logout_clicked()
 {
     QMessageBox::StandardButton answer = QMessageBox::question(this,"登出","你确定要退出登录吗？");
     if(answer == QMessageBox::Yes)
     {
-        this->close();
         //打开登录窗口
         Login *login=new Login(this);
         login->setWindowFlag(Qt::Window);
         login->show();
+        this->close();
     }
 }
 //管理员模块
