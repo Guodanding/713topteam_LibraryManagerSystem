@@ -206,7 +206,7 @@ void borrow_info::on_RenewBtn_clicked()
         int Rowcount = tm->rowCount();
         tm->insertRow(Rowcount);
         date = QDate::currentDate();
-        QString Nowdate = date.toString();
+        QString Nowdate = date.toString("yyyy-MM-dd");
         QString log = "用户"+Username+"在"+Nowdate+"续借"+Booknumber+BookTitle;
         tm->setData(tm->index(row,1),log);
         tm->submitAll();
