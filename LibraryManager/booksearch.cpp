@@ -103,6 +103,8 @@ void BookSearch::on_SearchBtn_clicked()
     int ColumnWidth[] = { 70, 90, 70, 120, 120, 140, 160, 120, 65};//设置列宽
     for(int i = 0; i < tm->columnCount(); i++)
         ui->tableView->setColumnWidth(i, ColumnWidth[i]);
+
+    searchflag = true;
     }
     else
     {
@@ -138,24 +140,24 @@ void BookSearch::on_BorrowBtn_clicked()
    tm->setEditStrategy(QSqlTableModel::OnManualSubmit);
    int Rowcount = tm->rowCount();
    tm->insertRow(Rowcount);
-   tm->setData(tm->index(row,0),Username);
-   tm->setData(tm->index(row,1),Booknumber);
-   tm->setData(tm->index(row,2),Bookname);
-   tm->setData(tm->index(row,3),Borrowtime);
-   tm->setData(tm->index(row,4),Expiretime);
-   tm->setData(tm->index(row,5),"否");
+   tm->setData(tm->index(Rowcount,0),Username);
+   tm->setData(tm->index(Rowcount,1),Booknumber);
+   tm->setData(tm->index(Rowcount,2),Bookname);
+   tm->setData(tm->index(Rowcount,3),Borrowtime);
+   tm->setData(tm->index(Rowcount,4),Expiretime);
+   tm->setData(tm->index(Rowcount,5),"否");
    tm->submitAll();
 
    tm->setTable("BorrowHistory");
    tm->setEditStrategy(QSqlTableModel::OnManualSubmit);
    Rowcount = tm->rowCount();
    tm->insertRow(Rowcount);
-   tm->setData(tm->index(row,0),Username);
-   tm->setData(tm->index(row,1),Booknumber);
-   tm->setData(tm->index(row,2),Bookname);
-   tm->setData(tm->index(row,3),Author);
-   tm->setData(tm->index(row,4),Borrowtime);
-   tm->setData(tm->index(row,5),"未还书");
+   tm->setData(tm->index(Rowcount,0),Username);
+   tm->setData(tm->index(Rowcount,1),Booknumber);
+   tm->setData(tm->index(Rowcount,2),Bookname);
+   tm->setData(tm->index(Rowcount,3),Author);
+   tm->setData(tm->index(Rowcount,4),Borrowtime);
+   tm->setData(tm->index(Rowcount,5),"未还书");
    tm->submitAll();
 
    tm->setTable("Log");
@@ -163,7 +165,7 @@ void BookSearch::on_BorrowBtn_clicked()
    Rowcount = tm->rowCount();
    tm->insertRow(Rowcount);
    QString log = "用户"+Username+"在"+Borrowtime+"借出"+Booknumber+Bookname;
-   tm->setData(tm->index(row,1),log);
+   tm->setData(tm->index(Rowcount,1),log);
    tm->submitAll();
 
    tm->setTable("bookinformation");
@@ -202,9 +204,7 @@ void BookSearch::on_BorrowBtn_clicked()
 
 
    tm->select();
-   int row = tm->rowCount();
-   if(row > 0)
-   {
+
    ui->tableView->setModel(tm);
    ui->tableView->verticalHeader()->setVisible(false);
    ui->tableView->setEditTriggers(QAbstractItemView::NoEditTriggers);
@@ -216,13 +216,8 @@ void BookSearch::on_BorrowBtn_clicked()
        ui->tableView->setColumnWidth(i, ColumnWidth[i]);
    }
 
+   }
 
-   else
-   {
-       QMessageBox::warning(this,"警告","该书已被借阅！");
-   }
-   }
-   }
 
 }
 
