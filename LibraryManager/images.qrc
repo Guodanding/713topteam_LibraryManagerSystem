@@ -1,9 +1,5 @@
 <RCC>
     <qresource prefix="/">
-        <file>images/3.gif</file>
-        <file>images/5.gif</file>
-        <file>images/7.gif</file>
-        <file>images/8.gif</file>
         <file>images/radio_button_left.png</file>
         <file>images/radio_button_right.png</file>
         <file>images/loginBackground.jpg</file>
@@ -13,5 +9,13 @@
         <file>images/wrong.ico</file>
         <file>images/right.ico</file>
         <file>images/logout.png</file>
+        <file>images/check.png</file>
+        <file>images/uncheck.png</file>
+        <file>images/bookmana.png</file>
+        <file>images/log.png</file>
+        <file>images/profile.png</file>
+        <file>images/usermana.png</file>
+        <file>images/rain.gif</file>
+        <file>images/search.png</file>
     </qresource>
 </RCC>

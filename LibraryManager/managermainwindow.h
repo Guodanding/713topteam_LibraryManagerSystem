@@ -2,6 +2,7 @@
 #define MANAGERMAINWINDOW_H
 
 #include <QMainWindow>
+#include "QPushButton"
 namespace Ui {
 class ManagerMainWindow;
 }
@@ -16,6 +17,8 @@ public:
     void setUsername(QString username);
     void setAdminname(QString adminname);
     void removeWidget(int index);
+    void initUserStyle();
+    void initAdminStyle();
 private slots:
     //admin
     void on_button_admin_book_1_clicked();
@@ -38,6 +41,18 @@ private:
     int index;
     QString username;
     QString adminname;
+    QString buttonStyle_unchecked;
+    QString buttonStyle_checked;
+    QPushButton *button_user_book_1;
+    QPushButton *button_user_book_2;
+    QPushButton *button_user_book_3;
+    QPushButton *button_user_set_1;
+    QPushButton *button_user_set_2;
+    QPushButton *button_admin_book_1;
+    QPushButton *button_admin_book_2;
+    QPushButton *button_admin_user_1;
+    QPushButton *button_admin_sys_1;
+    QPushButton *button_admin_sys_2;
 };
 
 #endif // MANAGERMAINWINDOW_H

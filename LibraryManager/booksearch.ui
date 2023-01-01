@@ -171,7 +171,7 @@
      <x>20</x>
      <y>130</y>
      <width>651</width>
-     <height>31</height>
+     <height>32</height>
     </rect>
    </property>
    <layout class="QHBoxLayout" name="horizontalLayout">
@@ -179,8 +179,34 @@
      <widget class="QRadioButton" name="radioButton_booktype">
       <property name="font">
        <font>
-        <pointsize>13</pointsize>
+        <family>Microsoft YaHei UI</family>
+        <pointsize>10</pointsize>
+        <italic>false</italic>
+        <bold>false</bold>
        </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QRadioButton{
+                    font: 10pt 'Microsoft YaHei UI';
+                    spacing: 2px;
+                    color: black;
+               }
+QRadioButton::indicator {
+                    width: 45px;
+                    height: 30px;
+                }
+QRadioButton::indicator:unchecked {
+                   image: url(:/images/uncheck.png);
+                }
+QRadioButton::indicator:unchecked:pressed {
+                    image: url(:/images/check.png);
+               }
+QRadioButton::indicator:checked {
+                    image: url(:/images/check.png);
+                }
+QRadioButton::indicator:checked:pressed {
+                     image: url(:/images/uncheck.png);
+                }</string>
       </property>
       <property name="text">
        <string>按图书类型搜索</string>
@@ -191,8 +217,34 @@
      <widget class="QRadioButton" name="radioButton_publiser">
       <property name="font">
        <font>
-        <pointsize>13</pointsize>
+        <family>Microsoft YaHei UI</family>
+        <pointsize>10</pointsize>
+        <italic>false</italic>
+        <bold>false</bold>
        </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QRadioButton{
+                    font: 10pt 'Microsoft YaHei UI';
+                    spacing: 2px;
+                    color: black;
+               }
+QRadioButton::indicator {
+                    width: 45px;
+                    height: 30px;
+                }
+QRadioButton::indicator:unchecked {
+                   image: url(:/images/uncheck.png);
+                }
+QRadioButton::indicator:unchecked:pressed {
+                    image: url(:/images/check.png);
+               }
+QRadioButton::indicator:checked {
+                    image: url(:/images/check.png);
+                }
+QRadioButton::indicator:checked:pressed {
+                     image: url(:/images/uncheck.png);
+                }</string>
       </property>
       <property name="text">
        <string>按出版社搜索</string>
@@ -203,8 +255,34 @@
      <widget class="QRadioButton" name="radioButton_author">
       <property name="font">
        <font>
-        <pointsize>13</pointsize>
+        <family>Microsoft YaHei UI</family>
+        <pointsize>10</pointsize>
+        <italic>false</italic>
+        <bold>false</bold>
        </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QRadioButton{
+                    font: 10pt 'Microsoft YaHei UI';
+                    spacing: 2px;
+                    color: black;
+               }
+QRadioButton::indicator {
+                    width: 45px;
+                    height: 30px;
+                }
+QRadioButton::indicator:unchecked {
+                   image: url(:/images/uncheck.png);
+                }
+QRadioButton::indicator:unchecked:pressed {
+                    image: url(:/images/check.png);
+               }
+QRadioButton::indicator:checked {
+                    image: url(:/images/check.png);
+                }
+QRadioButton::indicator:checked:pressed {
+                     image: url(:/images/uncheck.png);
+                }</string>
       </property>
       <property name="text">
        <string>按作者搜索</string>
@@ -215,8 +293,34 @@
      <widget class="QRadioButton" name="radioButton_booktitle">
       <property name="font">
        <font>
-        <pointsize>13</pointsize>
+        <family>Microsoft YaHei UI</family>
+        <pointsize>10</pointsize>
+        <italic>false</italic>
+        <bold>false</bold>
        </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QRadioButton{
+                    font: 10pt 'Microsoft YaHei UI';
+                    spacing: 2px;
+                    color: black;
+               }
+QRadioButton::indicator {
+                    width: 45px;
+                    height: 30px;
+                }
+QRadioButton::indicator:unchecked {
+                   image: url(:/images/uncheck.png);
+                }
+QRadioButton::indicator:unchecked:pressed {
+                    image: url(:/images/check.png);
+               }
+QRadioButton::indicator:checked {
+                    image: url(:/images/check.png);
+                }
+QRadioButton::indicator:checked:pressed {
+                     image: url(:/images/uncheck.png);
+                }</string>
       </property>
       <property name="text">
        <string>按书名搜索</string>

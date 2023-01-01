@@ -21,8 +21,6 @@ public:
 private slots:
     void on_ReturnBtn_clicked();
 
-    void on_ExitBtn_clicked();
-
     void on_RenewBtn_clicked();
 
 private:

@@ -12,16 +12,6 @@ borrow_history::borrow_history(QWidget *parent) :
                 "QLabel{"
                 "background-color:#DDDDDD;"
                 "}");
-    ui->ExitBtn->setStyleSheet(
-                "QPushButton{"
-                "background-color:#FF0000;"
-                "border-radius:3px;"//设置圆角半径
-                "color:white;"
-                "}"
-                "QPushButton:hover{"
-                "background-color:#8B4513;"
-                "color:white;"
-                "}");
 }
 
 borrow_history::~borrow_history()
@@ -29,10 +19,6 @@ borrow_history::~borrow_history()
     delete ui;
 }
 
-void borrow_history::on_ExitBtn_clicked()
-{
-    borrow_history::close();
-}
 
 void borrow_history::setusername(QString username)
 {

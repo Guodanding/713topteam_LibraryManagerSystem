@@ -24,7 +24,6 @@ BookManager::BookManager(QWidget *parent) :
 
 BookManager::~BookManager()
 {
-    database.DBClose();
     delete ui;
 }
 

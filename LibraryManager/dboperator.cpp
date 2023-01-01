@@ -13,6 +13,7 @@ void DBOperator::DBOpen()
     {
         dbcon = QSqlDatabase::addDatabase("QODBC");
         dsn = QString("DRIVER={Microsoft Access Driver (*.mdb, *.accdb)};FIL={MS Access};DBQ=C:/Users/Administrator/Desktop/QTpractice/713topteam_LibraryManagerSystem/LibraryManager/database/LibraryData.accdb");
+
         dbcon.setDatabaseName(dsn);
         bool ok = dbcon.open();//activate the physical connection to the database.
         if(!ok)

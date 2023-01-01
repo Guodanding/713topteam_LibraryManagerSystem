@@ -9,6 +9,9 @@ SignUP::SignUP(QWidget *parent) :
     ui(new Ui::SignUP)
 {
     ui->setupUi(this);
+    //fix window size
+    setWindowFlags(windowFlags()&~Qt::WindowMaximizeButtonHint);
+    setFixedSize(this->width(),this->height());
     //设置图片背景
     QPixmap *pix =new QPixmap(":/images/registerBackground.jpg");
     QSize size=ui->label_image->size();

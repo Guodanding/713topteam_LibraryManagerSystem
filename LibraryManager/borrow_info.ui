@@ -26,26 +26,6 @@
   <widget class="QPushButton" name="ReturnBtn">
    <property name="geometry">
     <rect>
-     <x>820</x>
-     <y>650</y>
-     <width>71</width>
-     <height>31</height>
-    </rect>
-   </property>
-   <property name="font">
-    <font>
-     <pointsize>10</pointsize>
-     <italic>true</italic>
-     <bold>true</bold>
-    </font>
-   </property>
-   <property name="text">
-    <string>还书📚</string>
-   </property>
-  </widget>
-  <widget class="QPushButton" name="ExitBtn">
-   <property name="geometry">
-    <rect>
      <x>910</x>
      <y>650</y>
      <width>71</width>
@@ -60,7 +40,7 @@
     </font>
    </property>
    <property name="text">
-    <string>退出</string>
+    <string>还书📚</string>
    </property>
   </widget>
   <widget class="QLabel" name="Title">
@@ -104,7 +84,7 @@
   <widget class="QPushButton" name="RenewBtn">
    <property name="geometry">
     <rect>
-     <x>730</x>
+     <x>810</x>
      <y>650</y>
      <width>71</width>
      <height>31</height>

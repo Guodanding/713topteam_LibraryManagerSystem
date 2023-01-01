@@ -180,7 +180,7 @@ void borrowBookInformation::on_ReturnBtn_clicked()
     int row = ui->returnedBookInformationtableView->currentIndex().row();
     //qDebug() << row;
     QSqlRecord record = model->record(row);
-    QString Booknumber = record.value("Booknum").toString();
+    QString Booknumber = record.value("Number").toString();
     QString Username = record.value("Username").toString();
     QString Title = record.value("Title").toString();
     QString Author = record.value("Author").toString();
