@@ -25,11 +25,11 @@ private:
     DBOperator database; //数据库引入
 
 private slots:
-    void on_searchpushButton_clicked();
+    //void on_searchpushButton_clicked();
 
-    void on_AllpushButton_clicked();
+    //void on_AllpushButton_clicked();
 
-    void on_deletepushButton_clicked();
+    //void on_deletepushButton_clicked();
 };
 
 #endif // RETURNBOOK_H

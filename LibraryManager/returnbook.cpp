@@ -21,7 +21,7 @@ void returnBook::setWinStyle()
 {
     ui->returnedBookInformationtableView->setAlternatingRowColors(true); // 表格数据行隔行变色
     ui->returnedBookInformationtableView->setSelectionMode(QAbstractItemView::SingleSelection); // 单个数据格
-    ui->AllpushButton->setStyleSheet(
+    /*ui->AllpushButton->setStyleSheet(
                 "QPushButton{"
                 "background-color:#87CEFA;"
                 "border-radius:3px;"//设置圆角半径
@@ -43,21 +43,21 @@ void returnBook::setWinStyle()
                 "}");
     ui->bookNameSearchLineEdit->setPlaceholderText("搜索书名");
     ui->pressSearchLineEdit->setPlaceholderText("搜索出版社");
-    ui->writerSearchLineEdit->setPlaceholderText("搜索作者");
+    ui->writerSearchLineEdit->setPlaceholderText("搜索作者");*/
 }
 
 void returnBook::databaseOperate()
 {
     model = new QSqlTableModel();
-    model->setTable("returnedBookInformation");//选择表
+    model->setTable("Log");//选择表
     model->select();//展示所有
 
     ui->returnedBookInformationtableView->setModel(model);//连接数据库
     ui->returnedBookInformationtableView->setEditTriggers(QAbstractItemView::NoEditTriggers); //只读
-    int ColumnWidth[] = {50, 100, 120, 100, 150, 50, 200, 50};//设置列宽
+    int ColumnWidth[] = {70, 840};//设置列宽
     for(int i = 0; i < model->columnCount(); i++)
         ui->returnedBookInformationtableView->setColumnWidth(i, ColumnWidth[i]);
-    for(int i = 0; i < model->rowCount(); i++)//设置按钮
+    /*for(int i = 0; i < model->rowCount(); i++)//设置按钮
     {
         QPushButton *deletepushButton = new QPushButton("删除❌");
         deletepushButton->setStyleSheet(
@@ -79,11 +79,11 @@ void returnBook::databaseOperate()
 
         // 添加槽
         connect(deletepushButton, SIGNAL(clicked()), this, SLOT(on_deletepushButton_clicked()));
-    }
+    }*/
 
 }
 
-void returnBook::on_searchpushButton_clicked()
+/*void returnBook::on_searchpushButton_clicked()
 {
    QString BookName = ui->bookNameSearchLineEdit->text();
    QString press    = ui->pressSearchLineEdit->text();
@@ -204,7 +204,7 @@ void returnBook::on_deletepushButton_clicked()
         connect(deletepushButton, SIGNAL(clicked()), this, SLOT(on_deletepushButton_clicked()));
     }
 
-}
+}*/
 returnBook::~returnBook()
 {
     delete ui;

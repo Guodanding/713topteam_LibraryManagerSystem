@@ -119,8 +119,14 @@ void borrow_info::on_ReturnBtn_clicked()
         tm->setHeaderData(2, Qt::Horizontal, "书名");
         tm->setHeaderData(3, Qt::Horizontal, "借书时间");
         tm->setHeaderData(4, Qt::Horizontal, "到期时间");
+        tm->setHeaderData(5, Qt::Horizontal, "是否续借");
         ui->tableView->setModel(tm);
         ui->tableView->verticalHeader()->setVisible(false);
+        ui->tableView->setAlternatingRowColors(true); // 表格数据行隔行变色
+        ui->tableView->setSelectionMode(QAbstractItemView::SingleSelection); // 单个数据格
+        int ColumnWidth[] = { 160, 160, 165, 160, 160,150 };//设置列宽
+        for(int i = 0; i < tm->columnCount(); i++)
+            ui->tableView->setColumnWidth(i, ColumnWidth[i]);
         ui->tableView->setEditTriggers(QAbstractItemView::NoEditTriggers);
 
         if(tm->rowCount() == 0)
@@ -150,9 +156,10 @@ void borrow_info::setusername(QString username)
     tm->setHeaderData(2, Qt::Horizontal, "书名");
     tm->setHeaderData(3, Qt::Horizontal, "借书时间");
     tm->setHeaderData(4, Qt::Horizontal, "到期时间");
+    tm->setHeaderData(5, Qt::Horizontal, "是否续借");
     ui->tableView->setModel(tm);
     ui->tableView->verticalHeader()->setVisible(false);
-    int ColumnWidth[] = { 190, 190, 195, 190, 190 };//设置列宽
+    int ColumnWidth[] = { 160, 160, 165, 160, 160,150 };//设置列宽
     for(int i = 0; i < tm->columnCount(); i++)
         ui->tableView->setColumnWidth(i, ColumnWidth[i]);
     ui->tableView->setEditTriggers(QAbstractItemView::NoEditTriggers);
@@ -173,10 +180,13 @@ void borrow_info::on_RenewBtn_clicked()
     }
     else
     {
+        QSqlRecord record = tm->record(row);
+        QString RenewFlag = record.value("RenewFlag").toString();
 
+        if(RenewFlag == "否")
+       {
         QMessageBox::information(this,"续借确认","续借成功！");
 
-        QSqlRecord record = tm->record(row);
         QString Booknumber = record.value("Booknum").toString();
         QString BookTitle = record.value("BookTitle").toString();
         QString Exturndate = record.value("Expiredate").toString();
@@ -186,6 +196,7 @@ void borrow_info::on_RenewBtn_clicked()
         Exturndate = date.toString("yyyy-MM-dd");
         qDebug()<<Exturndate;
         record.setValue("Expiredate",Exturndate);
+        record.setValue("RenewFlag","是");
         tm->setRecord(row,record);
         tm->submitAll();
 
@@ -208,14 +219,25 @@ void borrow_info::on_RenewBtn_clicked()
         tm->setHeaderData(2, Qt::Horizontal, "书名");
         tm->setHeaderData(3, Qt::Horizontal, "借书时间");
         tm->setHeaderData(4, Qt::Horizontal, "到期时间");
+        tm->setHeaderData(5, Qt::Horizontal, "是否续借");
         ui->tableView->setModel(tm);
         ui->tableView->verticalHeader()->setVisible(false);
+        int ColumnWidth[] = { 160, 160, 165, 160, 160,150 };//设置列宽
+        for(int i = 0; i < tm->columnCount(); i++)
+            ui->tableView->setColumnWidth(i, ColumnWidth[i]);
         ui->tableView->setEditTriggers(QAbstractItemView::NoEditTriggers);
 
         if(tm->rowCount() == 0)
         {
             tm->clear();
         }
+
+       }
+
+       if(RenewFlag == "是")
+       {
+           QMessageBox::warning(this,"提示","每本书籍只能续借一次！");
+       }
     }
 
 }

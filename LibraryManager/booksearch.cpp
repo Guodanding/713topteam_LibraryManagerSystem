@@ -143,6 +143,7 @@ void BookSearch::on_BorrowBtn_clicked()
    tm->setData(tm->index(row,2),Bookname);
    tm->setData(tm->index(row,3),Borrowtime);
    tm->setData(tm->index(row,4),Expiretime);
+   tm->setData(tm->index(row,5),"否");
    tm->submitAll();
 
    tm->setTable("BorrowHistory");
