@@ -12,6 +12,9 @@ Login::Login(QWidget *parent) :
     ui(new Ui::Login)
 {
     ui->setupUi(this);
+    //fix window size
+    setWindowFlags(windowFlags()&~Qt::WindowMaximizeButtonHint);
+    setFixedSize(this->width(),this->height());
     //设置图片背景
     QPixmap *pix =new QPixmap(":/images/loginBackground.jpg");
     QSize size=ui->label_image->size();

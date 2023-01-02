@@ -23,7 +23,6 @@ BookClassifyManager::BookClassifyManager(QWidget *parent) :
 
 BookClassifyManager::~BookClassifyManager()
 {
-    database.DBClose();
     delete ui;
 }
 
@@ -72,16 +71,7 @@ void BookClassifyManager::setWinStyle()
                 "background-color:#1E90FF;"
                 "color:white;"
                 "}");
-    ui->DeletepushButton->setStyleSheet(
-                "QPushButton{"
-                "background-color:#8470FF;"
-                "border-radius:3px;"//设置圆角半径
-                "color:white;"
-                "}"
-                "QPushButton:hover{"
-                "background-color:#FF8C00;"
-                "color:white;"
-                "}");
+
     ui->Title->setStyleSheet(
                 "QLabel{"
                 "background-color:#DDDDDD;"

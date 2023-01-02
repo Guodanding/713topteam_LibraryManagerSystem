@@ -69,19 +69,6 @@
     <string>全部</string>
    </property>
   </widget>
-  <widget class="QPushButton" name="DeletepushButton">
-   <property name="geometry">
-    <rect>
-     <x>970</x>
-     <y>9</y>
-     <width>20</width>
-     <height>16</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>×</string>
-   </property>
-  </widget>
   <widget class="QPushButton" name="SurepushButton">
    <property name="geometry">
     <rect>

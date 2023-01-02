@@ -18,8 +18,6 @@ public:
     ~borrow_history();
     void setusername(QString username);
 
-private slots:
-    void on_ExitBtn_clicked();
 
 private:
     Ui::borrow_history *ui;
