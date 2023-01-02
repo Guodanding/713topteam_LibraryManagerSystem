@@ -9,7 +9,7 @@ UserProfileManager::UserProfileManager(QWidget *parent) :
     // 显示gif图片
     ui->label_gif->setWindowFlag(Qt::FramelessWindowHint);// 设置无边框
     ui->label_gif->setWindowOpacity(0.9);// 设置透明度
-    static QMovie movie(":/images/8.gif");
+    static QMovie movie(":/images/rain.gif");
     ui->label_gif->setMovie(&movie);
     ui->label_gif->setScaledContents(true);
     movie.start();

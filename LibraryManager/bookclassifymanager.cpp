@@ -23,7 +23,6 @@ BookClassifyManager::BookClassifyManager(QWidget *parent) :
 
 BookClassifyManager::~BookClassifyManager()
 {
-    database.DBClose();
     delete ui;
 }
 

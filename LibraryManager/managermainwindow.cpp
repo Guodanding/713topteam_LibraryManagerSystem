@@ -14,23 +14,46 @@
 #include "userhelp.h"//使用手册
 #include "QMovie"
 #include "QLabel"
-#include "QPushButton"
 #include "QMessageBox"
 ManagerMainWindow::ManagerMainWindow(bool isUserOrAdmin,QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::ManagerMainWindow)
 {
     ui->setupUi(this);
+    //fix window size
+    setWindowFlags(windowFlags()&~Qt::WindowMaximizeButtonHint);
+    setFixedSize(this->width(),this->height());
     isAdmin=isUserOrAdmin;
     isUser=!isUserOrAdmin;
     qDebug()<<"isUserOrAdmin "<<isUserOrAdmin;
+    buttonStyle_unchecked="QPushButton{"
+                        "border:none;"
+                        "color:#999999;"
+                        "font:15pt '黑体';"
+                        "background-color: rgb(19, 30, 38);"
+                        "}"
+                        "QPushButton::pressed{"
+                        "padding-top:2px;"
+                        "padding-left:2px;"
+                        "}"
+                        "QPushButton::hover{"
+                        "border:none;"
+                        "font:15pt '黑体';"
+                        "color:#FFFFFF;"
+                        "}";
+    buttonStyle_checked="QPushButton{"
+                        "border:none;"
+                        "color:#FFFFFF;"
+                        "font:15pt '黑体';"
+                        "background-color: rgb(19, 30, 38);"
+                        "}";
     if (isUser) {
         //（读者）图书查询模块
         //（读者）图书借阅信息模块
         //（读者）借阅历史查询模块
         //topItem
         QTreeWidgetItem *topItem_user_1=new QTreeWidgetItem();
-        topItem_user_1->setText(0,"功能");
+        topItem_user_1->setText(0,"查询&借阅");
         QTreeWidgetItem *topItem_user_2=new QTreeWidgetItem();
         topItem_user_2->setText(0,"个人设置");
         ui->treeWidget->addTopLevelItem(topItem_user_1);
@@ -42,12 +65,11 @@ ManagerMainWindow::ManagerMainWindow(bool isUserOrAdmin,QWidget *parent) :
         QTreeWidgetItem *subItem_user_set_1=new QTreeWidgetItem(topItem_user_2);
         QTreeWidgetItem *subItem_user_set_2=new QTreeWidgetItem(topItem_user_2);
         //subfuntion;
-        QPushButton *button_user_book_1=new QPushButton("图书查询");
-        QPushButton *button_user_book_2=new QPushButton("图书借阅信息");
-        QPushButton *button_user_book_3=new QPushButton("借阅历史查询");
-        QPushButton *button_user_set_1=new QPushButton("个人主页");
-        QPushButton *button_user_set_2=new QPushButton("使用帮助");
-        QPushButton *button_user_set_3=new QPushButton("退出登录");
+        button_user_book_1=new QPushButton("图书查询");
+        button_user_book_2=new QPushButton("图书借阅信息");
+        button_user_book_3=new QPushButton("借阅历史查询");
+        button_user_set_1=new QPushButton("个人主页");
+        button_user_set_2=new QPushButton("使用帮助");
         //connect btn and subitem
         ui->treeWidget->setItemWidget(subItem_user_book_1,0,button_user_book_1);
         ui->treeWidget->setItemWidget(subItem_user_book_2,0,button_user_book_2);
@@ -60,11 +82,15 @@ ManagerMainWindow::ManagerMainWindow(bool isUserOrAdmin,QWidget *parent) :
         connect(button_user_book_3,SIGNAL(clicked()),this,SLOT(on_button_user_book_3_clicked()));
         connect(button_user_set_1,SIGNAL(clicked()),this,SLOT(on_button_user_set_1_clicked()));
         connect(button_user_set_2,SIGNAL(clicked()),this,SLOT(on_button_user_set_2_clicked()));
-        connect(button_user_set_3,SIGNAL(clicked()),this,SLOT(on_button_user_set_3_clicked()));
         //展开子树
         topItem_user_1->setExpanded(true);
         topItem_user_2->setExpanded(true);
+        //打开图书查询
+        on_button_user_book_1_clicked();
         //style
+        initUserStyle();
+        topItem_user_1->setIcon(0,QIcon(":/images/search.png"));
+        topItem_user_2->setIcon(0,QIcon(":/images/profile.png"));
     }
     else if (isAdmin) {
         //（管理员）图书信息管理模块实现（郭铠槟）
@@ -89,11 +115,11 @@ ManagerMainWindow::ManagerMainWindow(bool isUserOrAdmin,QWidget *parent) :
         QTreeWidgetItem *subItem_admin_sys_1=new QTreeWidgetItem(topItem_admin_3);
         QTreeWidgetItem *subItem_admin_sys_2=new QTreeWidgetItem(topItem_admin_3);
         //subfuntion
-        QPushButton *button_admin_book_1=new QPushButton("图书信息管理");
-        QPushButton *button_admin_book_2=new QPushButton("图书分类管理");
-        QPushButton *button_admin_user_1=new QPushButton("用户管理");
-        QPushButton *button_admin_sys_1=new QPushButton("图书借阅信息");
-        QPushButton *button_admin_sys_2=new QPushButton("图书归还信息");
+        button_admin_book_1=new QPushButton("图书信息管理");
+        button_admin_book_2=new QPushButton("图书分类管理");
+        button_admin_user_1=new QPushButton("用户管理");
+        button_admin_sys_1=new QPushButton("图书借阅信息");
+        button_admin_sys_2=new QPushButton("图书归还信息");
         //connect btn and subitem
         ui->treeWidget->setItemWidget(subItem_admin_book_1,0,button_admin_book_1);
         ui->treeWidget->setItemWidget(subItem_admin_book_2,0,button_admin_book_2);
@@ -111,24 +137,34 @@ ManagerMainWindow::ManagerMainWindow(bool isUserOrAdmin,QWidget *parent) :
         topItem_admin_2->setExpanded(true);
         topItem_admin_3->setExpanded(true);
         //style
-        button_admin_book_1->setStyleSheet("background-color: rgb(29, 123, 255);"
-                                "color: rgb(255, 255, 255);");
+        initAdminStyle();
+        topItem_admin_1->setIcon(0,QIcon(":/images/bookmana.png"));
+        topItem_admin_2->setIcon(0,QIcon(":/images/usermana.png"));
+        topItem_admin_3->setIcon(0,QIcon(":/images/log.png"));
+        //打开管理员
+        on_button_admin_book_1_clicked();
     }
-    //不显示左边三角形
-    ui->treeWidget->setRootIsDecorated(false);
-    //树最顶部名称
-    QStringList top;
-    top << "功能选择";
-    ui->treeWidget->setHeaderLabels(top);
-    // 显示gif图片
-    ui->label_bacgroud->setWindowFlag(Qt::FramelessWindowHint);// 设置无边框
-    static QMovie movie(":/images/5.gif");
-    ui->label_bacgroud->setMovie(&movie);
-    ui->label_bacgroud->setScaledContents(true);
-    movie.start();
     //logout button style
     ui->button_logout->setIconSize(QSize(48,48));
     ui->button_logout->setIcon(QIcon(":/images/logout.png"));
+    QString treeStyle;
+    treeStyle="QTreeView{"
+            "border-radius: 20px;"
+            "font: 18pt '黑体';"
+              "color: white;"
+            "outline:none;"
+            "background-color: rgb(19, 30, 38);"
+              "}"
+              "QTreeWidget::item:selected{"
+              "outline:none;"
+              "}"
+              "QTreeView::item {"
+            "background-color: rgb(19, 30, 38);"
+            "margin:10px;"
+              "}";
+    ui->treeWidget->setStyleSheet(treeStyle);
+    //不显示左边三角形
+    ui->treeWidget->setRootIsDecorated(false);
 }
 
 void ManagerMainWindow::setUsername(QString username)//用户标志
@@ -158,6 +194,8 @@ void ManagerMainWindow::on_button_user_book_1_clicked()
     booksearch->setusername(username);
     index=ui->stackedWidget->addWidget(booksearch);
     ui->stackedWidget->setCurrentIndex(index);
+    initUserStyle();
+    button_user_book_1->setStyleSheet(buttonStyle_checked);
 }
 void ManagerMainWindow::on_button_user_book_2_clicked()
 {
@@ -166,6 +204,8 @@ void ManagerMainWindow::on_button_user_book_2_clicked()
     borrowinfo->setusername(username);
     index=ui->stackedWidget->addWidget(borrowinfo);
     ui->stackedWidget->setCurrentIndex(index);
+    initUserStyle();
+    button_user_book_2->setStyleSheet(buttonStyle_checked);
 }
 void ManagerMainWindow::on_button_user_book_3_clicked()
 {
@@ -174,6 +214,8 @@ void ManagerMainWindow::on_button_user_book_3_clicked()
     borrowhistory->setusername(username);
     index=ui->stackedWidget->addWidget(borrowhistory);
     ui->stackedWidget->setCurrentIndex(index);
+    initUserStyle();
+    button_user_book_3->setStyleSheet(buttonStyle_checked);
 }
 void ManagerMainWindow::on_button_user_set_1_clicked()
 {
@@ -181,6 +223,8 @@ void ManagerMainWindow::on_button_user_set_1_clicked()
     UserProfileManager *UserProfileMana = new UserProfileManager();
     index=ui->stackedWidget->addWidget(UserProfileMana);
     ui->stackedWidget->setCurrentIndex(index);
+    initUserStyle();
+    button_user_set_1->setStyleSheet(buttonStyle_checked);
 }
 void ManagerMainWindow::on_button_user_set_2_clicked()
 {
@@ -188,18 +232,29 @@ void ManagerMainWindow::on_button_user_set_2_clicked()
     UserHelp *userhelp = new UserHelp();
     index=ui->stackedWidget->addWidget(userhelp);
     ui->stackedWidget->setCurrentIndex(index);
+    initUserStyle();
+    button_user_set_2->setStyleSheet(buttonStyle_checked);
 }
-void ManagerMainWindow::on_button_user_set_3_clicked()
+void ManagerMainWindow::on_button_logout_clicked()
 {
     QMessageBox::StandardButton answer = QMessageBox::question(this,"登出","你确定要退出登录吗？");
     if(answer == QMessageBox::Yes)
     {
-        this->close();
         //打开登录窗口
+        removeWidget(index);
         Login *login=new Login(this);
         login->setWindowFlag(Qt::Window);
         login->show();
+        this->close();
     }
+}
+void ManagerMainWindow::initUserStyle()
+{
+    button_user_book_1->setStyleSheet(buttonStyle_unchecked);
+    button_user_book_2->setStyleSheet(buttonStyle_unchecked);
+    button_user_book_3->setStyleSheet(buttonStyle_unchecked);
+    button_user_set_1->setStyleSheet(buttonStyle_unchecked);
+    button_user_set_2->setStyleSheet(buttonStyle_unchecked);
 }
 //管理员模块
 void ManagerMainWindow::on_button_admin_book_1_clicked()
@@ -208,6 +263,8 @@ void ManagerMainWindow::on_button_admin_book_1_clicked()
     BookManager *BookInfoMana = new BookManager();
     index=ui->stackedWidget->addWidget(BookInfoMana);
     ui->stackedWidget->setCurrentIndex(index);
+    initAdminStyle();
+    button_admin_book_1->setStyleSheet(buttonStyle_checked);
 }
 void ManagerMainWindow::on_button_admin_book_2_clicked()
 {
@@ -215,6 +272,8 @@ void ManagerMainWindow::on_button_admin_book_2_clicked()
     BookClassifyManager *BookClassMana = new BookClassifyManager();
     index=ui->stackedWidget->addWidget(BookClassMana);
     ui->stackedWidget->setCurrentIndex(index);
+    initAdminStyle();
+    button_admin_book_2->setStyleSheet(buttonStyle_checked);
 }
 void ManagerMainWindow::on_button_admin_user_1_clicked()
 {
@@ -222,6 +281,8 @@ void ManagerMainWindow::on_button_admin_user_1_clicked()
     readerManager *readermanager=new readerManager();
     index=ui->stackedWidget->addWidget(readermanager);
     ui->stackedWidget->setCurrentIndex(index);
+    initAdminStyle();
+    button_admin_user_1->setStyleSheet(buttonStyle_checked);
 }
 void ManagerMainWindow::on_button_admin_sys_1_clicked()
 {
@@ -229,6 +290,8 @@ void ManagerMainWindow::on_button_admin_sys_1_clicked()
     borrowBookInformation *borrowbookinformation = new borrowBookInformation();
     index=ui->stackedWidget->addWidget(borrowbookinformation);
     ui->stackedWidget->setCurrentIndex(index);
+    initAdminStyle();
+    button_admin_sys_1->setStyleSheet(buttonStyle_checked);
 }
 void ManagerMainWindow::on_button_admin_sys_2_clicked()
 {
@@ -236,5 +299,14 @@ void ManagerMainWindow::on_button_admin_sys_2_clicked()
     returnBook *returnbook = new returnBook();
     index=ui->stackedWidget->addWidget(returnbook);
     ui->stackedWidget->setCurrentIndex(index);
+    initAdminStyle();
+    button_admin_sys_2->setStyleSheet(buttonStyle_checked);
 }
-
+void ManagerMainWindow::initAdminStyle()
+{
+    button_admin_book_1->setStyleSheet(buttonStyle_unchecked);
+    button_admin_book_2->setStyleSheet(buttonStyle_unchecked);
+    button_admin_user_1->setStyleSheet(buttonStyle_unchecked);
+    button_admin_sys_1->setStyleSheet(buttonStyle_unchecked);
+    button_admin_sys_2->setStyleSheet(buttonStyle_unchecked);
+}

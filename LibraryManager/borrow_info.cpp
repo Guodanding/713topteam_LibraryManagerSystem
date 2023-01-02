@@ -14,16 +14,6 @@ borrow_info::borrow_info(QWidget *parent) :
                 "QLabel{"
                 "background-color:#DDDDDD;"
                 "}");
-    ui->ExitBtn->setStyleSheet(
-                "QPushButton{"
-                "background-color:#FF0000;"
-                "border-radius:3px;"//设置圆角半径
-                "color:white;"
-                "}"
-                "QPushButton:hover{"
-                "background-color:#8B4513;"
-                "color:white;"
-                "}");
     ui->ReturnBtn->setStyleSheet(
                 "QPushButton{"
                 "background-color:#8470FF;"
@@ -136,12 +126,6 @@ void borrow_info::on_ReturnBtn_clicked()
     }
     }
 
-}
-
-
-void borrow_info::on_ExitBtn_clicked()
-{
-    borrow_info::close();
 }
 
 void borrow_info::setusername(QString username)
